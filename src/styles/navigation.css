@@ -9,11 +9,13 @@ html, body {
     overflow: hidden;
   }
   
+  /* Estilos del contenedor padre sidebar */
   .main-layout {
     display: flex;
     height: 100vh;
   }
   
+  /* Estilos del sidebar */
   nav {
     display: flex;
     flex-direction: column;
@@ -31,12 +33,18 @@ html, body {
     width: 250px;
   }
   
+  /* Estilos del primer bloque del sidebar: datos usuario */
   .logo-react {
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 3px;
     margin-bottom: 25px;
+  }
+
+  nav:hover .logo-react {
+    justify-content: flex-start; 
   }
   
   nav img {
@@ -59,7 +67,8 @@ html, body {
     display: inline;
     opacity: 1;
   }
-  
+
+  /* Estilos del segundo bloque del sidebar: enlaces del sidebar */
   nav ul {
     list-style: none;
     padding: 0;
@@ -70,51 +79,45 @@ html, body {
   nav li {
     display: flex;
     align-items: center;
-    padding: 5px 0;
+    padding: 3px 0;
     width: 100%;
   }
   
   nav li a i {
-    font-size: 1rem;
+    font-size: 1.1rem;
     width: 10px;
     height: 18px;
     text-align: center;
   }
 
-  nav li a,
-  .nav-link-dropdown {
+  .logout-container li a,
+  nav li a {
     width: 100%; 
     display: flex;
     align-items: center;
     color: white;
-    font-size: .95rem;
     text-decoration: none;
-    padding: 10px 27px;
+    padding: 12px 27px;
     justify-content: left;
-    gap: 14px;
+    gap: 18px;
     transition: all 0.3s ease-in-out;
   }
 
-  .nav-link-dropdown{
-    height: 18px;
-    justify-content: space-between;
+  nav li a{
+    font-size: .9rem;
   }
 
-  .nav-link-dropdown .arrow {
-    margin-left: auto; 
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .rotate {
-    transform: rotate(180deg);
+  .nav-link{
+    padding: 0;
+    margin: 0;
   }
 
   nav li a:hover,
-  .nav-link-dropdown:hover {
+  .nav-link-dropdown:hover,
+  .logout-container li a:hover {
     background-color: #4a4f5a;
-    border-radius: 5px;
 }
-  
+
   nav:hover li a {
     justify-content: flex-start;
   }
@@ -136,6 +139,39 @@ html, body {
   .nav-item {
     position: relative; 
   }
+
+/* Estilos del enlace con dropdown */
+  .nav-link-dropdown {
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 10px 27px;
+    justify-content: left;
+    gap: 17px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-link-dropdown i{
+    height: 18px;
+    font-size: 1.1rem;
+    justify-content: space-between;
+  }
+
+  .nav-link-dropdown span{
+    font-size: .9rem;
+    margin-left: -5px;
+  }
+
+  .nav-link-dropdown .arrow {
+    margin-left: auto; 
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .rotate {
+    transform: rotate(180deg);
+  }
   
   .nav-link-dropdown span,
   .nav-link-dropdown .arrow {
@@ -153,18 +189,19 @@ html, body {
     background-color: #4a4f5a;
     border-radius: 5px;
   }
+
+  .nav-link-dropdown.nav-active {
+    color: #5fb8d3; 
+  }
   
   .submenu {
     display: none;
     list-style: none;
-    padding: 0;
-    margin: 0;
     position: absolute;
     top: 100%; 
     left: 0;
     background-color: #444;
     width: 100%;
-    border-radius: 5px;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
   }
@@ -172,20 +209,36 @@ html, body {
   .submenu.open {
     display: block;
   }
+
+  .submenu li{
+    margin: 0;
+    padding: 0;
+  }
   
   .submenu li a {
     display: block;
     color: white;
-    font-size: 0.9rem;
-    padding: 8px 15px;
+    padding: 13px 0px 13px 30px;
+    font-size: 0.85rem;
     text-decoration: none;
     text-align: left;
-    margin-left: 15px;
     transition: background-color 0.3s ease-in-out;
   }
-  
+
+  .logout-container {
+    margin-top: auto; 
+    padding-top: 15px;
+    padding-bottom: 19px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Estilos del contenido */
   .content {
     flex-grow: 1;
-    padding: 15px;
+    padding: 20px;
     box-sizing: border-box;
   }
+
+ 
+

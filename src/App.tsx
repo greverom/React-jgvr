@@ -1,11 +1,12 @@
+import { BrowserRouter } from 'react-router-dom'
 import { Navigation } from './routes/navigation'
 
 function App() {
 
   return (
-    <>
-      <Navigation/>
-    </>
+    <BrowserRouter>  
+      <Navigation />
+    </BrowserRouter>
   )
 }
 

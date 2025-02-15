@@ -1,74 +1,95 @@
-import { BrowserRouter, NavLink, Route, Routes} from "react-router-dom"
-import logo from '../assets/react.svg'
-import '../styles/navigation.css'
+import { NavLink, Route, Routes, useLocation } from "react-router-dom";
+import { sidebarLinks, SidebarLink } from "../data/sidebarLinks"; 
+import { appRoutes, AppRoute } from "../data/routes"; 
 import { useSidebar } from "../hooks/useSidebar";
+import { userData } from "../data/userData";
+import logo from "../assets/react.svg";
+import "../styles/navigation.css";
 
-  export const Navigation = () => {
-    const {
-      isSubMenuOpen,
-      dropdownRef,
-      toggleSubMenu,
-      closeSubMenu,
-      handleMouseEnter,
-      handleMouseLeave,
-    } = useSidebar();
+export const Navigation = () => {
+  const { pathname } = useLocation();
+  
+  const {
+    isSubMenuOpen,
+    dropdownRef,
+    toggleSubMenu,
+    closeSubMenu,
+    handleMouseEnter,
+    handleMouseLeave,
+  } = useSidebar();
 
   return (
-    
-  <BrowserRouter>
       <div className="main-layout">
-      <nav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <div className="logo-react">
-          <span className="logo-text">React</span>
-          <img src={logo} alt="react logo" />
-        </div>
+        <nav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <div className="logo-react">
+            <img src={logo} alt="react logo" />
+            <span className="logo-text">{userData.name}</span>
+          </div>
 
           <ul>
-            <li>
-              <NavLink to="/" className={({ isActive }) => isActive ? "nav-active" : ""}>
-                <i className="fas fa-home"></i> <span>Home</span>
-              </NavLink>
-            </li>
-            <li className="nav-item" ref={dropdownRef}>
-              <div className="nav-link-dropdown" onClick={toggleSubMenu}>
-                <i className="fas fa-info-circle"></i> <span>About</span>
-                <i className={`fas fa-chevron-down arrow ${isSubMenuOpen ? "rotate" : ""}`}></i>
-              </div>
+            {sidebarLinks.filter(link => !link.isLogout)
+            .map((link: SidebarLink, index: number) => {
+              const isParentActive = link.subMenu?.some(subLink => pathname.includes(subLink.path)) || pathname === link.path;
+              
 
-              <ul className={`submenu ${isSubMenuOpen ? "open" : ""}`}>
-                <li>
-                  <NavLink to="/about/history" className={({ isActive }) => (isActive ? "nav-active" : "")} onClick={closeSubMenu}>
-                    History
-                  </NavLink>
+              return (
+                <li key={index} className={link.subMenu ? "nav-item" : ""} ref={link.subMenu ? dropdownRef : null}>
+                  {link.subMenu ? (
+                    <>
+                      <div className={`nav-link-dropdown ${isParentActive ? "nav-active" : ""}`} onClick={toggleSubMenu}>
+                        <i className={link.icon}></i> <span>{link.title}</span>
+                        <i className={`fas fa-chevron-down arrow ${isSubMenuOpen ? "rotate" : ""}`}></i>
+                      </div>
+                      <ul className={`submenu ${isSubMenuOpen ? "open" : ""}`}>
+                        {link.subMenu.map((subLink, subIndex) => (
+                          <li key={subIndex}>
+                            <NavLink
+                              to={subLink.path}
+                              className={({ isActive }) => (isActive ? "nav-active" : "")}
+                              onClick={closeSubMenu}
+                            >
+                              {subLink.title}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <NavLink 
+                      to={link.path} 
+                      className={({ isActive }) => (isActive ? "nav-active" : "")}
+                    >
+                      <i className={link.icon}></i> <span>{link.title}</span>
+                    </NavLink>
+                  )}
                 </li>
-                <li>
-                  <NavLink to="/about/team" className={({ isActive }) => (isActive ? "nav-active" : "")} onClick={closeSubMenu}>
-                    Team
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <NavLink to="/users" className={({ isActive }) => isActive ? "nav-active" : ""}>
-                <i className="fas fa-user"></i> <span>Users</span>
-              </NavLink>
-            </li>
+              );
+            })}
           </ul>
-      </nav>
+
+          <div className="logout-container">
+            {sidebarLinks
+              .filter(link => link.isLogout) 
+              .map((link, index) => (
+                <li key={index}>
+                  <a className="logout-link" onClick={() => console.log("Logout clicked")}>
+                    <i className={link.icon}></i> <span>{link.title}</span>
+                  </a>
+                </li>
+              ))}
+          </div>
+        </nav>
 
         <div className="content">
           <Routes>
-            <Route path="/" element={<h1>Home Page</h1>} />
-            <Route path="/about/history" element={<h1>History Page</h1>} />
-            <Route path="/about/team" element={<h1>Team Page</h1>} />
-            <Route path="/users" element={<h1>Users Page</h1>} />
+            {appRoutes.map((route: AppRoute, index: number) => (
+              <Route key={index} path={route.path} element={route.element} />
+            ))}
           </Routes>
         </div>
-
       </div>
-  </BrowserRouter>
 
-  )
-}
+  );
+};
 
 export default Navigation;
