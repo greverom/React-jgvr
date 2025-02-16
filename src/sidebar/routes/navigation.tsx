@@ -44,11 +44,7 @@ export const Navigation = () => {
                       <ul className={`submenu ${isSubMenuOpen ? "open" : ""}`}>
                         {link.subMenu.map((subLink, subIndex) => (
                           <li key={subIndex}>
-                            <NavLink
-                              to={subLink.path}
-                              className={({ isActive }) => (isActive ? "nav-active" : "")}
-                              onClick={closeSubMenu}
-                            >
+                            <NavLink to={subLink.path} className={({ isActive }) => (isActive ? "nav-active" : "")} onClick={closeSubMenu}> 
                               {subLink.title}
                             </NavLink>
                           </li>
@@ -56,10 +52,7 @@ export const Navigation = () => {
                       </ul>
                     </>
                   ) : (
-                    <NavLink 
-                      to={link.path} 
-                      className={({ isActive }) => (isActive ? "nav-active" : "")}
-                    >
+                    <NavLink to={link.path} className={({ isActive }) => (isActive ? "nav-active" : "")}>
                       <i className={link.icon}></i> <span>{link.title}</span>
                     </NavLink>
                   )}
