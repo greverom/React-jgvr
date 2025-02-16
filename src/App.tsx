@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom'
-import { Navigation } from './routes/navigation'
+import { Navigation } from './sidebar/routes/navigation'
 
 function App() {
 

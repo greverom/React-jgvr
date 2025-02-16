@@ -3,8 +3,9 @@ import { sidebarLinks, SidebarLink } from "../data/sidebarLinks";
 import { appRoutes, AppRoute } from "../data/routes"; 
 import { useSidebar } from "../hooks/useSidebar";
 import { userData } from "../data/userData";
-import logo from "../assets/react.svg";
+import logo from "../../assets/react.svg";
 import "../styles/navigation.css";
+
 
 export const Navigation = () => {
   const { pathname } = useLocation();
