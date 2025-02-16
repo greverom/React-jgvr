@@ -26,6 +26,9 @@ html, body {
     overflow: hidden;
     text-align: center;
     padding: 20px 0;
+    overflow-y: auto;
+    scrollbar-width: thin; 
+    scrollbar-color: #5a5a5a transparent;
     transition: width 0.3s ease-in-out
   }
   
@@ -138,7 +141,12 @@ html, body {
   }
   
   .nav-item {
-    position: relative; 
+    position: relative;  
+    z-index: 1;
+  }
+  
+  .nav-item.open {
+    z-index: 100; 
   }
 
 /* Estilos del enlace con dropdown */
@@ -148,7 +156,7 @@ html, body {
     align-items: center;
     color: white;
     text-decoration: none;
-    padding: 10px 27px;
+    padding: 12px 27px;
     justify-content: left;
     gap: 17px;
     cursor: pointer;
@@ -189,30 +197,37 @@ html, body {
   
   .nav-link-dropdown:hover {
     background-color: #4a4f5a;
-    border-radius: 5px;
   }
 
   .nav-link-dropdown.nav-active {
     color: #5fb8d3; 
   }
+
+  .nav-link-dropdown.is-open {
+    background-color: #4a4f5a; 
+}
+
+  .nav-link-dropdown.parent-active {
+    color: #5fb8d3; 
+}
   
   .submenu {
     display: none;
-    list-style: none;
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 0;
-    background-color: #444;
+    background: rgb(40, 44, 52); 
     width: 100%;
-    overflow: hidden;
-    background: rgba(102, 102, 102, 0.692); 
-    backdrop-filter: blur(7px); 
-    -webkit-backdrop-filter: blur(8px);
     transition: all 0.3s ease-in-out;
+    z-index: 10;  
   }
-  
+
   .submenu.open {
     display: block;
+  }
+
+  .nav-item.open ~ .nav-item {
+    pointer-events: none;  
   }
 
   .submenu li{
@@ -222,17 +237,32 @@ html, body {
   
   .submenu li a {
     display: block;
-    color: white;
-    padding: 13px 0px 13px 30px;
+    color: #dcdcdc; 
+    padding: 13px 0px 13px 55px;
     font-size: 0.85rem;
     text-decoration: none;
     text-align: left;
+    position: relative;
     transition: background-color 0.3s ease-in-out;
+  }
+
+  .submenu li a.nav-active::before {
+    content: "•";  
+    position: absolute;
+    top: 10px;
+    left: 30px; 
+    color: white; 
+    font-size: 1.1rem; 
+    transition: opacity 0.3s ease-in-out;
+}
+
+  .submenu li a:hover {
+    background-color: #4a4f5a; 
   }
 
   .logout-container {
     margin-top: auto; 
-    padding-top: 15px;
+    padding-top: 40px;
     padding-bottom: 19px;
     width: 100%;
     text-align: center;

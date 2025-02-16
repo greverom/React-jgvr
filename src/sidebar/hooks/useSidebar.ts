@@ -1,49 +1,50 @@
 import { useEffect, useRef, useState } from "react";
 
 export const useSidebar = () => {
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null); 
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
-  const dropdownRef = useRef<HTMLLIElement>(null);
+  const dropdownRefs = useRef<{ [key: string]: HTMLLIElement | null }>({});
 
-  const toggleSubMenu = () => {
-    setIsSubMenuOpen(!isSubMenuOpen);
+  const toggleSubMenu = (menuKey: string) => {
+    setOpenDropdown(prev => (prev === menuKey ? null : menuKey)); 
   };
 
   const closeSubMenu = () => {
-    setIsSubMenuOpen(false);
+    setOpenDropdown(null); 
   };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsSubMenuOpen(false);
+      const isClickInside = Object.values(dropdownRefs.current).some(
+        (ref) => ref && ref.contains(event.target as Node)
+      );
+  
+      if (!isClickInside) {
+        setOpenDropdown(null);
       }
     };
-
-    if (isSubMenuOpen) {
+  
+    if (isSidebarExpanded) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+      setOpenDropdown(null);
     }
-
-    if (!isSidebarExpanded) {
-      setIsSubMenuOpen(false);
-    }
-
+  
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isSubMenuOpen, isSidebarExpanded]);
+  }, [isSidebarExpanded]); 
 
   const handleMouseEnter = () => setIsSidebarExpanded(true);
   const handleMouseLeave = () => setIsSidebarExpanded(false);
 
   return {
-    isSubMenuOpen,
-    dropdownRef,
+    openDropdown,
     toggleSubMenu,
     closeSubMenu,
     handleMouseEnter,
     handleMouseLeave,
+    isSidebarExpanded,
+    dropdownRefs,
   };
 };
