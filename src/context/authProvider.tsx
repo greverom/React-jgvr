@@ -5,7 +5,8 @@ import Loading from "../components/loading/loading";
 const fetchRole = async (): Promise<RoleType> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve("ADMINISTRADOR"); 
+      resolve("ADMINISTRADOR");
+      //resolve("GUEST") 
     }, 1000); 
   });
 };

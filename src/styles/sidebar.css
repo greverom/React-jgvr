@@ -85,13 +85,6 @@ html, body {
     padding: 3px 0;
     width: 100%;
   }
-  
-  nav li a i {
-    font-size: 1.1rem;
-    width: 10px;
-    height: 18px;
-    text-align: center;
-  }
 
   .logout-container li a,
   nav li a {
@@ -125,9 +118,21 @@ html, body {
   nav:hover li a {
     justify-content: flex-start;
   }
+
+  nav li a svg,
+  .nav-link-dropdown svg,
+  .logout-container li a svg,
+  .nav-link-dropdown .arrow {
+    width: 20px; 
+    height: 20px;
+    fill: white;
+    flex-shrink: 0;
+    text-align: center;
+  }
   
   nav li a span {
     display: none;
+    white-space: nowrap;
     transition: opacity 0.3s ease-in-out;
   }
   
@@ -158,25 +163,18 @@ html, body {
     text-decoration: none;
     padding: 12px 27px;
     justify-content: left;
-    gap: 17px;
+    gap: 22px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
   }
 
-  .nav-link-dropdown i{
-    height: 18px;
-    font-size: 1.1rem;
-    justify-content: space-between;
+  .nav-link-dropdown .arrow{
+    margin-left: auto;
   }
 
   .nav-link-dropdown span{
     font-size: .9rem;
     margin-left: -5px;
-  }
-
-  .nav-link-dropdown .arrow {
-    margin-left: auto; 
-    transition: transform 0.3s ease-in-out;
   }
 
   .rotate {

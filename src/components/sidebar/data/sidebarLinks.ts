@@ -1,8 +1,9 @@
+import { HomeIcon, DashboardIcon, UsersIcon, LogoutIcon } from "../../icons/icons/icons";
 
 export interface SidebarLink {
     title: string;
     path: string;
-    icon: string;
+    icon: React.FC;
     roles: ("ADMINISTRADOR" | "GUEST")[];
     subMenu?: SidebarLink[]; 
     isLogout?: boolean;
@@ -13,24 +14,24 @@ export interface SidebarLink {
       title: "Home",
       path: "/",
       roles: ["ADMINISTRADOR", "GUEST"],
-      icon: "fas fa-home",
+      icon: HomeIcon,
     },
     {
-      title: "Services",
+      title: "Dashboard",
       path: "/services",
-      icon: "fas fa-concierge-bell",
+      icon: DashboardIcon,
       roles: ["ADMINISTRADOR"],
       subMenu: [
         {
           title: "Consulting",
           path: "/services/consulting",
-          icon: "fas fa-user-tie",
+          icon: DashboardIcon,
           roles: ["ADMINISTRADOR"],
         },
         {
           title: "Support",
           path: "/services/support",
-          icon: "fas fa-headset",
+          icon: DashboardIcon,
           roles: ["ADMINISTRADOR"],
         },
       ],
@@ -38,13 +39,13 @@ export interface SidebarLink {
     {
       title: "Users",
       path: "/users",
-      icon: "fas fa-user",
+      icon: UsersIcon,
       roles: ["ADMINISTRADOR"],
     },
     {
       title: "Salir",
       path: "#", 
-      icon: "fas fa-sign-out-alt",
+      icon: LogoutIcon,
       roles: ["ADMINISTRADOR", "GUEST"],
       isLogout: true, 
     },

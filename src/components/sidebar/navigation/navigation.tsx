@@ -6,6 +6,7 @@ import { useAuth } from "../../../hooks/useAuth";
 //import { userData } from "../data/userData";
 import logo from "../../../assets/react.svg";
 import "../../../styles/sidebar.css";
+import { ArrowIcon } from "../../icons/icons/icons";
 
 export const Navigation = () => {
   const { pathname } = useLocation();
@@ -26,14 +27,15 @@ export const Navigation = () => {
             .map((link: SidebarLink, index: number) => {
               const isParentActive = link.subMenu?.some(subLink => pathname.includes(subLink.path)) || pathname === link.path;
               const isOpen = openDropdown === link.path;
+              const Icon = link.icon;
 
               return (
                 <li key={index} className={`nav-item ${isOpen ? "open" : ""}`} ref={(el) => { if (link.subMenu) dropdownRefs.current[link.path] = el;}}>
                   {link.subMenu ? (
                     <>
                       <div className={`nav-link-dropdown ${isParentActive ? "nav-active" : ""}`} onClick={() => toggleSubMenu(link.path)}>
-                        <i className={link.icon}></i> <span>{link.title}</span>
-                        <i className={`fas fa-chevron-down arrow ${isOpen ? "rotate" : ""}`}></i>
+                      <Icon /> <span>{link.title}</span>
+                      <ArrowIcon className={`arrow ${isOpen ? "rotate" : ""}`} />
                       </div>
                       <ul className={`submenu ${isOpen ? "open" : ""}`}>
                         {link.subMenu
@@ -49,7 +51,7 @@ export const Navigation = () => {
                     </>
                   ) : (
                     <NavLink to={link.path} className={({ isActive }) => (isActive ? "nav-active" : "")}>
-                      <i className={link.icon}></i> <span>{link.title}</span>
+                      <Icon /> <span>{link.title}</span>
                     </NavLink>
                   )}
                 </li>
@@ -60,13 +62,16 @@ export const Navigation = () => {
         <div className="logout-container">
           {sidebarLinks
             .filter(link => link.isLogout)
-            .map((link, index) => (
-              <li key={index}>
-                <a className="logout-link" onClick={() => console.log("Logout clicked")}>
-                  <i className={link.icon}></i> <span>{link.title}</span>
-                </a>
-              </li>
-            ))}
+            .map((link, index) => {
+              const Icon = link.icon; 
+              return (
+                <li key={index}>
+                  <a className="logout-link" onClick={() => console.log("Logout clicked")}>
+                    <Icon /> <span>{link.title}</span> 
+                  </a>
+                </li>
+              );
+            })}
         </div>
       </nav>
 
