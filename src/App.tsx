@@ -1,12 +1,15 @@
 import { BrowserRouter } from 'react-router-dom'
-import { Navigation } from './sidebar/routes/navigation'
+import { Navigation } from './components/sidebar/navigation/navigation'
+import { AuthProvider } from './context/authProvider'
 
 function App() {
 
   return (
-    <BrowserRouter>  
-      <Navigation />
-    </BrowserRouter>
+    <AuthProvider>  
+      <BrowserRouter>  
+        <Navigation />
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 
