@@ -1,7 +1,7 @@
 import { lazy, ReactElement, Suspense } from "react";
 import Loading from "../components/loading/loading";
-import { About, Contact, Home, User } from "../pages";
-import { dashboardRoutes } from "./DashboardRoutes";
+import { dashboardRoutes } from "./dashboardRoutes";
+
 
 export interface AppRoute {
   path?: string;
@@ -12,6 +12,10 @@ export interface AppRoute {
 }
 
 const Dashboard = lazy(() => import("../pages/Dashboard"));
+const Home = lazy(() => import("../pages/Home"));
+const User = lazy(() => import("../pages/User"));
+const About = lazy(() => import("../pages/About"));
+const Contact = lazy(() => import("../pages/Contact"));
 
 const withSuspense = (Component: ReactElement) => (
   <Suspense fallback={<Loading />}>{Component}</Suspense>
