@@ -2,13 +2,12 @@ import { NavLink, Route, Routes, useLocation, Navigate } from "react-router-dom"
 import { sidebarLinks, SidebarLink } from "../data/sidebarLinks";
 import { appRoutes, AppRoute } from "../../../router/routes";
 import { useSidebar } from "../../../hooks/useSidebar";
-import { useAuth } from "../../../hooks/useAuth"; 
-//import { userData } from "../data/userData";
-import logo from "../../../assets/react.svg";
-import "../../../styles/sidebar.css";
 import { ArrowIcon } from "../../icons/icons/icons";
-import { Suspense } from "react";
+import { useAuth } from "../../../hooks/useAuth"; 
+import logo from "../../../assets/react.svg";
 import Loading from "../../loading/loading";
+import "../../../styles/sidebar.css";
+import { Suspense } from "react";
 
 export const Navigation = () => {
   const { pathname } = useLocation();
