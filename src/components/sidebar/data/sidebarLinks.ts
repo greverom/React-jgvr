@@ -18,23 +18,9 @@ export interface SidebarLink {
     },
     {
       title: "Dashboard",
-      path: "/services",
+      path: "/dashboard",
       icon: DashboardIcon,
       roles: ["ADMINISTRADOR"],
-      subMenu: [
-        {
-          title: "Consulting",
-          path: "/services/consulting",
-          icon: DashboardIcon,
-          roles: ["ADMINISTRADOR"],
-        },
-        {
-          title: "Support",
-          path: "/services/support",
-          icon: DashboardIcon,
-          roles: ["ADMINISTRADOR"],
-        },
-      ],
     },
     {
       title: "Users",

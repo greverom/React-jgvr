@@ -84,14 +84,21 @@ export const Navigation = () => {
       </nav>
 
       <div className="content">
-        <Suspense fallback={<Loading/>}>
+        <Suspense fallback={<Loading />}>
           <Routes>
             {role &&
-              appRoutes
-                .filter(route => route.roles.includes(role)) 
-                .map((route: AppRoute, index: number) => (
-                  <Route key={index} path={route.path} element={route.element} />
-                ))
+              appRoutes.map((route: AppRoute, index: number) => (
+                <Route key={index} path={route.path} element={route.element}>
+                  {route.children?.map((childRoute, childIndex) => (
+                    <Route
+                      key={childIndex}
+                      path={childRoute.path}
+                      index={childRoute.index} 
+                      element={childRoute.element}
+                    />
+                  ))}
+                </Route>
+              ))
             }
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
