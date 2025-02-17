@@ -1,6 +1,6 @@
 import { NavLink, Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { sidebarLinks, SidebarLink } from "../data/sidebarLinks";
-import { appRoutes, AppRoute } from "../../../routes/routes";
+import { appRoutes, AppRoute } from "../../../router/routes";
 import { useSidebar } from "../../../hooks/useSidebar";
 import { useAuth } from "../../../hooks/useAuth"; 
 //import { userData } from "../data/userData";
