@@ -1,29 +1,31 @@
 import { useState, useEffect } from "react";
 import { AuthContext, RoleType } from "./authContext";
-import Loading from "../components/loading/loading";
 
 const fetchRole = async (): Promise<RoleType> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve("ADMINISTRADOR");
       //resolve("GUEST") 
-    }, 1000); 
+    }, 500); 
   });
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [role, setRole] = useState<RoleType | null>(null); 
+  const [role, setRole] = useState<RoleType | null>(null);
+  const [isLoading, setIsLoading] = useState(true); 
+
   useEffect(() => {
     const loadUserRole = async () => {
-      const userRole = await fetchRole(); 
+      const userRole = await fetchRole();
       setRole(userRole);
+      setIsLoading(false); 
     };
     loadUserRole();
   }, []);
 
-  if (role === null) {
-    return <Loading />;
-  }
-
-  return <AuthContext.Provider value={{ role, setRole }}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ role, setRole }}>
+      {isLoading ? null : children} 
+    </AuthContext.Provider>
+  );
 };

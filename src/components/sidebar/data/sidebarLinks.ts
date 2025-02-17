@@ -1,4 +1,4 @@
-import { HomeIcon, DashboardIcon, UsersIcon, LogoutIcon } from "../../icons/icons/icons";
+import { HomeIcon, DashboardIcon, UsersIcon, LogoutIcon, AboutIcon, ContactIcon } from "../../icons/icons/icons";
 
 export interface SidebarLink {
     title: string;
@@ -42,6 +42,19 @@ export interface SidebarLink {
       icon: UsersIcon,
       roles: ["ADMINISTRADOR"],
     },
+    {
+      title: "About",
+      path: "/about",
+      icon: AboutIcon,
+      roles: ["ADMINISTRADOR", "GUEST"],
+    },
+    {
+      title: "Contact",
+      path: "/contact",
+      icon: ContactIcon,
+      roles: ["ADMINISTRADOR", "GUEST"],
+    },
+    
     {
       title: "Salir",
       path: "#", 

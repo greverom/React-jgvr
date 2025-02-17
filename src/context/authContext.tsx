@@ -2,9 +2,12 @@ import { createContext } from "react";
 
 export type RoleType = "ADMINISTRADOR" | "GUEST";
 
-export type AuthContextType = {
-  role: RoleType;
+interface AuthContextType {
+  role: RoleType | null;  // 🔹 Permitir que sea null temporalmente
   setRole: (role: RoleType) => void;
-};
+}
 
-export const AuthContext = createContext<AuthContextType | null>(null);
+export const AuthContext = createContext<AuthContextType>({
+  role: null,  // 🔹 Valor inicial como null
+  setRole: () => {}, 
+});

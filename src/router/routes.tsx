@@ -1,4 +1,5 @@
-import { ReactElement } from "react";
+import { lazy, ReactElement, Suspense } from "react";
+import Loading from "../components/loading/loading";
 
 export interface AppRoute {
   path: string;
@@ -6,25 +7,48 @@ export interface AppRoute {
   roles: ("ADMINISTRADOR" | "GUEST")[]; 
 }
 
+const Home = lazy(() => import("../pages/Home"));
+const Consulting = lazy(() => import("../pages/Consulting"));
+const Support = lazy(() => import("../pages/Support"));
+const User = lazy(() => import("../pages/User"));
+const About = lazy(() => import("../pages/About"));
+const Contact = lazy(() => import("../pages/Contact"));
+
+const withSuspense = (Component: ReactElement) => (
+  <Suspense fallback={<Loading/>}>
+    {Component}
+  </Suspense>
+);
+
 export const appRoutes: AppRoute[] = [
   {
     path: "/",
-    element: <div>Contenido de Home</div>,
+    element: withSuspense ( <Home/> ),
     roles: ["ADMINISTRADOR", "GUEST"], 
   },
   {
     path: "/services/consulting",
-    element: <div>Contenido de Consulting</div>,
+    element:withSuspense (<Consulting/>),
     roles: ["ADMINISTRADOR"], 
   },
   {
     path: "/services/support",
-    element: <div>Contenido de Support</div>,
+    element:withSuspense (<Support/>),
     roles: ["ADMINISTRADOR"], 
   },
   {
     path: "/users",
-    element: <div>Contenido de Users</div>,
+    element:withSuspense (<User/>),
     roles: ["ADMINISTRADOR"], 
+  },
+  {
+    path: "/about",
+    element: withSuspense(<About />),
+    roles: ["ADMINISTRADOR", "GUEST"], 
+  },
+  {
+    path: "/contact",
+    element: withSuspense(<Contact />),
+    roles: ["ADMINISTRADOR", "GUEST"], 
   },
 ];

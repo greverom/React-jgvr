@@ -7,6 +7,8 @@ import { useAuth } from "../../../hooks/useAuth";
 import logo from "../../../assets/react.svg";
 import "../../../styles/sidebar.css";
 import { ArrowIcon } from "../../icons/icons/icons";
+import { Suspense } from "react";
+import Loading from "../../loading/loading";
 
 export const Navigation = () => {
   const { pathname } = useLocation();
@@ -22,7 +24,8 @@ export const Navigation = () => {
         </div>
 
         <ul>
-          {sidebarLinks
+          {role &&
+            sidebarLinks
             .filter(link => link.roles.includes(role) && !link.isLogout)
             .map((link: SidebarLink, index: number) => {
               const isParentActive = link.subMenu?.some(subLink => pathname.includes(subLink.path)) || pathname === link.path;
@@ -34,19 +37,24 @@ export const Navigation = () => {
                   {link.subMenu ? (
                     <>
                       <div className={`nav-link-dropdown ${isParentActive ? "nav-active" : ""}`} onClick={() => toggleSubMenu(link.path)}>
-                      <Icon /> <span>{link.title}</span>
-                      <ArrowIcon className={`arrow ${isOpen ? "rotate" : ""}`} />
+                        <Icon /> <span>{link.title}</span>
+                        <ArrowIcon className={`arrow ${isOpen ? "rotate" : ""}`} />
                       </div>
                       <ul className={`submenu ${isOpen ? "open" : ""}`}>
-                        {link.subMenu
-                          .filter(subLink => subLink.roles.includes(role)) 
-                          .map((subLink, subIndex) => (
-                            <li key={subIndex}>
-                              <NavLink to={subLink.path} className={({ isActive }) => (isActive ? "nav-active" : "")} onClick={() => closeSubMenu()}>
-                                {subLink.title}
-                              </NavLink>
-                            </li>
-                          ))}
+                        {role &&
+                          link.subMenu
+                            .filter(subLink => subLink.roles.includes(role))
+                            .map((subLink, subIndex) => (
+                              <li key={subIndex}>
+                                <NavLink
+                                  to={subLink.path}
+                                  className={({ isActive }) => (isActive ? "nav-active" : "")}
+                                  onClick={() => closeSubMenu()}
+                                >
+                                  {subLink.title}
+                                </NavLink>
+                              </li>
+                        ))}
                       </ul>
                     </>
                   ) : (
@@ -56,7 +64,7 @@ export const Navigation = () => {
                   )}
                 </li>
               );
-            })}
+          })}
         </ul>
 
         <div className="logout-container">
@@ -76,15 +84,18 @@ export const Navigation = () => {
       </nav>
 
       <div className="content">
-        <Routes>
-          {appRoutes
-            .filter(route => route.roles.includes(role)) 
-            .map((route: AppRoute, index: number) => (
-              <Route key={index} path={route.path} element={route.element} />
-            ))
-          }
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <Suspense fallback={<Loading/>}>
+          <Routes>
+            {role &&
+              appRoutes
+                .filter(route => route.roles.includes(role)) 
+                .map((route: AppRoute, index: number) => (
+                  <Route key={index} path={route.path} element={route.element} />
+                ))
+            }
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
       </div>
     </div>
   );
