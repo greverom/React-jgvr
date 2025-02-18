@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import { AppRoute } from "./routes";
+import { AppRoute } from "./type";
+
 
 export const ProtectedRoute: React.FC<{ route: AppRoute }> = ({ route }) => {
   const { role } = useAuth();

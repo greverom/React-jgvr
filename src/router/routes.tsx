@@ -1,15 +1,8 @@
 import { lazy, ReactElement, Suspense } from "react";
 import Loading from "../components/loading/loading";
 import { dashboardRoutes } from "./dashboardRoutes";
+import { AppRoute } from "./type";
 
-
-export interface AppRoute {
-  path?: string;
-  element: ReactElement;
-  roles: ("ADMINISTRADOR" | "GUEST")[];
-  children?: AppRoute[];
-  index?:boolean;
-}
 
 const Dashboard = lazy(() => import("../pages/Dashboard"));
 const Home = lazy(() => import("../pages/Home"));
