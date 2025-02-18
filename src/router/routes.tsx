@@ -1,5 +1,5 @@
 import { lazy, ReactElement, Suspense } from "react";
-import Loading from "../components/loading/loading";
+import Loading from "../components/ui/loading";
 import { dashboardRoutes } from "./dashboardRoutes";
 import { AppRoute } from "./type";
 

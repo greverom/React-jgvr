@@ -1,5 +1,6 @@
 import { lazy } from "react";
-import { AppRoute } from "./routes"; 
+import { AppRoute } from "./type";
+ 
 
 const Consulting = lazy(() => import("../pages/Consulting"));
 const Support = lazy(() => import("../pages/Support"));

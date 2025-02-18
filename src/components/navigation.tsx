@@ -1,14 +1,14 @@
+import { sidebarLinks, SidebarLink } from "./ui/sidebar/sidebarLinks";
 import { NavLink, Route, Routes, useLocation, Navigate } from "react-router-dom";
-import { sidebarLinks, SidebarLink } from "../data/sidebarLinks";
-import { appRoutes } from "../../../router/routes";
-import { useSidebar } from "../../../hooks/useSidebar";
-import { ArrowIcon } from "../../icons/icons/icons";
-import { useAuth } from "../../../hooks/useAuth"; 
-import logo from "../../../assets/react.svg";
-import Loading from "../../loading/loading";
-import "../../../styles/sidebar.css";
+import { ArrowIcon } from "../components/icons/icons/icons";
+import { useSidebar } from "../hooks/useSidebar";
+import { appRoutes } from "../router/routes";
+import { useAuth } from "../hooks/useAuth"; 
+import { AppRoute } from "../router/type";
+import Loading from "./ui/loading";
+import logo from "../assets/react.svg";
 import { Suspense } from "react";
-import { AppRoute } from "../../../router/type";
+import "../styles/sidebar.css";
 
 export const Navigation = () => {
   const { pathname } = useLocation();
