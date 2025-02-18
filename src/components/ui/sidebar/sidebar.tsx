@@ -1,14 +1,11 @@
-import { sidebarLinks, SidebarLink } from "./ui/sidebar/sidebarLinks";
-import { NavLink, Route, Routes, useLocation, Navigate } from "react-router-dom";
-import { ArrowIcon } from "../components/icons/icons/icons";
-import { useSidebar } from "../hooks/useSidebar";
-import { appRoutes } from "../router/routes";
-import { useAuth } from "../hooks/useAuth"; 
-import { AppRoute } from "../router/type";
-import Loading from "./ui/loading";
-import logo from "../assets/react.svg";
-import { Suspense } from "react";
-import "../styles/sidebar.css";
+import { NavLink, useLocation } from "react-router-dom";
+import { sidebarLinks, SidebarLink } from "../sidebar/sidebarLinks";
+import { useSidebar } from "../../../hooks/useSidebar";
+import { useAuth } from "../../../hooks/useAuth"; 
+import { ArrowIcon } from "../icons/icons";
+import logo from "../../../assets/react.svg";
+import "../../../styles/sidebar.css";
+import Layout from "../../layout/layout";
 
 export const Navigation = () => {
   const { pathname } = useLocation();
@@ -66,44 +63,9 @@ export const Navigation = () => {
               );
           })}
         </ul>
-
-        <div className="logout-container">
-          {sidebarLinks
-            .filter(link => link.isLogout)
-            .map((link, index) => {
-              const Icon = link.icon; 
-              return (
-                <li key={index}>
-                  <a className="logout-link" onClick={() => console.log("Logout clicked")}>
-                    <Icon /> <span>{link.title}</span> 
-                  </a>
-                </li>
-              );
-            })}
-        </div>
       </nav>
 
-      <div className="content">
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            {role &&
-              appRoutes.map((route: AppRoute, index: number) => (
-                <Route key={index} path={route.path} element={route.element}>
-                  {route.children?.map((childRoute, childIndex) => (
-                    <Route
-                      key={childIndex}
-                      path={childRoute.path}
-                      index={childRoute.index} 
-                      element={childRoute.element}
-                    />
-                  ))}
-                </Route>
-              ))
-            }
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </Suspense>
-      </div>
+      <Layout />
     </div>
   );
 };

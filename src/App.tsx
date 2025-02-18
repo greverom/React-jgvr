@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom'
-import { Navigation } from './components/navigation'
+import { Navigation } from './components/ui/sidebar/sidebar'
 import { AuthProvider } from './context/authProvider'
 
 function App() {
