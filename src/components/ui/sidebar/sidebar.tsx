@@ -5,9 +5,8 @@ import { useAuth } from "../../../hooks/useAuth";
 import { ArrowIcon } from "../icons/icons";
 import logo from "../../../assets/react.svg";
 import "../../../styles/sidebar.css";
-import Layout from "../../layout/layout";
 
-export const Navigation = () => {
+export const Sidebar = () => {
   const { pathname } = useLocation();
   const { role } = useAuth(); 
   const { openDropdown, dropdownRefs, toggleSubMenu, closeSubMenu, handleMouseEnter, handleMouseLeave } = useSidebar();
@@ -64,10 +63,8 @@ export const Navigation = () => {
           })}
         </ul>
       </nav>
-
-      <Layout />
     </div>
   );
 };
 
-export default Navigation;
+export default Sidebar;

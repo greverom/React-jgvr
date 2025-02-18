@@ -1,13 +1,13 @@
 import { BrowserRouter } from 'react-router-dom'
-import { Navigation } from './components/ui/sidebar/sidebar'
 import { AuthProvider } from './context/authProvider'
+import Layout from './components/layout/layout'
 
 function App() {
 
   return (
     <AuthProvider>  
       <BrowserRouter>  
-        <Navigation />
+        <Layout />
       </BrowserRouter>
     </AuthProvider>
   )
