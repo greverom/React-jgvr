@@ -62,6 +62,20 @@ export const Sidebar = () => {
               );
           })}
         </ul>
+        {role && (
+          <li className="logout-container">
+            {sidebarLinks
+              .filter(link => link.isLogout) 
+              .map((link, index) => {
+                const Icon = link.icon; 
+                return (
+                  <a key={index} className="logout-link">
+                    <Icon /> <span>{link.title}</span>
+                  </a>
+                );
+              })}
+          </li>
+        )}
       </nav>
     </div>
   );
