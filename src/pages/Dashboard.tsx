@@ -9,16 +9,16 @@ const Dashboard = () => {
       
     useEffect(() => {
         if (location.pathname === "/dashboard") {
-            navigate("consulting", { replace: true });
+            navigate("register", { replace: true });
         }
     }, [location.pathname, navigate]);
 
   return (
-    <div>
-        <h1>Dashboard</h1>
+    <div className="dashboard-container">
+        <h1>Authentication</h1>
         <div className="dashboard-nav">
-            <NavLink to="consulting" className="dashboard-btn">Consulting</NavLink>  
-            <NavLink to="support" className="dashboard-btn">Support</NavLink>  
+            <NavLink to="login" className="dashboard-btn">Login</NavLink>  
+            <NavLink to="register" className="dashboard-btn">Register</NavLink>  
         </div>
 
       <Suspense fallback={<Loading />}>

@@ -1,9 +1,9 @@
 
 .content {
     flex-grow: 1;
-    padding: 20px;
+    padding: 0px;
     box-sizing: border-box;
     overflow-y: auto;
     height: 100vh;
-    background-color: #2c2f36; 
+    background-color: #ffffff; 
 }

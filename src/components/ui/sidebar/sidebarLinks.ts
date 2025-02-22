@@ -17,7 +17,7 @@ export interface SidebarLink {
       icon: HomeIcon,
     },
     {
-      title: "Dashboard",
+      title: "Authentication",
       path: "/dashboard",
       icon: DashboardIcon,
       roles: ["ADMINISTRADOR"],
