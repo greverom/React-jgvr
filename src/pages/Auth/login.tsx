@@ -3,7 +3,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginFormInputs } from '../../Interfaces/authentication';
-import '../../styles/auth.css'; 
+import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, ErrorMessage, AuthButton } from "../../styles/auth.styles";
 
 const loginSchema = yup.object().shape({
   email: yup.string().email('Correo inválido').required('El correo es obligatorio'),
@@ -22,27 +22,27 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="login-container">
-      <FormProvider {...methods}>
-        <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-          <h2>Iniciar Sesión</h2>
+    <AuthContainer>
+    <FormProvider {...methods}>
+      <AuthForm onSubmit={handleSubmit(onSubmit)}>
+        <AuthTitle>Iniciar Sesión</AuthTitle>
 
-          <div className="input-group">
-            <label htmlFor="email">Correo Electrónico</label>
-            <input id="email" type="email" {...register("email")} />
-            {errors.email && <p className="error-message">{errors.email.message}</p>}
-          </div>
+        <InputGroup>
+          <Label htmlFor="email">Correo Electrónico</Label>
+          <Input id="email" type="email" {...register("email")} />
+          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+        </InputGroup>
 
-          <div className="input-group">
-            <label htmlFor="password">Contraseña</label>
-            <input id="password" type="password" {...register("password")} />
-            {errors.password && <p className="error-message">{errors.password.message}</p>}
-          </div>
+        <InputGroup>
+          <Label htmlFor="password">Contraseña</Label>
+          <Input id="password" type="password" {...register("password")} />
+          {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+        </InputGroup>
 
-          <button className="login-button" type="submit">Ingresar</button>
-        </form>
-      </FormProvider>
-    </div>
+        <AuthButton type="submit">Ingresar</AuthButton>
+      </AuthForm>
+    </FormProvider>
+  </AuthContainer>
   );
 };
 

@@ -3,7 +3,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { RegisterFormInputs } from '../../Interfaces/authentication';
-import '../../styles/auth.css'; 
+import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, ErrorMessage, AuthButton } from "../../styles/auth.styles";
 
 const registerSchema = yup.object().shape({
   username: yup.string().required('El nombre de usuario es obligatorio'),
@@ -26,33 +26,39 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="register-container">
+    <AuthContainer>
       <FormProvider {...methods}>
-        <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
-          <h2>Registrarse</h2>
+        <AuthForm onSubmit={handleSubmit(onSubmit)}>
+          <AuthTitle>Registrarse</AuthTitle>
 
-          <div className="input-group">
-            <label htmlFor="email">Correo Electrónico</label>
-            <input id="email" type="email" {...register("email")} />
-            {errors.email && <p className="error-message">{errors.email.message}</p>}
-          </div>
+          <InputGroup>
+            <Label htmlFor="username">Nombre de Usuario</Label>
+            <Input id="username" type="text" {...register("username")} />
+            {errors.username && <ErrorMessage>{errors.username.message}</ErrorMessage>}
+          </InputGroup>
 
-          <div className="input-group">
-            <label htmlFor="password">Contraseña</label>
-            <input id="password" type="password" {...register("password")} />
-            {errors.password && <p className="error-message">{errors.password.message}</p>}
-          </div>
+          <InputGroup>
+            <Label htmlFor="email">Correo Electrónico</Label>
+            <Input id="email" type="email" {...register("email")} />
+            {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+          </InputGroup>
 
-          <div className="input-group">
-            <label htmlFor="confirmPassword">Confirmar Contraseña</label>
-            <input id="confirmPassword" type="password" {...register("confirmPassword")} />
-            {errors.confirmPassword && <p className="error-message">{errors.confirmPassword.message}</p>}
-          </div>
+          <InputGroup>
+            <Label htmlFor="password">Contraseña</Label>
+            <Input id="password" type="password" {...register("password")} />
+            {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+          </InputGroup>
 
-          <button className="register-button" type="submit">Registrarse</button>
-        </form>
+          <InputGroup>
+            <Label htmlFor="confirmPassword">Confirmar Contraseña</Label>
+            <Input id="confirmPassword" type="password" {...register("confirmPassword")} />
+            {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>}
+          </InputGroup>
+
+          <AuthButton type="submit">Registrarse</AuthButton>
+        </AuthForm>
       </FormProvider>
-    </div>
+    </AuthContainer>
   );
 };
 
