@@ -86,25 +86,6 @@ export const ErrorMessage = styled.p`
   margin-bottom: 0;
 `;
 
-export const AuthButton = styled.button`
-  background: #007bff;
-  color: white;
-  padding: 14px;
-  border: none;
-  border-radius: 5px;
-  font-size: 15px;
-  cursor: pointer;
-  width: 100%;
-  max-width: 300px;
-  margin-top: 20px;
-  transition: background 0.3s ease, transform 0.2s ease;
-  text-align: center;
-
-  &:hover {
-    transform: scale(1.01);
-  }
-`;
-
 export const RememberAndForgotContainer = styled.div`
   display: flex;
   align-items: center;

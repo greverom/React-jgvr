@@ -4,9 +4,10 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { RegisterFormInputs } from '../../Interfaces/authentication';
 import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, ErrorMessage, 
-        AuthButton, InputContainer, InputIcon} from "../../styles/styled/auth.styles";
+        InputContainer, InputIcon} from "../../styles/styled/auth.styles";
 import { FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useAuthPassword } from '../../hooks/useAuthPassword';
+import Button from '../../components/ui/buttons/button';
 
 const registerSchema = yup.object().shape({
   //username: yup.string().required('El nombre de usuario es obligatorio'),
@@ -68,7 +69,7 @@ const Register: React.FC = () => {
             {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>}
           </InputGroup> */}
 
-          <AuthButton type="submit">Registrarse</AuthButton>
+          <Button type="submit" variant="primary">Ingresar</Button>
         </AuthForm>
       </FormProvider>
     </AuthContainer>

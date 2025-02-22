@@ -7,9 +7,10 @@ import { useAuthPassword } from '../../hooks/useAuthPassword';
 import { FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, 
-  ErrorMessage, AuthButton, RememberMeContainer, RememberMeCheckbox, 
+  ErrorMessage, RememberMeContainer, RememberMeCheckbox, 
   ForgotPasswordLink, RememberMeLabel, RememberAndForgotContainer, 
   InputContainer ,InputIcon} from "../../styles/styled/auth.styles";
+import Button from '../../components/ui/buttons/button';
 
 const loginSchema = yup.object().shape({
   email: yup.string().email('Correo inválido').required('El correo es obligatorio'),
@@ -65,7 +66,7 @@ const Login: React.FC = () => {
         </RememberAndForgotContainer>
 
 
-        <AuthButton type="submit">Ingresar</AuthButton>
+        <Button type="submit" variant="primary">Ingresar</Button>
       </AuthForm>
     </FormProvider>
   </AuthContainer>

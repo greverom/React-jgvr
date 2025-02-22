@@ -16,21 +16,7 @@
 
 .dashboard-nav {
   display: flex;
+  width: 500px;
   gap: 10px;
   margin-bottom: 20px;
-}
-
-.dashboard-btn {
-  padding: 10px 15px;
-  background-color: #007bff; 
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.dashboard-btn:hover {
-  background-color: #0056b3; 
 }
