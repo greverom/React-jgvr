@@ -13,8 +13,8 @@ import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input,
 import Button from '../../components/ui/buttons/button';
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email('Correo inválido').required('El correo es obligatorio'),
-  password: yup.string().min(6, 'Mínimo 6 caracteres').required('La contraseña es obligatoria'),
+  email: yup.string().required('El correo es obligatorio').email('Correo inválido'),
+  password: yup.string().required('La contraseña es obligatoria'),
   rememberMe: yup.boolean(),
 });
 
