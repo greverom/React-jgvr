@@ -14,6 +14,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [role, setRole] = useState<RoleType | null>(null);
   const [isLoading, setIsLoading] = useState(true); 
 
+  const login = (email: string, password: string) => {
+    console.log( email, password);
+    setRole("ADMINISTRADOR"); 
+  };
+
   useEffect(() => {
     const loadUserRole = async () => {
       const userRole = await fetchRole();
@@ -24,7 +29,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   return (
-    <AuthContext.Provider value={{ role, setRole }}>
+    <AuthContext.Provider value={{ login, role, setRole }}>
       {isLoading ? null : children} 
     </AuthContext.Provider>
   );

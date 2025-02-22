@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
 import { LoginFormInputs } from '../../Interfaces/authentication';
-import { useAuthPassword } from '../../hooks/useAuthPassword';
+import { useAuthPassword } from '../../hooks/Auth/useAuthPassword';
 import { FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, 
@@ -11,11 +11,12 @@ import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input,
   ForgotPasswordLink, RememberMeLabel, RememberAndForgotContainer, 
   InputContainer ,InputIcon} from "../../styles/styled/auth.styles";
 import Button from '../../components/ui/buttons/button';
+import { useAuth } from '../../hooks/Auth/useAuth';
 
 const loginSchema = yup.object().shape({
   email: yup.string().required('El correo es obligatorio').email('Correo inválido'),
   password: yup.string().required('La contraseña es obligatoria'),
-  rememberMe: yup.boolean(),
+  rememberMe: yup.boolean().default(false).transform((value) => value ?? false),
 });
 
 const Login: React.FC = () => {
@@ -23,10 +24,24 @@ const Login: React.FC = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const { register, handleSubmit, formState: { errors } } = methods;
+  const { register, handleSubmit, formState: { errors }, setValue } = methods;
   const { showPassword, togglePasswordVisibility } = useAuthPassword();
+  const { handleLogin, rememberMe, setRememberMe, email } = useAuth();
+
+  useEffect(() => {
+    if (email) {
+      setValue("email", email);
+      setValue("rememberMe", true); 
+      setRememberMe(true);
+    } else {
+      setValue("rememberMe", false);
+      setRememberMe(false);
+    }
+  }, [email, setValue, setRememberMe]);
+
   const onSubmit = (data: LoginFormInputs) => {
     console.log(data);
+    handleLogin(data.email, data.password, data.rememberMe);
   };
 
   return (
@@ -41,7 +56,7 @@ const Login: React.FC = () => {
             <InputIcon $position="left">
               <FaEnvelope />
             </InputIcon>
-            <Input id="email" type="email" {...register("email")} $hasError={!!errors.email} />
+            <Input id="email" type="email" {...register("email")} $hasError={!!errors.email} defaultValue={email} />
           </InputContainer>
             {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </InputGroup>
@@ -59,7 +74,8 @@ const Login: React.FC = () => {
 
         <RememberAndForgotContainer>
           <RememberMeContainer>
-            <RememberMeCheckbox type="checkbox" {...register("rememberMe")} id="rememberMe" />
+            <RememberMeCheckbox type="checkbox" {...register("rememberMe")} id="rememberMe" checked={rememberMe} 
+              onChange={() => setRememberMe(!rememberMe)} />
             <RememberMeLabel htmlFor="rememberMe">Recordar usuario</RememberMeLabel>
           </RememberMeContainer>
             <ForgotPasswordLink href="#">¿Olvidaste tu contraseña?</ForgotPasswordLink>

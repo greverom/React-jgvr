@@ -6,7 +6,7 @@ import { RegisterFormInputs } from '../../Interfaces/authentication';
 import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, ErrorMessage, 
         InputContainer, InputIcon} from "../../styles/styled/auth.styles";
 import { FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useAuthPassword } from '../../hooks/useAuthPassword';
+import { useAuthPassword } from '../../hooks/Auth/useAuthPassword';
 import Button from '../../components/ui/buttons/button';
 
 const registerSchema = yup.object().shape({

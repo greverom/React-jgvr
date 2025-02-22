@@ -22,18 +22,18 @@ export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" |
     );
   }};
   
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
+  font-size: 15px;
   padding: 14px;
   border: none;
   border-radius: 5px;
-  font-size: 15px;
   cursor: pointer;
-  width: 100%;
-  max-width: 300px;
-  margin-top: 20px;
-  transition: background 0.3s ease, transform 0.2s ease;
-  text-align: center;
   opacity: ${({ $isActive }) => ($isActive ? "0.8" : "1")}; 
+  transition: background 0.3s ease, transform 0.2s ease;
 
    &:hover { 
     background: ${({ $variant }) => (

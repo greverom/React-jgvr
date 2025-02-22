@@ -7,7 +7,7 @@
 export interface LoginFormInputs {
     email: string;
     password: string;
-    rememberMe?: boolean;
+    rememberMe: boolean;
   }
   
   export interface RegisterFormInputs {

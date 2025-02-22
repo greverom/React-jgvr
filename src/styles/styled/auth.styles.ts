@@ -92,7 +92,7 @@ export const RememberAndForgotContainer = styled.div`
   justify-content: space-between; 
   width: 100%;
   margin-top: 0px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 `;
 
 export const RememberMeContainer = styled.div`

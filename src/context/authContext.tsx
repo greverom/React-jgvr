@@ -3,11 +3,9 @@ import { createContext } from "react";
 export type RoleType = "ADMINISTRADOR" | "GUEST";
 
 interface AuthContextType {
-  role: RoleType | null;  
+  login: (email: string, password: string) => void;
+  role: RoleType | null;
   setRole: (role: RoleType) => void;
 }
 
-export const AuthContext = createContext<AuthContextType>({
-  role: null,  
-  setRole: () => {}, 
-});
+export const AuthContext = createContext<AuthContextType | null>(null);

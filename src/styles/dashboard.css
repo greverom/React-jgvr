@@ -3,20 +3,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
-
   text-align: center;
 }
 
 .dashboard-container h1 {
+  width: 100%;
   font-size: 2rem;
-  margin-bottom: 20px;
+  padding: 30px;
   color: #333;
 }
 
 .dashboard-nav {
   display: flex;
-  width: 500px;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
   gap: 10px;
-  margin-bottom: 20px;
+
 }

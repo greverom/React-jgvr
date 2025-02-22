@@ -5,21 +5,21 @@ import Button from "../components/ui/buttons/button";
 import "../styles/dashboard.css"
 
 const Dashboard = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-      
-    useEffect(() => {
-        if (location.pathname === "/dashboard") {
-            navigate("register", { replace: true });
-        }
-    }, [location.pathname, navigate]);
+  const navigate = useNavigate();
+  const location = useLocation();
+    
+  useEffect(() => {
+    if (location.pathname === "/dashboard") {
+        navigate("register", { replace: true });
+    }
+  }, [location.pathname, navigate]);
 
-    const isLoginActive = location.pathname.includes("/dashboard/login"); 
-    const isRegisterActive = location.pathname.includes("/dashboard/register");
+  const isLoginActive = location.pathname.includes("/dashboard/login"); 
+  const isRegisterActive = location.pathname.includes("/dashboard/register");
 
   return (
     <div className="dashboard-container">
-        <h1>Authentication</h1>
+        <h1>Autenticación</h1>
         <div className="dashboard-nav">
             <Button onClick={() => navigate("login")} variant="primary" isActive={isLoginActive} >
                 Login
