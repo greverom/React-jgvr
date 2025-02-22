@@ -6,9 +6,10 @@ import { LoginFormInputs } from '../../Interfaces/authentication';
 import { useAuthPassword } from '../../hooks/useAuthPassword';
 import { FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
 
-import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, ErrorMessage, AuthButton, 
-         RememberMeContainer, RememberMeCheckbox, ForgotPasswordLink, RememberMeLabel, RememberAndForgotContainer, InputContainer, EmailIcon,
-         PasswordIcon} from "../../styles/styled/auth.styles";
+import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, 
+  ErrorMessage, AuthButton, RememberMeContainer, RememberMeCheckbox, 
+  ForgotPasswordLink, RememberMeLabel, RememberAndForgotContainer, 
+  InputContainer ,InputIcon} from "../../styles/styled/auth.styles";
 
 const loginSchema = yup.object().shape({
   email: yup.string().email('Correo inválido').required('El correo es obligatorio'),
@@ -36,10 +37,10 @@ const Login: React.FC = () => {
         <InputGroup>
           <Label htmlFor="email">Correo Electrónico</Label>
           <InputContainer>
-            <EmailIcon>
-              <FaEnvelope /> 
-            </EmailIcon>
-              <Input id="email" type="email" {...register("email")} />
+            <InputIcon $position="left">
+              <FaEnvelope />
+            </InputIcon>
+            <Input id="email" type="email" {...register("email")} $hasError={!!errors.email} />
           </InputContainer>
             {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </InputGroup>
@@ -47,10 +48,10 @@ const Login: React.FC = () => {
         <InputGroup>
           <Label htmlFor="password">Contraseña</Label>
           <InputContainer>
-            <Input id="password" type={showPassword ? "text" : "password"} {...register("password")} />
-            <PasswordIcon onClick={togglePasswordVisibility}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />} 
-            </PasswordIcon>
+            <Input id="password" type={showPassword ? "text" : "password"} {...register("password")} $hasError={!!errors.password} />
+            <InputIcon $position="right" onClick={togglePasswordVisibility}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </InputIcon>
           </InputContainer>
             {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
         </InputGroup>

@@ -46,14 +46,13 @@ export const InputContainer = styled.div`
   width: 100%;
 `;
 
-export const Input = styled.input`
-  width: 100%;
+export const Input = styled.input<{ $hasError?: boolean }>`
   max-width: 250px;
   min-width: 250px;
   padding: 10px;
   padding-left: ${({ type }) => (type === "email" ? "35px" : "10px")}; 
   padding-right: ${({ type }) => (type === "password" || type === "text" ? "35px" : "10px")}; 
-  border: 1px solid #ccc;
+  border: 1px solid ${({ $hasError }) => ($hasError ? "red" : "#ccc")};
   border-radius: 5px;
   font-size: 14px;
   outline: none;
@@ -64,28 +63,14 @@ export const Input = styled.input`
   }
 `;
 
-export const EmailIcon = styled.span`
-  position: absolute;
-  left: 10px; 
+export const InputIcon = styled.span<{ $position?: "left" | "right" }>`
+  position: absolute; 
+  ${({ $position }) => $position === "left" ? "left: 10px;" : "right: 10px;"}
   top: 56%;
   transform: translateY(-50%);
   font-size: 1.2rem;
   color: #888;
-  transition: color 0.3s ease-in-out;
-  
-  &:hover {
-    color: #555;
-  }
-`;
-
-export const PasswordIcon = styled.span`
-  position: absolute;
-  right: 10px; 
-  top: 56%;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #888;
+  cursor: ${({ $position }) => ($position === "right" ? "pointer" : "default")};
   transition: color 0.3s ease-in-out;
 
   &:hover {

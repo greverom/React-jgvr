@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { RegisterFormInputs } from '../../Interfaces/authentication';
 import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, ErrorMessage, 
-        AuthButton, InputContainer, EmailIcon, PasswordIcon} from "../../styles/styled/auth.styles";
+        AuthButton, InputContainer, InputIcon} from "../../styles/styled/auth.styles";
 import { FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useAuthPassword } from '../../hooks/useAuthPassword';
 
@@ -43,10 +43,10 @@ const Register: React.FC = () => {
           <InputGroup>
             <Label htmlFor="email">Correo Electrónico</Label>
             <InputContainer>
-              <EmailIcon>
-                <FaEnvelope /> 
-              </EmailIcon>
-                <Input id="email" type="email" {...register("email")} />
+              <InputIcon $position="left">
+                <FaEnvelope />
+              </InputIcon>
+              <Input id="email" type="email" {...register("email")} $hasError={!!errors.email} />
             </InputContainer>
               {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
           </InputGroup>
@@ -54,10 +54,10 @@ const Register: React.FC = () => {
           <InputGroup>
             <Label htmlFor="password">Contraseña</Label>
             <InputContainer>
-              <Input id="password" type={showPassword ? "text" : "password"} {...register("password")} />
-              <PasswordIcon onClick={togglePasswordVisibility}>
-                {showPassword ? <FaEyeSlash /> : <FaEye />} {/* ✅ Icono de Password con los mismos estilos */}
-              </PasswordIcon>
+              <Input id="password" type={showPassword ? "text" : "password"} {...register("password")} $hasError={!!errors.password} />
+              <InputIcon $position="right" onClick={togglePasswordVisibility}>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </InputIcon>
             </InputContainer>
               {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
           </InputGroup>
