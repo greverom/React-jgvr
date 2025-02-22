@@ -7,13 +7,14 @@
 export interface LoginFormInputs {
     email: string;
     password: string;
+    rememberMe?: boolean;
   }
   
   export interface RegisterFormInputs {
-    username: string;
+    username?: string;
     email: string;
     password: string;
-    confirmPassword: string;
+    confirmPassword?: string;
   }
   
   export interface AuthResponse {
@@ -25,5 +26,5 @@ export interface LoginFormInputs {
     id: string;
     username: string;
     email: string;
-    role: 'admin' | 'user'; 
+    role: 'ADMINISTRADOR' | 'GUEST'; 
   }
