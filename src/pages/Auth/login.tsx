@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
 import { LoginFormInputs } from '../../Interfaces/authentication';
 import { useAuthPassword } from '../../hooks/Auth/useAuthPassword';
 import { FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
-
 import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, 
-  ErrorMessage, RememberMeContainer, RememberMeCheckbox, 
-  ForgotPasswordLink, RememberMeLabel, RememberAndForgotContainer, 
-  InputContainer ,InputIcon} from "../../styles/styled/auth.styles";
+        ErrorMessage, RememberMeContainer, RememberMeCheckbox, 
+        ForgotPasswordLink, RememberMeLabel, RememberAndForgotContainer, 
+        InputContainer ,InputIcon} from "../../styles/styled/auth.styles";
 import Button from '../../components/ui/buttons/button';
 import { useAuth } from '../../hooks/Auth/useAuth';
 
@@ -24,20 +23,9 @@ const Login: React.FC = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const { register, handleSubmit, formState: { errors }, setValue } = methods;
+  const { register, handleSubmit, formState: { errors } } = methods;
   const { showPassword, togglePasswordVisibility } = useAuthPassword();
   const { handleLogin, rememberMe, setRememberMe, email } = useAuth();
-
-  useEffect(() => {
-    if (email) {
-      setValue("email", email);
-      setValue("rememberMe", true); 
-      setRememberMe(true);
-    } else {
-      setValue("rememberMe", false);
-      setRememberMe(false);
-    }
-  }, [email, setValue, setRememberMe]);
 
   const onSubmit = (data: LoginFormInputs) => {
     console.log(data);
