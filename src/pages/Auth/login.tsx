@@ -23,9 +23,9 @@ const Login: React.FC = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const { register, handleSubmit, formState: { errors } } = methods;
+  const { register, handleSubmit, formState: { errors }, setValue } = methods;
   const { showPassword, togglePasswordVisibility } = useAuthPassword();
-  const { handleLogin, rememberMe, setRememberMe, email } = useAuth();
+  const { handleLogin, rememberMe, setRememberMe, email } = useAuth(setValue);
 
   const onSubmit = (data: LoginFormInputs) => {
     console.log(data);

@@ -22,8 +22,8 @@ export const useAuth = (setValue?: UseFormSetValue<LoginFormInputs>) => {
       setRememberMe(storedRememberMe);
       
       if (setValue) {
-        setValue("email", storedEmail);
-        setValue("rememberMe", storedRememberMe);
+        setValue("email", storedEmail, { shouldValidate: true }); 
+        setValue("rememberMe", storedRememberMe, { shouldValidate: true });
       }
     }
   }, [setValue]);
