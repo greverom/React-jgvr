@@ -1,8 +1,9 @@
- export interface InputFieldProps {
-    name: string;
+
+export interface InputFieldProps {
+    name: keyof LoginFormInputs;
     label: string;
-    type?: string;
-  }
+    type?: "text" | "email" | "password"; 
+ }
 
 export interface LoginFormInputs {
     email: string;

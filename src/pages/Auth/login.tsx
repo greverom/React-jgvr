@@ -3,14 +3,12 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
 import { LoginFormInputs } from '../../Interfaces/authentication';
-import { useAuthPassword } from '../../hooks/Auth/useAuthPassword';
-import { FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { AuthContainer, AuthForm, AuthTitle, InputGroup, Label, Input, 
-        ErrorMessage, RememberMeContainer, RememberMeCheckbox, 
+import { AuthContainer, AuthForm, AuthTitle, RememberMeContainer, RememberMeCheckbox, 
         ForgotPasswordLink, RememberMeLabel, RememberAndForgotContainer, 
-        InputContainer ,InputIcon} from "../../styles/styled/auth.styles";
+        } from "../../styles/styled/auth.styles";
 import Button from '../../components/ui/buttons/button';
 import { useAuth } from '../../hooks/Auth/useAuth';
+import TestInput from '../../components/ui/Input/textInput';
 
 const loginSchema = yup.object().shape({
   email: yup.string().required('El correo es obligatorio').email('Correo inválido'),
@@ -23,9 +21,8 @@ const Login: React.FC = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const { register, handleSubmit, formState: { errors }, setValue } = methods;
-  const { showPassword, togglePasswordVisibility } = useAuthPassword();
-  const { handleLogin, rememberMe, setRememberMe, email } = useAuth(setValue);
+  const { handleSubmit, setValue } = methods;
+  const { handleLogin, rememberMe, setRememberMe } = useAuth(setValue);
 
   const onSubmit = (data: LoginFormInputs) => {
     console.log(data);
@@ -34,46 +31,31 @@ const Login: React.FC = () => {
 
   return (
     <AuthContainer>
-    <FormProvider {...methods}>
-      <AuthForm onSubmit={handleSubmit(onSubmit)}>
-        <AuthTitle>Iniciar Sesión</AuthTitle>
+      <FormProvider {...methods}>
+        <AuthForm onSubmit={handleSubmit(onSubmit)}>
+          <AuthTitle>Iniciar Sesión</AuthTitle>
 
-        <InputGroup>
-          <Label htmlFor="email">Correo Electrónico</Label>
-          <InputContainer>
-            <InputIcon $position="left">
-              <FaEnvelope />
-            </InputIcon>
-            <Input id="email" type="email" {...register("email")} $hasError={!!errors.email} defaultValue={email} />
-          </InputContainer>
-            {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
-        </InputGroup>
+            <TestInput name="email" label="Correo Electrónico" type="email" control={methods.control} />
+            <TestInput name="password" label="Contraseña" type="password" control={methods.control} />
 
-        <InputGroup>
-          <Label htmlFor="password">Contraseña</Label>
-          <InputContainer>
-            <Input id="password" type={showPassword ? "text" : "password"} {...register("password")} $hasError={!!errors.password} />
-            <InputIcon $position="right" onClick={togglePasswordVisibility}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </InputIcon>
-          </InputContainer>
-            {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
-        </InputGroup>
-
-        <RememberAndForgotContainer>
-          <RememberMeContainer>
-            <RememberMeCheckbox type="checkbox" {...register("rememberMe")} id="rememberMe" checked={rememberMe} 
-              onChange={() => setRememberMe(!rememberMe)} />
-            <RememberMeLabel htmlFor="rememberMe">Recordar usuario</RememberMeLabel>
-          </RememberMeContainer>
+          <RememberAndForgotContainer>
+            <RememberMeContainer>
+              <RememberMeCheckbox 
+                type="checkbox" 
+                {...methods.register("rememberMe")} 
+                id="rememberMe" 
+                checked={rememberMe} 
+                onChange={() => setRememberMe(!rememberMe)} 
+              />
+              <RememberMeLabel htmlFor="rememberMe">Recordar usuario</RememberMeLabel>
+            </RememberMeContainer>
             <ForgotPasswordLink href="#">¿Olvidaste tu contraseña?</ForgotPasswordLink>
-        </RememberAndForgotContainer>
+          </RememberAndForgotContainer>
 
-
-        <Button type="submit" variant="primary">Ingresar</Button>
-      </AuthForm>
-    </FormProvider>
-  </AuthContainer>
+          <Button type="submit" variant="primary">Ingresar</Button>
+        </AuthForm>
+      </FormProvider>
+    </AuthContainer>
   );
 };
 
