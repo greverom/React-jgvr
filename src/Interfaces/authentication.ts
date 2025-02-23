@@ -1,9 +1,10 @@
+import { FieldValues } from "react-hook-form";
 
-export interface InputFieldProps {
-    name: keyof LoginFormInputs;
-    label: string;
-    type?: "text" | "email" | "password"; 
- }
+export interface InputFieldProps<T extends FieldValues> {
+  name: keyof T; 
+  label: string;
+  type?: "text" | "email" | "password"; 
+}
 
 export interface LoginFormInputs {
     email: string;
