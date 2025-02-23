@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" | "tertiary" | "success" | "warning" | "info"; $isActive?: boolean }>`
+export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" | "tertiary" | "success" | "warning" | "info" | "cancel"; $isActive?: boolean }>`
   background: ${({ $variant, $isActive }) => {
     if ($isActive) {
       return (
@@ -8,8 +8,10 @@ export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" |
         $variant === "secondary" ? "#a71d2a" :
         $variant === "tertiary" ? "#5a6268" :
         $variant === "success" ? "#218838" :
-        $variant === "warning" ? "#d39e00" :
-        "#117a8b" 
+        $variant === "warning" ? "#f4a836" :
+        $variant === "info" ? "#117a8b" :
+        $variant === "cancel" ? "#dc3545" :
+        "#ccc"
       ); 
     }
     return (
@@ -17,8 +19,10 @@ export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" |
       $variant === "secondary" ? "#dc3545" :
       $variant === "tertiary" ? "#6c757d" :
       $variant === "success" ? "#28a745" :
-      $variant === "warning" ? "#ffc107" :
-      "#17a2b8" 
+      $variant === "warning" ? "#f4a836" :
+      $variant === "info" ? "#17a2b8" :
+      $variant === "cancel" ? "#dc3545" : 
+      "#ccc"
     );
   }};
   
@@ -41,8 +45,10 @@ export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" |
       $variant === "secondary" ? "#a71d2a" :
       $variant === "tertiary" ? "#545b62" :
       $variant === "success" ? "#1e7e34" :
-      $variant === "warning" ? "#c69500" :
-      "#0f6674" 
+      $variant === "warning" ? "#e0992f" :
+      $variant === "info" ? "#0f6674" :
+      $variant === "cancel" ? "#a71d2a" : 
+      "#bbb"
     )};
   }
-`;
+`; 

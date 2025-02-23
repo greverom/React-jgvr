@@ -29,8 +29,8 @@ export interface SidebarLink {
       roles: ["ADMINISTRADOR"],
     },
     {
-      title: "About",
-      path: "/about",
+      title: "Modales",
+      path: "/modals",
       icon: AboutIcon,
       roles: ["ADMINISTRADOR", "GUEST"],
     },

@@ -3,11 +3,10 @@ import Loading from "../components/ui/loading";
 import { dashboardRoutes } from "./dashboardRoutes";
 import { AppRoute } from "./type";
 
-
 const Dashboard = lazy(() => import("../pages/Dashboard"));
 const Home = lazy(() => import("../pages/Home"));
 const User = lazy(() => import("../pages/User"));
-const About = lazy(() => import("../pages/About"));
+const Modals = lazy(() => import("../pages/modales"));
 const Contact = lazy(() => import("../pages/Contact"));
 
 const withSuspense = (Component: ReactElement) => (
@@ -35,8 +34,8 @@ export const appRoutes: AppRoute[] = [
   },
   
   {
-    path: "/about",
-    element: withSuspense(<About />),
+    path: "/modals",
+    element: withSuspense(<Modals />),
     roles: ["ADMINISTRADOR", "GUEST"],
   },
 
