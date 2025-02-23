@@ -1,6 +1,6 @@
 import React from "react";
 import { ModalOverlay, ModalContent, ModalHeader, ModalBody,
-         ModalFooter, CloseButton, ModalButton } from "../../../styles/styled/modals";
+         ModalFooter, CloseButton } from "../../../styles/styled/modals";
 import Button from "../buttons/button"; 
 import { ModalProps } from "../../../Interfaces/modalProps";
 
@@ -26,7 +26,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, type, on
               <Button variant="tertiary" onClick={onCancel || onClose}>Cancelar</Button>
             </>
           ) : (
-            <ModalButton $type={type} onClick={onClose}>Cerrar</ModalButton>
+            <Button variant={ type === "success" ? "success" : type === "error" ? "error" : 
+                              type === "warning" ? "warning" :type === "info" ? "info" : "tertiary" 
+                            } onClick={onClose}> Cerrar </Button>
           )}
         </ModalFooter>
       </ModalContent>

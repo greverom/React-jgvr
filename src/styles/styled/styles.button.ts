@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" | "tertiary" | "success" | "warning" | "info" | "cancel"; $isActive?: boolean }>`
+export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" | "tertiary" | "success" | "warning" | "info" | "cancel" | "error"; $isActive?: boolean }>`
   background: ${({ $variant, $isActive }) => {
     if ($isActive) {
       return (
@@ -11,6 +11,7 @@ export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" |
         $variant === "warning" ? "#f4a836" :
         $variant === "info" ? "#117a8b" :
         $variant === "cancel" ? "#dc3545" :
+        $variant === "error" ? "#c82333" :
         "#ccc"
       ); 
     }
@@ -22,6 +23,7 @@ export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" |
       $variant === "warning" ? "#f4a836" :
       $variant === "info" ? "#17a2b8" :
       $variant === "cancel" ? "#dc3545" : 
+      $variant === "error" ? "#dc3545" :
       "#ccc"
     );
   }};
@@ -32,7 +34,7 @@ export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" |
   align-items: center;
   color: white;
   font-size: 15px;
-  padding: 14px;
+  padding: 12px 20px; 
   border: none;
   border-radius: 5px;
   cursor: pointer;

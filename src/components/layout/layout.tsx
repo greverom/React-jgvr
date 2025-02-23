@@ -13,6 +13,7 @@ export const Layout = () => {
 
       <div className="content">
         <Suspense fallback={<Loading />}>
+
           <Routes>
             {appRoutes.map((route: AppRoute, index: number) => (
               <Route key={index} path={route.path} element={route.element}>
@@ -28,8 +29,10 @@ export const Layout = () => {
             ))}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+
         </Suspense>
       </div>
+      
     </div>
   );
 };

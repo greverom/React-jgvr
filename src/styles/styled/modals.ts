@@ -83,27 +83,17 @@ export const ModalFooter = styled.div`
   display: flex;
   justify-content: center;
   padding: 5px;
-   gap: 15px;
+   gap: 10px;
 
     button {
     width: 160px; 
-    padding: 13px;
-    font-size: 14px;
+    font-size: 15px;
+    padding: 12px 20px;   
     min-width: 120px;
   }
 `;
 
 export const ModalButton = styled.button<{ $type: "success" | "error" | "warning" | "info" }>`
-  width: 160px;
-  min-width: 140px;
-  padding: 13px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  color: white;
-  gap: 10px;
 
   background: ${({ $type }) =>
     $type === "success" ? "#28a745" :

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/Auth/authContext";
+import { AuthContext } from "../../Store/Auth/authContext";
 import { UseFormSetValue } from "react-hook-form";
 import { LoginFormInputs } from "../../Interfaces/authenticationProps";
 
