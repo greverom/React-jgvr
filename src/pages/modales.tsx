@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../components/ui/buttons/button";
 import NotificationModal from "../components/ui/modal/modal";
 import ConfirmationModal from "../components/ui/modal/modal";
+import { ButtonContainer, ModalPageContainer, ModalTitle } from "../styles/styled/modalPage";
 
 const Modals = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -10,14 +11,14 @@ const Modals = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   return (
-    <div style={{ textAlign: "center", padding: "2rem" }}>
-      <h1>Modales</h1>
-    <div style={{ display: "flex", justifyContent: "center", gap: "10px", flexWrap: "wrap", marginTop: "20px" }}>
-        <Button variant="success" onClick={() => setShowSuccessModal(true)} style={{ width: "200px" }}>Modal Éxito</Button>
-        <Button variant="tertiary" onClick={() => setShowErrorModal(true)} style={{ width: "200px" }}>Modal Error</Button>
-        <Button variant="warning" onClick={() => setShowWarningModal(true)} style={{ width: "200px" }}>Modal Advertencia</Button>
-        <Button variant="info" onClick={() => setShowConfirmationModal(true)} style={{ width: "200px" }}>Modal Pregunta</Button>
-    </div>
+    <ModalPageContainer> 
+      <ModalTitle>Modales</ModalTitle>
+      <ButtonContainer> 
+        <Button variant="success" onClick={() => setShowSuccessModal(true)}>Modal Éxito</Button>
+        <Button variant="tertiary" onClick={() => setShowErrorModal(true)}>Modal Error</Button>
+        <Button variant="warning" onClick={() => setShowWarningModal(true)}>Modal Advertencia</Button>
+        <Button variant="info" onClick={() => setShowConfirmationModal(true)}>Modal Pregunta</Button>
+      </ButtonContainer>
 
       <NotificationModal 
         isOpen={showSuccessModal} 
@@ -51,7 +52,7 @@ const Modals = () => {
         type="question"
         title="¿Estás seguro de continuar?"
       />
-    </div>
+    </ModalPageContainer>
   );
 };
 

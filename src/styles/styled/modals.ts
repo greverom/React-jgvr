@@ -29,8 +29,8 @@ export const ModalOverlay = styled.div`
 
 export const ModalContent = styled.div`
   background: white;
-  width: 400px;
-  padding: 17px;
+  width: 390px;
+  padding: 14px;
   border-radius: 5px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -48,7 +48,7 @@ export const ModalHeader = styled.div<{ $type: "success" | "error" | "warning" |
   border-bottom: 1px solid ${({ $type }) =>
     $type === "success" ? "#28a745" :  
     $type === "error" ? "#dc3545" :       
-    "#fff"}; /* Color por defecto */
+    "#fffff"}; /* Color por defecto */
   
   h2 {
     font-size: 17px;
@@ -73,7 +73,7 @@ export const CloseButton = styled.button`
 `;
 
 export const ModalBody = styled.div`
-  margin: 25px 5px;
+  margin: 20px 5px;
   font-size: 15px;
   text-align: left;
   color: #333;
@@ -82,11 +82,11 @@ export const ModalBody = styled.div`
 export const ModalFooter = styled.div`
   display: flex;
   justify-content: center;
-  padding: 8px;
+  padding: 5px;
    gap: 15px;
 
     button {
-    width: 170px; 
+    width: 160px; 
     padding: 13px;
     font-size: 14px;
     min-width: 120px;
@@ -94,8 +94,8 @@ export const ModalFooter = styled.div`
 `;
 
 export const ModalButton = styled.button<{ $type: "success" | "error" | "warning" | "info" }>`
-  width: 170px;
-  min-width: 120px;
+  width: 160px;
+  min-width: 140px;
   padding: 13px;
   font-size: 14px;
   border-radius: 5px;
