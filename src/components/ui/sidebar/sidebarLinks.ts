@@ -1,4 +1,4 @@
-import { HomeIcon, DashboardIcon, UsersIcon, LogoutIcon, AboutIcon, ContactIcon } from "../icons/icons";
+import { HomeIcon, DashboardIcon, UsersIcon, LogoutIcon, AboutIcon, ContactIcon } from "../../../assets/icons/icons";
 
 export interface SidebarLink {
     title: string;

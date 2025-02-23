@@ -2,7 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { sidebarLinks, SidebarLink } from "../sidebar/sidebarLinks";
 import { useSidebar } from "../../../hooks/useSidebar";
 import { useAuth } from "../../../hooks/Auth/useAuth"; 
-import { ArrowIcon } from "../icons/icons";
+import { ArrowIcon } from "../../../assets/icons/icons";
 import logo from "../../../assets/react.svg";
 import "../../../styles/sidebar.css";
 
@@ -36,6 +36,7 @@ export const Sidebar = () => {
                         <Icon /> <span>{link.title}</span>
                         <ArrowIcon className={`arrow ${isOpen ? "rotate" : ""}`} />
                       </div>
+
                       <ul className={`submenu ${isOpen ? "open" : ""}`}>
                         {role &&
                           link.subMenu
@@ -52,6 +53,7 @@ export const Sidebar = () => {
                               </li>
                         ))}
                       </ul>
+                      
                     </>
                   ) : (
                     <NavLink to={link.path} className={({ isActive }) => (isActive ? "nav-active" : "")}>
