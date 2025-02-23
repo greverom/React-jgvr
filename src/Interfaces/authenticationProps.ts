@@ -7,26 +7,26 @@ export interface InputFieldProps<T extends FieldValues> {
 }
 
 export interface LoginFormInputs {
-    email: string;
-    password: string;
-    rememberMe: boolean;
-  }
+  email: string;
+  password: string;
+  rememberMe: boolean;
+}
   
   export interface RegisterFormInputs {
-    username?: string;
-    email: string;
-    password: string;
-    confirmPassword?: string;
-  }
+  username?: string;
+  email: string;
+  password: string;
+  confirmPassword?: string;
+}
   
   export interface AuthResponse {
-    token: string;
-    user: User;
-  }
+  token: string;
+  user: User;
+}
   
   export interface User {
-    id: string;
-    username: string;
-    email: string;
-    role: 'ADMINISTRADOR' | 'GUEST'; 
-  }
+  id: string;
+  username: string;
+  email: string;
+  role: 'ADMINISTRADOR' | 'GUEST'; 
+}

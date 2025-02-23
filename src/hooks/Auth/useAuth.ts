@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../context/Auth/authContext";
 import { UseFormSetValue } from "react-hook-form";
-import { LoginFormInputs } from "../../Interfaces/authentication";
+import { LoginFormInputs } from "../../Interfaces/authenticationProps";
 
 export const useAuth = (setValue?: UseFormSetValue<LoginFormInputs>) => { 
   const context = useContext(AuthContext);

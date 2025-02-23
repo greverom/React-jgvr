@@ -2,13 +2,13 @@ import React from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
-import { LoginFormInputs } from '../../Interfaces/authentication';
-import { AuthContainer, AuthForm, AuthTitle, RememberMeContainer, RememberMeCheckbox, 
-        ForgotPasswordLink, RememberMeLabel, RememberAndForgotContainer, 
-        } from "../../styles/styled/auth.styles";
+import { LoginFormInputs } from '../../Interfaces/authenticationProps';
+import { AuthContainer, AuthForm, AuthTitle, 
+         ForgotPasswordLink, RememberAndForgotContainer } from "../../styles/styled/auth.styles";
 import Button from '../../components/ui/buttons/button';
 import { useAuth } from '../../hooks/Auth/useAuth';
-import TestInput from '../../components/ui/Input/textInput';
+import TestInput from '../../components/ui/Input/testInput';
+import TestCheckbox from '../../components/ui/Input/testCheckbox';
 
 const loginSchema = yup.object().shape({
   email: yup.string().required('El correo es obligatorio').email('Correo inválido'),
@@ -22,8 +22,7 @@ const Login: React.FC = () => {
   });
 
   const { handleSubmit, setValue } = methods;
-  const { handleLogin, rememberMe, setRememberMe } = useAuth(setValue);
-
+  const { handleLogin } = useAuth(setValue);
   const onSubmit = (data: LoginFormInputs) => {
     console.log(data);
     handleLogin(data.email, data.password, data.rememberMe);
@@ -35,20 +34,11 @@ const Login: React.FC = () => {
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthTitle>Iniciar Sesión</AuthTitle>
 
-            <TestInput name="email" label="Correo Electrónico" type="email" control={methods.control} />
-            <TestInput name="password" label="Contraseña" type="password" control={methods.control} />
+          <TestInput name="email" label="Correo Electrónico" type="email" control={methods.control} />
+          <TestInput name="password" label="Contraseña" type="password" control={methods.control} />
 
           <RememberAndForgotContainer>
-            <RememberMeContainer>
-              <RememberMeCheckbox 
-                type="checkbox" 
-                {...methods.register("rememberMe")} 
-                id="rememberMe" 
-                checked={rememberMe} 
-                onChange={() => setRememberMe(!rememberMe)} 
-              />
-              <RememberMeLabel htmlFor="rememberMe">Recordar usuario</RememberMeLabel>
-            </RememberMeContainer>
+            <TestCheckbox name="rememberMe" label="Recordar usuario" control={methods.control} />
             <ForgotPasswordLink href="#">¿Olvidaste tu contraseña?</ForgotPasswordLink>
           </RememberAndForgotContainer>
 

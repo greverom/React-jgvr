@@ -126,3 +126,25 @@ export const ForgotPasswordLink = styled.a`
     text-decoration: underline;
   }
 `;
+
+export const SelectContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+`;
+
+export const Select = styled.select`
+  max-width: 250px;
+  min-width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: #828485;
+  }
+`;

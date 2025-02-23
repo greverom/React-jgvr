@@ -1,8 +1,8 @@
 import React from "react";
-import { ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, CloseButton, ModalButton } from "../../../styles/styled/modals";
+import { ModalOverlay, ModalContent, ModalHeader, ModalBody,
+         ModalFooter, CloseButton, ModalButton } from "../../../styles/styled/modals";
 import Button from "../buttons/button"; 
-import { ModalProps } from "../../../Interfaces/modals";
-
+import { ModalProps } from "../../../Interfaces/modalProps";
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, type, onConfirm, onCancel }) => {
   if (!isOpen) return null;

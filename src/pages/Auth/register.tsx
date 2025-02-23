@@ -2,10 +2,10 @@ import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { RegisterFormInputs } from '../../Interfaces/authentication';
+import { RegisterFormInputs } from '../../Interfaces/authenticationProps';
 import { AuthContainer, AuthForm, AuthTitle} from "../../styles/styled/auth.styles";
 import Button from '../../components/ui/buttons/button';
-import TestInput from '../../components/ui/Input/textInput';
+import TestInput from '../../components/ui/Input/testInput';
 
 const registerSchema = yup.object().shape({
   //username: yup.string().required('El nombre de usuario es obligatorio'),
