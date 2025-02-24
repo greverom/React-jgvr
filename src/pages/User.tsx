@@ -8,11 +8,11 @@ const User = () => {
   useEffect(() => {
     import("../data/formConfig.json")
       .then((config) => setFormFields(config.fields as FieldConfig[])) 
-      .catch((error) => console.error("Error cargando el formulario:", error));
+      .catch((error) => console.error(error));
   }, []);
 
   const handleSubmit = (data: UserFormData) => { 
-    console.log("Formulario enviado:", data);
+    console.log(data);
   };
 
   return (

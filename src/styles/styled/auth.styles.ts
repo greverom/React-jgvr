@@ -47,8 +47,8 @@ export const InputContainer = styled.div`
 `;
 
 export const Input = styled.input<{ $hasError?: boolean }>`
-  max-width: 250px;
-  min-width: 250px;
+  max-width: 100%;
+  min-width: 254px;
   padding: 10px;
   padding-left: ${({ type }) => (type === "email" ? "35px" : "10px")}; 
   padding-right: ${({ type }) => (type === "password" || type === "text" ? "35px" : "10px")}; 
@@ -124,27 +124,5 @@ export const ForgotPasswordLink = styled.a`
   &:hover {
     color: #0056b3;
     text-decoration: underline;
-  }
-`;
-
-export const SelectContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-`;
-
-export const Select = styled.select`
-  max-width: 250px;
-  min-width: 250px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.3s ease;
-
-  &:focus {
-    border-color: #828485;
   }
 `;

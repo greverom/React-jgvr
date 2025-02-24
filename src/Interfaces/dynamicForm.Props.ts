@@ -1,14 +1,17 @@
 export interface Option {
+    disabled?: boolean;
     value: string;
     label: string;
   }
   
   export interface FieldConfig {
     name: string;
-    type: "text" | "email" | "password" | "date" | "tel" | "select";
+    type?: "text" | "email" | "password" | "date" | "tel" | "select" 
+         | "radio" | "checkbox" | "role" | "textarea";
     label: string;
     required?: boolean;
     minLength?: number;
+    maxLength?: number;
     options?: Option[];
   }
   
