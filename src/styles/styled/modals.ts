@@ -124,7 +124,8 @@ export const ModalFooter = styled.div`
   gap: 10px;
 
     button {
-    padding: 12px 20px;   
+    padding: 12px 20px;  
+    width: 160px; 
   }
 `;
 

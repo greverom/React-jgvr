@@ -28,7 +28,7 @@ export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" |
     );
   }};
   
-  width: 150px; 
+  width: 100%; 
   min-width: 120px; 
   display: flex;
   justify-content: center;
