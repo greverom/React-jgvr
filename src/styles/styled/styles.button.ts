@@ -28,13 +28,14 @@ export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" |
     );
   }};
   
-  width: 100%;
+  width: 150px; 
+  min-width: 120px; 
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 15px;
-  padding: 12px 20px; 
+  font-size: 14px;
+  padding: 15px 20px; 
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -50,6 +51,7 @@ export const StyledButton = styled.button<{ $variant?: "primary" | "secondary" |
       $variant === "warning" ? "#e0992f" :
       $variant === "info" ? "#0f6674" :
       $variant === "cancel" ? "#a71d2a" : 
+      $variant === "error" ? "#a71d2a" :
       "#bbb"
     )};
   }

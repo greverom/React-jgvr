@@ -27,38 +27,71 @@ export const ModalOverlay = styled.div`
   z-index: 1000;
 `;
 
-export const ModalContent = styled.div`
+export const ModalContent = styled.div<{ $type?: "success" | "error" | "warning" | "info" | "question"; $hasTimeout?: boolean }>`
   background: white;
-  width: 390px;
-  padding: 14px;
+  width: 380px;
+  padding: 20px 15px;
   border-radius: 5px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  animation: ${popIn} 0.3s ease-out;                  
+  animation: ${popIn} 0.4s ease-out;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: ${({ $hasTimeout }) => ($hasTimeout ? "100%" : "0%")};
+    height: 4px;
+    background-color: ${({ $type }) =>
+      $type === "success" ? "#28a745" :
+      $type === "error" ? "#dc3545" :
+      $type === "warning" ? "#f4a836" :
+      $type === "info" ? "#17a2b8" :
+      "transparent"};
+
+    transition: width 0.3s linear;
+    animation: ${({ $hasTimeout }) => ($hasTimeout ? "progressBar 2s linear forwards" : "none")};
+  }
+
+  @keyframes progressBar {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
 `;
 
 export const ModalHeader = styled.div<{ $type: "success" | "error" | "warning" | "info" | "question" }>`
   display: flex;
+  width: 100%;
+  margin: auto
   justify-content: center;
-  border-bottom: 1px solid #ccc;
   align-items: center;
-  padding: 7px;
-  padding-bottom: 15px;
+  padding: 5px 0;
   position: relative;
-  border-bottom: 1px solid ${({ $type }) =>
-    $type === "success" ? "#28a745" :  
-    $type === "error" ? "#dc3545" :       
-    "#fffff"}; /* Color por defecto */
+
+   span {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; 
+  }
   
   h2 {
-    font-size: 17px;
-    font-weight: bold;
-    margin: 0 auto;
+    font-size: 15px;
+    margin: 0;
     color: ${({ $type }) =>
       $type === "success" ? "#28a745" :  
       $type === "error" ? "#dc3545" :   
       $type === "info" ? "#17a2b8" :    
       "#333"}; 
+
+      text-align: ${({ $type }) => ($type === "question" ? "center" : "left")}; /* 🔹 Solo centra el de question */
+      flex: 1; 
   }
 `;
 
@@ -68,46 +101,30 @@ export const CloseButton = styled.button`
   font-size: 25px;
   cursor: pointer;
   position: absolute; 
-  right: -10px; 
-  bottom: 20px; 
+  right: 0px; 
+  bottom: 10px; 
 `;
 
 export const ModalBody = styled.div`
-  margin: 20px 5px;
-  font-size: 15px;
-  text-align: left;
+  padding: 0px 0px 8px 0px;
+  font-size: 13px;
+  text-align: center;
   color: #333;
+
+  p{
+    margin: 7px 0 15px 0 ;
+    
+    }
 `;
 
 export const ModalFooter = styled.div`
   display: flex;
   justify-content: center;
-  padding: 5px;
-   gap: 10px;
+  padding: 3px;
+  gap: 10px;
 
     button {
-    width: 160px; 
-    font-size: 15px;
     padding: 12px 20px;   
-    min-width: 120px;
   }
-`;
-
-export const ModalButton = styled.button<{ $type: "success" | "error" | "warning" | "info" }>`
-
-  background: ${({ $type }) =>
-    $type === "success" ? "#28a745" :
-    $type === "error" ? "#dc3545" :
-    $type === "info" ? "#17a2b8" :
-    "#6c757d"};
-
-  &:hover {
-    background: ${({ $type }) =>
-      $type === "success" ? "#218838" :
-      $type === "error" ? "#c82333" :
-      $type === "info" ? "#138496" :
-      "#545b62"};
-  }
-
 `;
 
