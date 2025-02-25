@@ -36,10 +36,11 @@ export const DynamicFormWrapper = styled.form`
 `;
 
 export const FormTitle = styled.h2`
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-weight: 500;
   color: #333;
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
 
   @media (max-width: 768px) {

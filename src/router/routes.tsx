@@ -1,14 +1,8 @@
-import { lazy, ReactElement, Suspense } from "react";
+import { ReactElement, Suspense } from "react";
 import Loading from "../components/ui/loading";
 import { dashboardRoutes } from "./dashboardRoutes";
 import { AppRoute } from "./type";
-import Table from "../pages/Table";
-
-const Dashboard = lazy(() => import("../pages/Dashboard"));
-const Home = lazy(() => import("../pages/Home"));
-const User = lazy(() => import("../pages/User"));
-const Modals = lazy(() => import("../pages/modales"));
-
+import { Table, Dashboard, Home, User, Modals } from "../pages";
 
 const withSuspense = (Component: ReactElement) => (
   <Suspense fallback={<Loading />}>{Component}</Suspense>

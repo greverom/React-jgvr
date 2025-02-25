@@ -18,7 +18,7 @@ export default function DynamicForm({ fields, onSubmit }: DynamicFormProps) {
     <DynamicFormContainer>
       
       <DynamicFormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <FormTitle>Formulario Dinámico</FormTitle>
+        <FormTitle>Registro de Usuario</FormTitle>
   
         <FormGrid>
           {fields.map((field) => (

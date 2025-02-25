@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FormData as UserFormData, FieldConfig } from "../Interfaces/dynamicForm.Props"; 
 import DynamicForm from "../components/ui/DynamicForm/dynamicForm";
+import { UserPageContainer, UserTitle } from "../styles/styled/userPage.style";
 
 const User = () => {
   const [formFields, setFormFields] = useState<FieldConfig[]>([]);
@@ -16,14 +17,14 @@ const User = () => {
   };
 
   return (
-    <div>
-      <h1>User Page</h1>
+    <UserPageContainer>
+      <UserTitle>Formulario</UserTitle>
       {formFields.length > 0 ? (
         <DynamicForm fields={formFields} onSubmit={handleSubmit} />
       ) : (
         <p>Loading form...</p>
       )}
-    </div>
+    </UserPageContainer>
   );
 };
 

@@ -1,5 +1,12 @@
-const Home = () => { 
-    return <h1>Home Page</h1>; 
-}; 
+
+import { HomePageContainer, HomeTitle } from "../styles/styled/homePage.style"; 
+
+const Home= () => {
+    return (
+        <HomePageContainer>
+            <HomeTitle>Home Page</HomeTitle>
+        </HomePageContainer>
+    );
+};
 
 export default Home;

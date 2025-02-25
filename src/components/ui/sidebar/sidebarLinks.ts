@@ -12,7 +12,7 @@ export interface SidebarLink {
   export const sidebarLinks: SidebarLink[] = [
     {
       title: "Home",
-      path: "/",
+      path: "/home",
       roles: ["ADMINISTRADOR", "GUEST"],
       icon: HomeIcon,
     },
