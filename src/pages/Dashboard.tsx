@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../components/ui/loading";
 import Button from "../components/ui/buttons/button"; 
-import "../styles/dashboard.css"
+import { DashboardContainer, DashboardNav, DashboardTitle } from "../styles/styled/dashboard.style";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -18,22 +18,22 @@ const Dashboard = () => {
   const isRegisterActive = location.pathname.includes("/dashboard/register");
 
   return (
-    <div className="dashboard-container">
-        <h1>Autenticación</h1>
-        <div className="dashboard-nav">
-            <Button onClick={() => navigate("login")} variant="primary" isActive={isLoginActive} >
-                Login
-            </Button>  
+    <DashboardContainer>
+      <DashboardTitle>Autenticación</DashboardTitle>
+      <DashboardNav>
+        <Button onClick={() => navigate("login")} variant="primary" isActive={isLoginActive} >
+            Login
+        </Button>  
 
-            <Button onClick={() => navigate("register")} variant="success" isActive={isRegisterActive} >
-                Register
-            </Button>  
-        </div>
+        <Button onClick={() => navigate("register")} variant="success" isActive={isRegisterActive} >
+            Register
+        </Button>  
+      </DashboardNav>
 
       <Suspense fallback={<Loading />}>
         <Outlet />
       </Suspense>
-    </div>
+    </DashboardContainer>
   );
 };
 

@@ -13,16 +13,14 @@ export const TableContainer = styled.div`
     @media (max-width: 768px) {
     overflow-x: auto;  
     max-width: 88%;
-    padding: 10px;
+    padding: 0px;
   }
 
   .rdt_Pagination {
-    width: auto;
-    position: relative;
-    z-index: 0;
-    background: white;
-    flex-wrap: wrap;  
-    gap: 5px;
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    padding: 10px 0;
   }
 `;
 

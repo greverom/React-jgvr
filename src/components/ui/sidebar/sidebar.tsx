@@ -4,9 +4,12 @@ import { useSidebar } from "../../../hooks/useSidebar";
 import { useAuth } from "../../../hooks/Auth/useAuth"; 
 import { ArrowIcon } from "../../../assets/icons/icons";
 import logo from "../../../assets/react.svg";
-import "../../../styles/sidebar.css";
 import { useState } from "react";
 import Modal from "../modal/modal";
+
+import { SidebarContainer, SidebarNav, LogoContainer, LogoImage, 
+         LogoText, SidebarMenu, SidebarItem, SidebarLinkStyle, DropdownMenu,
+         Submenu, LogoutContainer} from "../../../styles/styled/sidebar.style";
 
 export const Sidebar = () => {
   const { pathname } = useLocation();
@@ -19,14 +22,14 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="main-layout">
-      <nav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <div className="logo-react">
-          <img src={logo} alt="react logo" />
-          <span className="logo-text">{role}</span> 
-        </div>
+    <SidebarContainer>
+      <SidebarNav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <LogoContainer>
+          <LogoImage src={logo} alt="react logo" />
+          <LogoText>{role}</LogoText>
+        </LogoContainer>
 
-        <ul>
+        <SidebarMenu>
           {role &&
             sidebarLinks
             .filter(link => link.roles.includes(role) && !link.isLogout)
@@ -36,15 +39,15 @@ export const Sidebar = () => {
               const Icon = link.icon;
 
               return (
-                <li key={index} className={`nav-item ${isOpen ? "open" : ""}`} ref={(el) => { if (link.subMenu) dropdownRefs.current[link.path] = el;}}>
+                <SidebarItem key={index} ref={(el) => { if (link.subMenu) dropdownRefs.current[link.path] = el;}}>
                   {link.subMenu ? (
                     <>
-                      <div className={`nav-link-dropdown ${isParentActive ? "nav-active" : ""}`} onClick={() => toggleSubMenu(link.path)}>
+                      <DropdownMenu className={`${isParentActive ? "nav-active" : ""}`} onClick={() => toggleSubMenu(link.path)}>
                         <Icon /> <span>{link.title}</span>
                         <ArrowIcon className={`arrow ${isOpen ? "rotate" : ""}`} />
-                      </div>
+                      </DropdownMenu>
 
-                      <ul className={`submenu ${isOpen ? "open" : ""}`}>
+                      <Submenu className={`${isOpen ? "open" : ""}`}>
                         {role &&
                           link.subMenu
                             .filter(subLink => subLink.roles.includes(role))
@@ -59,20 +62,21 @@ export const Sidebar = () => {
                                 </NavLink>
                               </li>
                         ))}
-                      </ul>
+                      </Submenu>
                       
                     </>
                   ) : (
-                    <NavLink to={link.path} className={({ isActive }) => (isActive ? "nav-active" : "")}>
+                    <SidebarLinkStyle to={link.path} className={({ isActive }) => (isActive ? "nav-active" : "")}>
                       <Icon /> <span>{link.title}</span>
-                    </NavLink>
+                    </SidebarLinkStyle>
                   )}
-                </li>
+                </SidebarItem>
               );
           })}
-        </ul>
+        </SidebarMenu>
+
         {role && (
-          <li className="logout-container">
+          <LogoutContainer>
             {sidebarLinks
               .filter(link => link.isLogout) 
               .map((link, index) => {
@@ -83,19 +87,18 @@ export const Sidebar = () => {
                   </a>
                 );
               })}
-          </li>
-          
+          </LogoutContainer>
         )}
+
          <Modal
           isOpen={showLogoutModal}
           onClose={() => setShowLogoutModal(false)}
           onConfirm={handleLogout}
           type="question"
           title="¿Deseas cerrar sesión?"
-          message="Si sales de la cuenta, deberás iniciar sesión nuevamente."
         />
-      </nav>
-    </div>
+      </SidebarNav>
+    </SidebarContainer>
   );
 };
 

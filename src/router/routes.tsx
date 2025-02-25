@@ -1,6 +1,6 @@
 import { ReactElement, Suspense } from "react";
 import Loading from "../components/ui/loading";
-import { dashboardRoutes } from "./dashboardRoutes";
+import { dashboardRoutes } from "./dashboardRoutesChild";
 import { AppRoute } from "./type";
 import { Table, Dashboard, Home, User, Modals } from "../pages";
 

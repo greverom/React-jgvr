@@ -1,10 +1,7 @@
 import React from "react";
-import { ModalOverlay, ModalContent, ModalHeader, ModalBody,
-         ModalFooter, 
-         } from "../../../styles/styled/modalComponent";
+import { ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter} from "../../../styles/styled/modalComponent";
 import Button from "../buttons/button"; 
 import { ModalProps } from "../../../Interfaces/modalProps";
-import { FaCheckCircle, FaExclamationTriangle, FaInfoCircle, FaTimesCircle } from "react-icons/fa";
 import { useModal } from "../../../hooks/Modal/useModal";
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, type, onConfirm, onCancel }) => {
@@ -15,18 +12,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, type, on
   
   if (!isOpen) return null;
 
-  const iconMap = {
-    success: <FaCheckCircle color="#28a745" size={25} />,  
-    error: <FaTimesCircle color="#dc3545" size={25} />,    
-    warning: <FaExclamationTriangle color="#f4a836" size={25} />,  
-    info: <FaInfoCircle color="#17a2b8" size={25} />,      
-  };
-
   return (
     <ModalOverlay>
       <ModalContent $type={type} $hasTimeout={hasTimeout}>
         <ModalHeader $type={type}>
-          {type !== "question" && <span>{iconMap[type]}</span>}
           <h2>{title}</h2>
         </ModalHeader>
 

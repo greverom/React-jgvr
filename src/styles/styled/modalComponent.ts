@@ -1,16 +1,18 @@
 import styled, { keyframes } from "styled-components";
 
+
 const popIn = keyframes`
   0% {
+    transform: translateY(0) scale(0.5); 
     opacity: 0;
-    transform: scale(0.8);
   }
-  60% {
+  50% {
+    transform: translateY(0) scale(1.1); 
     opacity: 1;
-    transform: scale(1.05);
   }
   100% {
-    transform: scale(1);
+    transform: translateY(0%) scale(1); 
+    opacity: 1;
   }
 `;
 
@@ -29,12 +31,12 @@ export const ModalOverlay = styled.div`
 
 export const ModalContent = styled.div<{ $type?: "success" | "error" | "warning" | "info" | "question"; $hasTimeout?: boolean }>`
   background: white;
-  width: 380px;
-  padding: 20px 15px;
-  border-radius: 5px;
+  width: ${({ $type }) => ($type === "question" ? "auto" : "340px")}; 
+  padding: ${({ $type }) => ($type === "question" ? "20px" : "15px")};
+  border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  animation: ${popIn} 0.4s ease-out;
+  animation: ${popIn} 0.3s ease-out;
   position: relative;
   overflow: hidden;
 
@@ -72,14 +74,7 @@ export const ModalHeader = styled.div<{ $type: "success" | "error" | "warning" |
   margin: auto
   justify-content: center;
   align-items: center;
-  padding: 5px 0;
   position: relative;
-
-   span {
-    display: flex;
-    align-items: center;
-    margin-right: 10px; 
-  }
   
   h2 {
     font-size: 15px;
@@ -90,8 +85,8 @@ export const ModalHeader = styled.div<{ $type: "success" | "error" | "warning" |
       $type === "info" ? "#17a2b8" :    
       "#333"}; 
 
-      text-align: ${({ $type }) => ($type === "question" ? "center" : "left")}; /* 🔹 Solo centra el de question */
-      flex: 1; 
+    text-align: center;
+    flex: 1; 
   }
 `;
 
@@ -106,14 +101,13 @@ export const CloseButton = styled.button`
 `;
 
 export const ModalBody = styled.div`
-  padding: 0px 4px 8px;
-  font-size: 12px;
+  padding: 10px ;
+  font-size: 13px;
   text-align: center;
   color: #333;
 
   p{
-    margin: 7px 0 15px 0 ;
-    
+    margin: 7px ;
     }
 `;
 
@@ -125,7 +119,7 @@ export const ModalFooter = styled.div`
 
     button {
     padding: 13px;  
-    width: 170px; 
+    width: 140px; 
   }
 `;
 

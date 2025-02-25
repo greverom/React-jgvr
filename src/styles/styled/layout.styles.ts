@@ -7,10 +7,10 @@ export const MainLayout = styled.div`
 `;
 
 export const Content = styled.div`
-  flex-grow: 1;
-  padding: 0px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  height: 100vh;
-  background-color: #ffffff;
+    flex-grow: 1;
+    padding: 0px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    min-height: 100vh;
+    background-color: #ffffff; 
 `;

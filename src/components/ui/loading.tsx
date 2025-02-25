@@ -1,10 +1,10 @@
-import "../../styles/loading.css";
+import { LoadingContainer, Spinner } from "../../styles/styled/loading.style";
 
 const Loading = () => {
   return (
-    <div className="loading-container">
-      <div className="spinner"></div>
-    </div>
+    <LoadingContainer>
+      <Spinner></Spinner>
+    </LoadingContainer>
   );
 };
 

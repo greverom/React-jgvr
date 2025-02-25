@@ -1,23 +1,25 @@
-.dashboard-container {
+import styled from "styled-components";
+
+export const DashboardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-}
+  width: 100%;
+`;
 
-.dashboard-container h1 {
+export const DashboardTitle = styled.h1`
   width: 100%;
   font-size: 2rem;
   padding: 30px;
   color: #333;
-}
+`;
 
-.dashboard-nav {
+export const DashboardNav = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 350px;
   gap: 10px;
-
-}
+`;

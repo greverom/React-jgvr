@@ -27,6 +27,7 @@ const UserTable = () => {
         striped
         customStyles={customStyles}
         pagination 
+        paginationPerPage={5} 
         paginationRowsPerPageOptions={[5, 10, 15, 20]}
         paginationComponentOptions={paginationOptions}
       />
