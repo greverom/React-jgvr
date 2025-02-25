@@ -1,5 +1,5 @@
 import React from "react";
-import { ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter} from "../../../styles/styled/modalComponent";
+import { ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter} from "../../../styles/Modal/modalComponent";
 import Button from "../buttons/button"; 
 import { ModalProps } from "../../../Interfaces/modalProps";
 import { useModal } from "../../../hooks/Modal/useModal";

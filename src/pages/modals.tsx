@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../components/ui/buttons/button";
 import NotificationModal from "../components/ui/modal/modal";
 import ConfirmationModal from "../components/ui/modal/modal";
-import { ButtonContainer, ModalPageContainer, ModalTitle } from "../styles/styled/modalPage";
+import { ButtonContainer, ModalPageContainer, ModalTitle } from "../styles/Modal/modalPage";
 import { useToast } from "../hooks/Toast/useToast";
 
 const Modals = () => {

@@ -1,14 +1,14 @@
-import React from 'react';
-import * as yup from 'yup';
+import   React from 'react';
+import   * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
 import { LoginFormInputs } from '../../Interfaces/authenticationProps';
-import { AuthContainer, AuthForm, AuthTitle, 
-         ForgotPasswordLink, RememberAndForgotContainer } from "../../styles/styled/auth.styles";
-import Button from '../../components/ui/buttons/button';
+import   Button from '../../components/ui/buttons/button';
 import { useAuth } from '../../hooks/Auth/useAuth';
-import TestInput from '../../components/ui/Input/testInput';
-import TestCheckbox from '../../components/ui/Input/testCheckbox';
+import   TestInput from '../../components/ui/Form/testInput';
+import   TestCheckbox from '../../components/ui/Form/testCheckbox';
+import { AuthContainer, AuthForm, AuthTitle, 
+         ForgotPasswordLink, RememberAndForgotContainer } from "../../styles/Auth/auth.styles";
 
 const loginSchema = yup.object().shape({
   email: yup.string().required('El correo es obligatorio').email('Correo inválido'),
@@ -23,9 +23,8 @@ const Login: React.FC = () => {
 
   const { handleSubmit, setValue } = methods;
   const { handleLogin } = useAuth(setValue);
-  const onSubmit = (data: LoginFormInputs) => {
-    console.log(data);
-    handleLogin(data.email, data.password, data.rememberMe);
+  const onSubmit = ({email, password, rememberMe}: LoginFormInputs) => {
+    handleLogin(email, password, rememberMe);
   };
 
   return (

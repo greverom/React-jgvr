@@ -4,7 +4,7 @@ import { User } from "../../../Interfaces/authenticationProps";
 import { userTableColumns } from "../tables/userTableColumnProps"; 
 import DataTable from "react-data-table-component";
 import { initialUsers } from "./UserTableData";
-import { customStyles, paginationOptions, TableContainer} from "../../../styles/styled/tables.style";
+import { customStyles, paginationOptions, TableContainer} from "../../../styles/Tables/tables.style";
 
 const UserTable = () => {
   const [users] = useState<User[]>(initialUsers);

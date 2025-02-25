@@ -24,7 +24,7 @@ export interface SidebarLink {
     },
     {
       title: "Formulario",
-      path: "/users",
+      path: "/forms",
       icon: UsersIcon,
       roles: ["ADMINISTRADOR"],
     },

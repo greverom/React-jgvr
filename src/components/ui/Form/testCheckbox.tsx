@@ -1,5 +1,5 @@
 import { Controller, Control, FieldValues, Path } from "react-hook-form";
-import { RememberMeCheckbox, RememberMeLabel, RememberMeContainer } from "../../../styles/styled/auth.styles";
+import { RememberMeCheckbox, RememberMeLabel, RememberMeContainer } from "../../../styles/Auth/auth.styles";
 
 interface CheckboxProps<T extends FieldValues> {
   name: Path<T>;

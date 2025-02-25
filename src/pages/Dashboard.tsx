@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../components/ui/loading";
 import Button from "../components/ui/buttons/button"; 
-import { DashboardContainer, DashboardNav, DashboardTitle } from "../styles/styled/dashboard.style";
+import { DashboardContainer, DashboardNav, DashboardTitle } from "../styles/Dashboard/dashboard.style";
 
 const Dashboard = () => {
   const navigate = useNavigate();

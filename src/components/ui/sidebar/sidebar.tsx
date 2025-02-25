@@ -9,7 +9,7 @@ import Modal from "../modal/modal";
 
 import { SidebarContainer, SidebarNav, LogoContainer, LogoImage, 
          LogoText, SidebarMenu, SidebarItem, SidebarLinkStyle, DropdownMenu,
-         Submenu, LogoutContainer} from "../../../styles/styled/sidebar.style";
+         Submenu, LogoutContainer} from "../../../styles/Sidebar/sidebar.style";
 
 export const Sidebar = () => {
   const { pathname } = useLocation();

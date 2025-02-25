@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import { FormData as UserFormData, FieldConfig } from "../Interfaces/dynamicForm.Props"; 
 import DynamicForm from "../components/ui/DynamicForm/dynamicForm";
 import { UserPageContainer, UserTitle } from "../styles/styled/userPage.style";
+import formConfig from "../data/formConfig.json"; 
 
-const User = () => {
+const Forms = () => {
   const [formFields, setFormFields] = useState<FieldConfig[]>([]);
 
   useEffect(() => {
-    import("../data/formConfig.json")
-      .then((config) => setFormFields(config.fields as FieldConfig[])) 
-      .catch((error) => console.error(error));
+    setFormFields(formConfig.fields as FieldConfig[]);
   }, []);
 
   const handleSubmit = (data: UserFormData) => { 
@@ -28,4 +27,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Forms;

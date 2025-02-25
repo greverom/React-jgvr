@@ -1,6 +1,6 @@
 import { TableColumn } from "react-data-table-component";
 import { User } from "../../../Interfaces/authenticationProps";
-import { StyledCheckbox } from "../../../styles/styled/tables.style";
+import { StyledCheckbox } from "../../../styles/Tables/tables.style";
 
 interface UserTableColumnsProps {
   activeUserId: number | null;

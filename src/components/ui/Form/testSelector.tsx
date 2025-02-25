@@ -1,6 +1,6 @@
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
-import { Label, ErrorMessage } from "../../../styles/styled/auth.styles";
-import { Select, SelectContainer } from "../../../styles/styled/dynamicForm.Styles";
+import { Label, ErrorMessage } from "../../../styles/Auth/auth.styles";
+import { Select, SelectContainer } from "../../../styles/Form/dynamicForm.Styles";
 
 interface SelectorProps<T extends FieldValues> {
   name: Path<T>;

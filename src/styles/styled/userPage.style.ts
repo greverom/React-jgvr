@@ -6,7 +6,7 @@ export const UserPageContainer = styled.div`
 `;
 
 export const UserTitle = styled.h1`
-  color: #333;  /* Color oscuro para que se vea */
+  color: #333;  
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
