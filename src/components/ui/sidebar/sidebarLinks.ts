@@ -39,6 +39,14 @@ export interface SidebarLink {
       path: "/table",
       icon: ContactIcon,
       roles: ["ADMINISTRADOR", "GUEST"],
+      subMenu: [
+        {
+          title: "Usuarios",
+          path: "/table",
+          roles: ["ADMINISTRADOR", "GUEST"],
+          icon: LogoutIcon,
+        },
+      ],
     },
     
     {

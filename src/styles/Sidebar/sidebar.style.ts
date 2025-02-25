@@ -83,8 +83,8 @@ export const SidebarMenu = styled.ul`
 
 export const SidebarItem = styled.li`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 3px 0;
   width: 100%;
 `;
 
@@ -109,6 +109,7 @@ export const SidebarLinkStyle = styled(NavLink)`
     width: 20px;
     height: 20px;
     fill: white;
+    padding-left: 25px;
     flex-shrink: 0;
     text-align: center;
   }
@@ -125,102 +126,84 @@ export const SidebarLinkStyle = styled(NavLink)`
   }
 `;
 
-export const DropdownMenu = styled.div`
+export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
   color: white;
   text-decoration: none;
   padding: 12px 27px;
-  justify-content: left;
-  gap: 22px;
+  justify-content: flex-start;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  font-size: 0.9rem;
+  position: relative;
 
-  .arrow {
-    margin-left: auto;
+  svg {
+    width: 20px;
+    height: 20px;
+    padding-left: 25px;
+    flex-shrink: 0;
   }
 
-  span {
-    font-size: 0.9rem;
-    margin-left: -5px;
+ .arrow {
+  width: 16px;
+  height: 16px;
+  margin-right: 20px; 
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0)")};
+  opacity: ${({ $isExpanded }) => ($isExpanded ? 1 : 0)};
+  visibility: ${({ $isExpanded }) => ($isExpanded ? "visible" : "hidden")};
+}
+
+ span {
+  opacity: ${({ $isExpanded }) => ($isExpanded ? "1" : "0")};
+  flex-grow: 1; 
+  text-align: left; 
+  margin-left: 18px;
   }
 
-  .rotate {
-    transform: rotate(180deg);
+  &:hover {
+  background-color: #4a4f5a;
+  }
+`;
+
+export const Submenu = styled.ul<{ $isOpen: boolean }>`
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
+  opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
+  max-height: ${({ $isOpen }) => ($isOpen ? "300px" : "0")}; 
+
+  li {
+    padding: 6px 0;
+    list-style: none;
   }
 
-  span,
-  .arrow {
-    display: none;
-    transition: opacity 0.3s ease-in-out;
-  }
+  li a {
+   width: 100%;
+  display: flex;
+  align-items: center;
+  color: #dcdcdc;
+  padding: 10px 50px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
 
   &:hover {
     background-color: #4a4f5a;
   }
-
-  ${({ theme }) => theme.sidebarHover} &:hover span,
-  ${({ theme }) => theme.sidebarHover} &:hover .arrow {
-    display: inline;
-    opacity: 1;
-  }
-
-  &.nav-active {
-    color: #5fb8d3;
-  }
-
-  &.is-open {
-    background-color: #4a4f5a;
-  }
-
-  &.parent-active {
-    color: #5fb8d3;
-  }
-`;
-
-export const Submenu = styled.ul`
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: rgb(40, 44, 52);
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-  z-index: 10;
-
-  &.open {
-    display: block;
-  }
-
-  li {
-    margin: 0;
-    padding: 0;
-  }
-
-  li a {
-    display: block;
-    color: #dcdcdc;
-    padding: 13px 0px 13px 55px;
-    font-size: 0.85rem;
-    text-decoration: none;
-    text-align: left;
-    position: relative;
-    transition: background-color 0.3s ease-in-out;
   }
 
   li a.nav-active::before {
     content: "•";
-    position: absolute;
-    top: 10px;
-    left: 30px;
+    margin-right: 8px;
     color: white;
     font-size: 1.1rem;
     transition: opacity 0.3s ease-in-out;
-  }
-
-  li a:hover {
-    background-color: #4a4f5a;
   }
 `;
 
