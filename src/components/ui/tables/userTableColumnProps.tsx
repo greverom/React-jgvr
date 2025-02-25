@@ -14,23 +14,22 @@ export const userTableColumns = ({ activeUserId, handleRoleChange }: UserTableCo
     sortable: true,
   },
   {
-    name: "Administrador",
-    cell: (row) => (
-      <StyledCheckbox
-        type="checkbox"
-        checked={row.id === activeUserId && row.role === "ADMINISTRADOR"}
-        onChange={() => handleRoleChange(row.id, "ADMINISTRADOR")}
-      />
-    ),
-    style: { textAlign: "center" },
+    name: "Correo",
+    selector: (row) => row.email,
+    sortable: true,
   },
   {
-    name: "Invitado",
+    name: "Rol",
+    selector: (row) => row.role,
+    sortable: true,
+  },
+  {
+    name: "Seleccionar",
     cell: (row) => (
       <StyledCheckbox
         type="checkbox"
-        checked={row.id === activeUserId && row.role === "GUEST"}
-        onChange={() => handleRoleChange(row.id, "GUEST")}
+        checked={row.id === activeUserId} 
+        onChange={() => handleRoleChange(row.id, row.role)}
       />
     ),
     style: { textAlign: "center" },

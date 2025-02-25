@@ -1,11 +1,12 @@
 import UserTable from "../components/ui/tables/userTable"; 
+import { PageContainer, PageTitle } from "../styles/styled/tablePage.styles";
 
 const Table = () => {
   return (
-    <div>
-      <h1>Table Page</h1>
+    <PageContainer>
+      <PageTitle>Table Page</PageTitle>
       <UserTable />
-    </div>
+    </PageContainer>
   );
 };
 

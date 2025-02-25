@@ -4,9 +4,9 @@ import { AuthContext, RoleType } from "./authContext";
 const fetchRole = async (): Promise<RoleType> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve("ADMINISTRADOR");
-      //resolve("GUEST") 
-    }, 500); 
+      //resolve("ADMINISTRADOR");
+      resolve("GUEST") 
+    },); 
   });
 };
 
