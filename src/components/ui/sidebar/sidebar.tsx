@@ -5,11 +5,18 @@ import { useAuth } from "../../../hooks/Auth/useAuth";
 import { ArrowIcon } from "../../../assets/icons/icons";
 import logo from "../../../assets/react.svg";
 import "../../../styles/sidebar.css";
+import { useState } from "react";
+import Modal from "../modal/modal";
 
 export const Sidebar = () => {
   const { pathname } = useLocation();
   const { role } = useAuth(); 
   const { openDropdown, dropdownRefs, toggleSubMenu, closeSubMenu, handleMouseEnter, handleMouseLeave } = useSidebar();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  
+  const handleLogout = () => {
+    setShowLogoutModal(false);
+  };
 
   return (
     <div className="main-layout">
@@ -71,13 +78,22 @@ export const Sidebar = () => {
               .map((link, index) => {
                 const Icon = link.icon; 
                 return (
-                  <a key={index} className="logout-link">
+                  <a key={index} className="logout-link" onClick={() => setShowLogoutModal(true)}>
                     <Icon /> <span>{link.title}</span>
                   </a>
                 );
               })}
           </li>
+          
         )}
+         <Modal
+          isOpen={showLogoutModal}
+          onClose={() => setShowLogoutModal(false)}
+          onConfirm={handleLogout}
+          type="question"
+          title="¿Deseas cerrar sesión?"
+          message="Si sales de la cuenta, deberás iniciar sesión nuevamente."
+        />
       </nav>
     </div>
   );

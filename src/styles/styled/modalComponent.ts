@@ -106,8 +106,8 @@ export const CloseButton = styled.button`
 `;
 
 export const ModalBody = styled.div`
-  padding: 0px 0px 8px 0px;
-  font-size: 13px;
+  padding: 0px 4px 8px;
+  font-size: 12px;
   text-align: center;
   color: #333;
 
@@ -124,8 +124,8 @@ export const ModalFooter = styled.div`
   gap: 10px;
 
     button {
-    padding: 12px 20px;  
-    width: 160px; 
+    padding: 13px;  
+    width: 170px; 
   }
 `;
 
