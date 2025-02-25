@@ -25,7 +25,7 @@ export interface LoginFormInputs {
 }
   
   export interface User {
-  id: string;
+  id: number;
   username: string;
   email: string;
   role: 'ADMINISTRADOR' | 'GUEST'; 

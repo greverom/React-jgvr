@@ -1,7 +1,7 @@
 import React from "react";
 import { ModalOverlay, ModalContent, ModalHeader, ModalBody,
          ModalFooter, 
-         } from "../../../styles/styled/modals";
+         } from "../../../styles/styled/modalComponent";
 import Button from "../buttons/button"; 
 import { ModalProps } from "../../../Interfaces/modalProps";
 import { FaCheckCircle, FaExclamationTriangle, FaInfoCircle, FaTimesCircle } from "react-icons/fa";

@@ -23,7 +23,7 @@ export interface SidebarLink {
       roles: ["ADMINISTRADOR"],
     },
     {
-      title: "Users",
+      title: "Formulario",
       path: "/users",
       icon: UsersIcon,
       roles: ["ADMINISTRADOR"],
@@ -35,8 +35,8 @@ export interface SidebarLink {
       roles: ["ADMINISTRADOR", "GUEST"],
     },
     {
-      title: "Contact",
-      path: "/contact",
+      title: "Tablas",
+      path: "/table",
       icon: ContactIcon,
       roles: ["ADMINISTRADOR", "GUEST"],
     },
