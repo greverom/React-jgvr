@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainLayout = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
 `;
 
@@ -13,5 +13,4 @@ export const Content = styled.div`
   overflow-y: auto;
   height: 100vh;
   background-color: #ffffff;
-  transition: margin-left 0.3s ease-in-out; // Transición suave
 `;

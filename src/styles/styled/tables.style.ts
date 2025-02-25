@@ -3,21 +3,27 @@ import styled from "styled-components";
 export const TableContainer = styled.div`
   width: 100%;
   max-width: 900px;
-  margin: 20px auto;
+  margin: auto;
   padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-`;
+  padding-bottom: 0;
+  border-radius: 8px;
+  overflow: hidden;
+   align-items: center;
 
-export const TableRow = styled.div`
-  &:hover {
-    background-color: #f8f9fa;
+  .rdt_Pagination {
+    width: auto;
+    position: relative;
+    z-index: 0;
+    background: white;
+    padding: 10px;
+    border-top: 1px solid #ddd;
   }
 `;
 
-export const StyledCheckbox = styled.input.attrs({ type: "checkbox" })`
-  width: 15px;
-  height: 15px;
+export const StyledCheckbox = styled.input`
+  width: 16px;
+  height: 16px;
   cursor: pointer;
+  accent-color: #007bff;
 `;
+

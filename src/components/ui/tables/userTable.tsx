@@ -25,6 +25,7 @@ const UserTable = () => {
         highlightOnHover
         responsive
         striped
+        pagination 
       />
     </TableContainer>
   );
