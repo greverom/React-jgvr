@@ -4,7 +4,7 @@ import { User } from "../../../Interfaces/authenticationProps";
 import { userTableColumns } from "../tables/userTableColumnProps"; 
 import DataTable from "react-data-table-component";
 import { initialUsers } from "./UserTableData";
-import { TableContainer} from "../../../styles/styled/tables.style";
+import { customStyles, paginationOptions, TableContainer} from "../../../styles/styled/tables.style";
 
 const UserTable = () => {
   const [users] = useState<User[]>(initialUsers);
@@ -25,7 +25,10 @@ const UserTable = () => {
         highlightOnHover
         responsive
         striped
+        customStyles={customStyles}
         pagination 
+        paginationRowsPerPageOptions={[5, 10, 15, 20]}
+        paginationComponentOptions={paginationOptions}
       />
     </TableContainer>
   );
