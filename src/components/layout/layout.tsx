@@ -28,7 +28,7 @@ export const Layout = () => {
                   ))}
                 </Route>
               ))}
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<Navigate to="/home" replace />} />
             </Routes>
 
           </Suspense>
