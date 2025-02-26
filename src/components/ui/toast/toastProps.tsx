@@ -7,7 +7,7 @@ interface ToastProps {
   duration?: number;
 }
 
-const Toast: React.FC<ToastProps> = ({ message, type, duration = 3000 }) => {
+const Toast: React.FC<ToastProps> = ({ message, type, duration = 2000 }) => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {

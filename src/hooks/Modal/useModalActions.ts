@@ -25,10 +25,10 @@ export const useModalActions = () => {
       setShowConfirmationModal(true);
 
     } else if (target.matches(".toast-success")) {
-      showToast("Operación exitosa", "success");
+      showToast("Iniciando Sesión...", "success");
 
     } else if (target.matches(".toast-error")) {
-      showToast("Ha ocurrido un error", "error");
+      showToast("Ha ocurrido un error...", "error");
 
     } else if (target.matches(".toast-warning")) {
       showToast("Cuidado con esta acción", "warning");

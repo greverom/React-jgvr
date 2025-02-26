@@ -3,10 +3,16 @@ import { ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter} from "
 import Button from "../buttons/button"; 
 import { ModalProps } from "../../../Interfaces/modalProps";
 import { useModal } from "../../../hooks/Modal/useModal";
+import { FaCheckCircle, FaExclamationTriangle, FaTimesCircle } from "react-icons/fa";
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, type, onConfirm, onCancel }) => {
+
+  const icon = type === "success" ? <FaCheckCircle color="#28a745" size={22} />
+             : type === "error" ? <FaTimesCircle color="#dc3545" size={22} />
+             : type === "warning" ? <FaExclamationTriangle color="#f4a836" size={22} />
+  : null;
   
-  const hasTimeout = type !== "question" && type !== "error" && type !== "warning"; 
+  const hasTimeout = type !== "question" && type !== "error"; 
   useModal({ isOpen, onClose, type });
   useModal({ isOpen, onClose, type });
   
@@ -16,6 +22,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, type, on
     <ModalOverlay>
       <ModalContent $type={type} $hasTimeout={hasTimeout}>
         <ModalHeader $type={type}>
+          {icon}
           <h2>{title}</h2>
         </ModalHeader>
 
@@ -29,11 +36,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, type, on
               <Button variant="primary" onClick={onConfirm}>Aceptar</Button>
               <Button variant="tertiary" onClick={onCancel || onClose}>Cancelar</Button>
             </>
-          ) : (
-            <Button variant={ type === "success" ? "success" : type === "error" ? "error" : 
-                              type === "warning" ? "warning" :type === "info" ? "info" : "tertiary" 
-                            } onClick={onClose}> Cerrar </Button>
-          )}
+          ) : type !== "success" && type !== "warning" ? ( 
+            <Button variant={ type === "error" ? "error" : "tertiary" 
+            } onClick={onClose}> Cerrar </Button>
+          ) : null}
         </ModalFooter>
       </ModalContent>
     </ModalOverlay>

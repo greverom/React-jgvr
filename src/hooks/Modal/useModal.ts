@@ -3,7 +3,7 @@ import { ModalProps } from "../../Interfaces/modalProps";
 
 export const useModal = ({ isOpen, onClose, type }: ModalProps) => {
   useEffect(() => {
-    if (isOpen && type !== "question" && type !== "error" && type !== "warning" && onClose) {
+    if (isOpen && type !== "question" && type !== "error" && onClose) {
       const timer = setTimeout(() => {
         onClose();
       }, 2000); 

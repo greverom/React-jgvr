@@ -28,25 +28,29 @@ export const ToastContainer = styled.div`
 
 export const ToastMessage = styled.div<{ $type: "success" | "error" | "warning" | "info" }>`
   background-color: ${({ $type }) =>
+    $type === "success" ? "#d4edda" : 
+    $type === "error" ? "#f8d7da" :   
+    $type === "warning" ? "#fff3cd" :
+    $type === "info" ? "#d1ecf1" :    
+    "#f8f9fa"};
+    color: ${({ $type }) =>
     $type === "success" ? "#28a745" :
     $type === "error" ? "#dc3545" :
     $type === "warning" ? "#f4a836" :
     $type === "info" ? "#17a2b8" :
     "#333"};
-  color: white;
-  padding: 18px 20px;
+  min-width: 310px;
+  padding: 20px;
+  font-size: 16px;
   border-radius: 5px;
   margin-bottom: 10px;
-  min-width: 250px;
   text-align: center;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  font-size: 14px;
-  font-weight: bold;
-  animation: ${popIn} 0.5s ease-out; /* 📌 Nueva animación */
+  animation: ${popIn} 0.5s ease-out; 
   transition: opacity 0.3s ease-in-out;
 
   &.fade-out {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-15px);
   }
 `;

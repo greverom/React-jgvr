@@ -21,8 +21,8 @@ const Modals = () => {
       </ButtonContainer>
       
       <ButtonContainer> 
-        <Button className="toast-success" variant="success">Toast Éxito</Button>
-        <Button className="toast-error" variant="tertiary">Toast Error</Button>
+        <Button className="toast-success" variant="success">Success</Button>
+        <Button className="toast-error" variant="tertiary">Error</Button>
         <Button className="toast-warning" variant="warning">Toast Advertencia</Button>
         <Button className="toast-info" variant="info">Toast Información</Button>
       </ButtonContainer>
@@ -31,8 +31,8 @@ const Modals = () => {
         isOpen={showSuccessModal} 
         onClose={() => setShowSuccessModal(false)} 
         type="success"
-        title="Éxito"
-        message="Operación exitosa"
+        title="Operación Exitosa"
+        message="Se ha guardado el registro correctamente!"
       />
 
       <NotificationModal 

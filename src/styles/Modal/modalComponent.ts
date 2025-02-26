@@ -31,11 +31,11 @@ export const ModalOverlay = styled.div`
 
 export const ModalContent = styled.div<{ $type?: "success" | "error" | "warning" | "info" | "question"; $hasTimeout?: boolean }>`
   background: white;
-  width: ${({ $type }) => ($type === "question" ? "auto" : "340px")}; 
-  padding: ${({ $type }) => ($type === "question" ? "20px" : "15px")};
+  width: ${({ $type }) => ($type === "question" || $type === "error" ? "310px" : "370px")};
+  padding: ${({ $type }) => ($type === "question" || $type=== "error" ? "20px" : "22px")};
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  text-align: left;
   animation: ${popIn} 0.3s ease-out;
   position: relative;
   overflow: hidden;
@@ -43,7 +43,7 @@ export const ModalContent = styled.div<{ $type?: "success" | "error" | "warning"
   &::before {
     content: "";
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: ${({ $hasTimeout }) => ($hasTimeout ? "100%" : "0%")};
     height: 4px;
@@ -71,22 +71,20 @@ export const ModalContent = styled.div<{ $type?: "success" | "error" | "warning"
 export const ModalHeader = styled.div<{ $type: "success" | "error" | "warning" | "info" | "question" }>`
   display: flex;
   width: 100%;
-  margin: auto
-  justify-content: center;
+  justify-content: ${({ $type }) => ($type === "question" ? "center" : "flex-start")};
   align-items: center;
+  gap: 10px;
   position: relative;
   
   h2 {
-    font-size: 15px;
     margin: 0;
+    text-align: ${({ $type }) => ($type === "question" ? "center" : "left")};
+    font-size: 17px;
     color: ${({ $type }) =>
       $type === "success" ? "#28a745" :  
       $type === "error" ? "#dc3545" :   
       $type === "info" ? "#17a2b8" :    
       "#333"}; 
-
-    text-align: center;
-    flex: 1; 
   }
 `;
 
@@ -97,17 +95,17 @@ export const CloseButton = styled.button`
   cursor: pointer;
   position: absolute; 
   right: 0px; 
-  bottom: 10px; 
+  bottom: 0px; 
 `;
 
 export const ModalBody = styled.div`
-  padding: 10px ;
-  font-size: 13px;
-  text-align: center;
+  padding: 0px ;
+  font-size: 15px;
+  text-align: left;
   color: #333;
 
   p{
-    margin: 7px ;
+    margin-left: 33px;
     }
 `;
 
