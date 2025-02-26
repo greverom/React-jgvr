@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { sidebarLinks, SidebarLink } from "../sidebar/sidebarLinks";
-import { useSidebar } from "../../../hooks/useSidebar";
+import { useSidebar } from "../../../hooks/Sidebar/useSidebar";
 import { useAuth } from "../../../hooks/Auth/useAuth"; 
 import { ArrowIcon } from "../../../assets/icons/icons";
 import logo from "../../../assets/react.svg";

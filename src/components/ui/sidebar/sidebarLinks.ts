@@ -46,6 +46,18 @@ export interface SidebarLink {
           roles: ["ADMINISTRADOR", "GUEST"],
           icon: LogoutIcon,
         },
+        {
+          title: "Usuarios",
+          path: "/table",
+          roles: ["ADMINISTRADOR", "GUEST"],
+          icon: LogoutIcon,
+        },
+        {
+          title: "Usuarios",
+          path: "/table",
+          roles: ["ADMINISTRADOR", "GUEST"],
+          icon: LogoutIcon,
+        },
       ],
     },
     

@@ -2,7 +2,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { Sidebar } from "../ui/sidebar/sidebar"; 
 import { appRoutes } from "../../router/routes";
 import { AppRoute } from "../../router/type";
-import Loading from "../ui/loading";
+import Loading from "../ui/Loading/loading";
 import { Suspense } from "react";
 import { ToastProvider } from "../../Store/Toast/toastProvider";
 import { Content, MainLayout } from "../../styles/Layout/layout.styles";

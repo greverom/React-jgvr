@@ -1,6 +1,6 @@
 import { Suspense, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import Loading from "../components/ui/loading";
+import Loading from "../components/ui/Loading/loading";
 import Button from "../components/ui/buttons/button"; 
 import { DashboardContainer, DashboardNav, DashboardTitle } from "../styles/Dashboard/dashboard.style";
 

@@ -94,7 +94,7 @@ export const SidebarLinkStyle = styled(NavLink)`
   align-items: center;
   color: white;
   text-decoration: none;
-  padding: 12px 27px;
+  padding: 15px 27px;
   justify-content: left;
   gap: 18px;
   cursor: pointer;
@@ -132,7 +132,7 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean 
   align-items: center;
   color: white;
   text-decoration: none;
-  padding: 12px 27px;
+  padding: 15px 27px;
   justify-content: flex-start;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -147,10 +147,10 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean 
   }
 
  .arrow {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   margin-right: 20px; 
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
   transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0)")};
   opacity: ${({ $isExpanded }) => ($isExpanded ? 1 : 0)};
   visibility: ${({ $isExpanded }) => ($isExpanded ? "visible" : "hidden")};
@@ -173,18 +173,17 @@ export const Submenu = styled.ul<{ $isOpen: boolean }>`
   padding: 0;
   margin: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
   opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
   max-height: ${({ $isOpen }) => ($isOpen ? "300px" : "0")}; 
 
   li {
-    padding: 6px 0;
+    padding: 0px 0;
     list-style: none;
   }
 
   li a {
-   width: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   color: #dcdcdc;
