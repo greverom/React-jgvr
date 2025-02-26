@@ -11,7 +11,7 @@ const withSuspense = (Component: ReactElement) => (
 
 export const appRoutes: AppRoute[] = [
   {
-    path: "/",
+    path: "/home",
     element: withSuspense(<Home />),
     roles: ["ADMINISTRADOR", "GUEST"],
   },

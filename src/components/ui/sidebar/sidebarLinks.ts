@@ -29,12 +29,6 @@ export interface SidebarLink {
       roles: ["ADMINISTRADOR"],
     },
     {
-      title: "Modales",
-      path: "/modals",
-      icon: AboutIcon,
-      roles: ["ADMINISTRADOR", "GUEST"],
-    },
-    {
       title: "Tablas",
       path: "/table",
       icon: ContactIcon,
@@ -46,20 +40,15 @@ export interface SidebarLink {
           roles: ["ADMINISTRADOR", "GUEST"],
           icon: LogoutIcon,
         },
-        {
-          title: "Usuarios",
-          path: "/table",
-          roles: ["ADMINISTRADOR", "GUEST"],
-          icon: LogoutIcon,
-        },
-        {
-          title: "Usuarios",
-          path: "/table",
-          roles: ["ADMINISTRADOR", "GUEST"],
-          icon: LogoutIcon,
-        },
       ],
     },
+    {
+      title: "Modales",
+      path: "/modals",
+      icon: AboutIcon,
+      roles: ["ADMINISTRADOR", "GUEST"],
+    },
+   
     
     {
       title: "Salir",

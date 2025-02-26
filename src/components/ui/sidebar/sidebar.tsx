@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { sidebarLinks, SidebarLink } from "../sidebar/sidebarLinks";
 import { useSidebar } from "../../../hooks/Sidebar/useSidebar";
 import { useAuth } from "../../../hooks/Auth/useAuth"; 
@@ -12,10 +12,11 @@ import { SidebarContainer, SidebarNav, LogoContainer, LogoImage,
          Submenu, LogoutContainer} from "../../../styles/Sidebar/sidebar.style";
 
 export const Sidebar = () => {
-  const { role } = useAuth(); 
   const { openDropdown, toggleSubMenu, closeSubMenu, handleMouseEnter, handleMouseLeave, 
           isSidebarExpanded, dropdownRefs }   = useSidebar();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const { pathname } = useLocation();
+  const { role } = useAuth(); 
 
   const handleLogout = () => {
     setShowLogoutModal(false);
@@ -38,7 +39,7 @@ export const Sidebar = () => {
 
               const isOpen = openDropdown === link.path;
               const Icon = link.icon;
-
+              const isParentActive = link.subMenu?.some((subLink: SidebarLink) => pathname.includes(subLink.path));
               return (
                 <SidebarItem
                   key={index}
@@ -48,10 +49,8 @@ export const Sidebar = () => {
                 >
                 {link.subMenu ? (
                   <>
-                    <DropdownMenu $isOpen={isOpen}  $isExpanded={isSidebarExpanded} onClick={() => toggleSubMenu(link.path)}>
-                      <Icon />
-                      <span>{link.title}</span>
-                      <ArrowIcon className="arrow" />
+                    <DropdownMenu $isOpen={isOpen}  $isExpanded={isSidebarExpanded} $isParentActive={!!isParentActive} onClick={() => toggleSubMenu(link.path)}>
+                      <Icon /><span>{link.title}</span><ArrowIcon className="arrow" />
                     </DropdownMenu>
               
                     <Submenu $isOpen={isOpen}>
@@ -72,7 +71,7 @@ export const Sidebar = () => {
                     </Submenu>
                   </>
                 ) : (
-                  <SidebarLinkStyle to={link.path} className={({ isActive }) => (isActive ? "nav-active" : "")}>
+                  <SidebarLinkStyle to={link.path} className={({ isActive }) => (isActive ? "active" : "")}>
                     <Icon />
                     <span>{link.title}</span>
                   </SidebarLinkStyle>
@@ -93,11 +92,11 @@ export const Sidebar = () => {
                     <Icon /> <span>{link.title}</span>
                   </a>
                 );
-              })}
+            })}
           </LogoutContainer>
         )}
 
-         <Modal
+        <Modal
           isOpen={showLogoutModal}
           onClose={handleLogout}
           onConfirm={handleLogout}

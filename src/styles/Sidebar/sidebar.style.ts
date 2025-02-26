@@ -3,14 +3,14 @@ import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
   html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #346bdb;
-    color: white;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #346bdb;
+  color: white;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
   }
 `;
 
@@ -39,9 +39,9 @@ export const SidebarNav = styled.nav`
   transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
   z-index: 1000;
 
-  &:hover {
-    width: 250px;
-  }
+    &:hover {
+      width: 250px;
+    }
 `;
 
 export const LogoContainer = styled.div`
@@ -68,10 +68,10 @@ export const LogoText = styled.span`
   opacity: 0;
   transition: opacity 0.8s ease-in;
 
-  ${SidebarNav}:hover & {
-    display: inline;
-    opacity: 1;
-  }
+${SidebarNav}:hover & {
+  display: inline;
+  opacity: 1;
+}
 `;
 
 export const SidebarMenu = styled.ul`
@@ -85,7 +85,6 @@ export const SidebarItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 `;
 
 export const SidebarLinkStyle = styled(NavLink)`
@@ -98,27 +97,34 @@ export const SidebarLinkStyle = styled(NavLink)`
   justify-content: left;
   gap: 18px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   font-size: 0.9rem;
 
-  &:hover {
-    background-color: #4a4f5a;
-  }
+    &:hover {
+      background-color: #4a4f5a;
+    }
 
-  svg {
-    width: 20px;
-    height: 20px;
-    fill: white;
-    padding-left: 25px;
-    flex-shrink: 0;
-    text-align: center;
-  }
+    &.active {
+      color: #5fb8d3;
+    }
+    &.active svg {
+      fill: #5fb8d3 !important;
+    }
 
-  span {
-    display: none;
-    white-space: nowrap;
-    transition: opacity 0.3s ease-in-out;
-  }
+svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+  padding-left: 25px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+span {
+  display: none;
+  white-space: nowrap;
+  transition: opacity 0.3s ease-in-out;
+}
 
   ${SidebarNav}:hover & span {
     display: inline;
@@ -126,11 +132,11 @@ export const SidebarLinkStyle = styled(NavLink)`
   }
 `;
 
-export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean }>`
+export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean, $isParentActive: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
-  color: white;
+  color: ${({ $isParentActive }) => ($isParentActive ? "#5fb8d3" : "white")};
   text-decoration: none;
   padding: 15px 27px;
   justify-content: flex-start;
@@ -139,14 +145,15 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean 
   font-size: 0.9rem;
   position: relative;
 
-  svg {
-    width: 20px;
-    height: 20px;
-    padding-left: 25px;
-    flex-shrink: 0;
-  }
+svg {
+  width: 20px;
+  height: 20px;
+  padding-left: 25px;
+  flex-shrink: 0;
+  fill: ${({ $isParentActive }) => ($isParentActive ? "#5fb8d3" : "white")};
+}
 
- .arrow {
+.arrow {
   width: 20px;
   height: 20px;
   margin-right: 20px; 
@@ -156,33 +163,36 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean 
   visibility: ${({ $isExpanded }) => ($isExpanded ? "visible" : "hidden")};
 }
 
- span {
+span {
   opacity: ${({ $isExpanded }) => ($isExpanded ? "1" : "0")};
   flex-grow: 1; 
   text-align: left; 
   margin-left: 18px;
-  }
+}
 
-  &:hover {
+&:hover {
   background-color: #4a4f5a;
-  }
+}
 `;
 
 export const Submenu = styled.ul<{ $isOpen: boolean }>`
+  display: block;
   width: 100%;
   padding: 0;
   margin: 0;
   overflow: hidden;
-  display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
-  opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
+  border-bottom: 1px solid #5a5a5a; 
   max-height: ${({ $isOpen }) => ($isOpen ? "300px" : "0")}; 
+  opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
+  transform: ${({ $isOpen }) => ($isOpen ? "translateY(0)" : "translateY(-10px)")};
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
 
-  li {
-    padding: 0px 0;
-    list-style: none;
-  }
+li {
+  padding: 0px 0;
+  list-style: none;
+}
 
-  li a {
+li a {
   width: 100%;
   display: flex;
   align-items: center;
@@ -192,18 +202,17 @@ export const Submenu = styled.ul<{ $isOpen: boolean }>`
   text-decoration: none;
   transition: background-color 0.3s ease-in-out;
 
-  &:hover {
-    background-color: #4a4f5a;
-  }
-  }
+    &:hover {
+      background-color: #4a4f5a;
+    }
+}
 
-  li a.nav-active::before {
-    content: "•";
-    margin-right: 8px;
-    color: white;
-    font-size: 1.1rem;
-    transition: opacity 0.3s ease-in-out;
-  }
+li a.nav-active::before {
+  content: "•";
+  margin-right: 8px;
+  color: white;
+  font-size: .9rem;
+}
 `;
 
 export const LogoutContainer = styled.div`
@@ -212,36 +221,36 @@ export const LogoutContainer = styled.div`
   padding-bottom: 19px;
   width: 100%;
   
-  .logout-link {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    width: 100%;
-    color: white;
-    text-decoration: none;
-    padding: 12px 27px;
-    gap: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+.logout-link {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  padding: 12px 27px;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 
-    svg {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0; 
-      transition: width 0.3s ease-in-out;
-    }
+svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0; 
+  transition: width 0.3s ease-in-out;
+}
 
-    span {
-      display: none;
-      font-size: 0.85rem;
-      white-space: nowrap;
-      transition: opacity 0.3s ease-in-out;
-    }
-  }
+span {
+  display: none;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: opacity 0.3s ease-in-out;
+}
+}
 
-  ${SidebarNav}:hover & span {
-    display: inline;
-    opacity: 1;
+${SidebarNav}:hover & span {
+  display: inline;
+  opacity: 1;
   }
 `;
 
