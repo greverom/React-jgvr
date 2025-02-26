@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Store/Auth/authContext";
-import { User } from "../../../Interfaces/authenticationProps";
+import { UserTable } from "../../../Interfaces/tables";
 import { userTableColumns } from "../tables/userTableColumnProps"; 
-import DataTable from "react-data-table-component";
+import   DataTable from "react-data-table-component";
 import { initialUsers } from "./UserTableData";
 import { customStyles, paginationOptions, TableContainer} from "../../../styles/Tables/tables.style";
 
-const UserTable = () => {
-  const [users] = useState<User[]>(initialUsers);
+const UserTables = () => {
+  const [users] = useState<UserTable[]>(initialUsers);
   const { setRole } = useContext(AuthContext)!;
   const [activeUserId, setActiveUserId] = useState<number | null>(null);
 
@@ -19,7 +19,7 @@ const UserTable = () => {
   return (
     <TableContainer>
       <DataTable
-        title="Gestión de Roles"
+        title={<h2 style={{ fontSize: "22px", textAlign: "left" }}>Gestión de Roles</h2>}
         columns={userTableColumns({ activeUserId, handleRoleChange })}
         data={users}
         highlightOnHover
@@ -35,4 +35,4 @@ const UserTable = () => {
   );
 };
 
-export default UserTable;
+export default UserTables;

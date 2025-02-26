@@ -2,16 +2,19 @@ import styled from "styled-components";
 
 export const ModalPageContainer = styled.div`
   text-align: center;
-  padding: 2rem;
+  padding: 20px;
 `;
 
 export const ModalTitle = styled.h1`    
-  font-size: 1.8rem; 
+  color: #333;  
+  font-size: 2rem;
   font-weight: bold;
-  color: #333; 
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
   text-transform: uppercase;
-  letter-spacing: 1px; 
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem; 
+  }
 `;
 
 export const ButtonContainer = styled.div`

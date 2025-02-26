@@ -11,7 +11,6 @@ export const HomeTitle = styled.h1`
   font-weight: bold;
   margin-bottom: 20px;
   text-transform: uppercase;
-  letter-spacing: 1px;
 
   @media (max-width: 768px) {
     font-size: 1.8rem; 

@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
-  width: 100%;
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  border-radius: 8px;
+  text-align: center;
+  padding: 20px;
 `;
 
 export const PageTitle = styled.h1`
-  text-align: center;
+  color: #333;  
   font-size: 2rem;
-  color: #333;
-  margin-bottom: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem; 
+  }
 `;
