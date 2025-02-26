@@ -1,33 +1,30 @@
-import { useState } from "react";
 import Button from "../components/ui/buttons/button";
 import NotificationModal from "../components/ui/modal/modal";
 import ConfirmationModal from "../components/ui/modal/modal";
 import { ButtonContainer, ModalPageContainer, ModalTitle } from "../styles/Modal/modalPage";
-import { useToast } from "../hooks/Toast/useToast";
+import { useModalActions } from "../hooks/Modal/useModalActions"; 
 
 const Modals = () => {
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showErrorModal, setShowErrorModal] = useState(false);
-  const [showWarningModal, setShowWarningModal] = useState(false);
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-
-  const { showToast } = useToast();
+  const { showSuccessModal, setShowSuccessModal, showErrorModal, setShowErrorModal, showWarningModal,
+          setShowWarningModal, showConfirmationModal, setShowConfirmationModal, handleButtonClick,
+        } = useModalActions(); 
 
   return (
-    <ModalPageContainer> 
+    <ModalPageContainer onClick={handleButtonClick}> 
       <ModalTitle>Modales & Toasts</ModalTitle>
+      
       <ButtonContainer> 
-        <Button variant="success" onClick={() => setShowSuccessModal(true)}>Modal Éxito</Button>
-        <Button variant="tertiary" onClick={() => setShowErrorModal(true)}>Modal Error</Button>
-        <Button variant="warning" onClick={() => setShowWarningModal(true)}>Modal Advertencia</Button>
-        <Button variant="info" onClick={() => setShowConfirmationModal(true)}>Modal Pregunta</Button>
+        <Button className="modal-success" variant="success">Modal Éxito</Button>
+        <Button className="modal-error" variant="tertiary">Modal Error</Button>
+        <Button className="modal-warning" variant="warning">Modal Advertencia</Button>
+        <Button className="modal-question" variant="info">Modal Pregunta</Button>
       </ButtonContainer>
       
       <ButtonContainer> 
-        <Button variant="success" onClick={() => showToast("Operación exitosa", "success")}>Toast Éxito</Button>
-        <Button variant="tertiary" onClick={() => showToast("Ha ocurrido un error", "error")}>Toast Error</Button>
-        <Button variant="warning" onClick={() => showToast("Cuidado con esta acción", "warning")}>Toast Advertencia</Button>
-        <Button variant="info" onClick={() => showToast("Este es un mensaje informativo", "info")}>Toast Información</Button>
+        <Button className="toast-success" variant="success">Toast Éxito</Button>
+        <Button className="toast-error" variant="tertiary">Toast Error</Button>
+        <Button className="toast-warning" variant="warning">Toast Advertencia</Button>
+        <Button className="toast-info" variant="info">Toast Información</Button>
       </ButtonContainer>
 
       <NotificationModal 
@@ -50,14 +47,14 @@ const Modals = () => {
         isOpen={showWarningModal} 
         onClose={() => setShowWarningModal(false)} 
         type="warning"
-        title = "Advertencia"
+        title="Advertencia"
         message="Algo salió mal"
       />
 
       <ConfirmationModal 
         isOpen={showConfirmationModal} 
         onClose={() => setShowConfirmationModal(false)} 
-        onConfirm={() => alert("Acción confirmada")}
+        onConfirm={() => { alert("Acción confirmada"); setShowConfirmationModal(false); }}
         onCancel={() => setShowConfirmationModal(false)}
         type="question"
         title="¿Estás seguro de continuar?"
