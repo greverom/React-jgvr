@@ -1,9 +1,8 @@
 import { lazy } from "react";
 import { AppRoute } from "./type";
  
-
-const Register = lazy(() => import("../pages/Auth/register"));
-const Login = lazy(() => import("../pages/Auth/login"));
+const Register = lazy(() => import("../pages/register"));
+const Login = lazy(() => import("../pages/login"));
 
 export const dashboardRoutes: AppRoute[] = [
   {

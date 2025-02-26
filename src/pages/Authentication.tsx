@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../components/ui/Loading/loading";
 import Button from "../components/ui/buttons/button"; 
-import { DashboardContainer, DashboardNav, DashboardTitle } from "../styles/Dashboard/dashboard.style";
+import { DashboardContainer, DashboardContent, DashboardNav, DashboardTitle } from "../styles/Authentication/authenticationPage.style";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -19,7 +19,9 @@ const Dashboard = () => {
 
   return (
     <DashboardContainer>
+
       <DashboardTitle>Autenticación</DashboardTitle>
+
       <DashboardNav>
         <Button onClick={() => navigate("login")} variant="primary" isActive={isLoginActive} >
             Login
@@ -30,9 +32,12 @@ const Dashboard = () => {
         </Button>  
       </DashboardNav>
 
-      <Suspense fallback={<Loading />}>
-        <Outlet />
-      </Suspense>
+      <DashboardContent>
+        <Suspense fallback={<Loading />}>
+          <Outlet />
+        </Suspense>
+      </DashboardContent>
+
     </DashboardContainer>
   );
 };

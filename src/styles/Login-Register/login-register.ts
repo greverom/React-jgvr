@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const AuthContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 4rem;
+  align-item: center;
+  padding: 1.5rem 0;
+  min-height: auto;
   background-color: #f0f2f5;
 `;
 

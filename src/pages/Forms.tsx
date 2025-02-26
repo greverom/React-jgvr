@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FormData as UserFormData, FieldConfig } from "../Interfaces/dynamicForm.Props"; 
 import DynamicForm from "../components/ui/DynamicForm/dynamicForm";
-import { UserPageContainer, UserTitle } from "../styles/styled/userPage.style";
+import { UserPageContainer, UserTitle } from "../styles/Form/formPage.style";
 import formConfig from "../data/formConfig.json"; 
 
 const Forms = () => {

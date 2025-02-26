@@ -2,13 +2,13 @@ import   React from 'react';
 import   * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, FormProvider } from 'react-hook-form';
-import { LoginFormInputs } from '../../Interfaces/authenticationProps';
-import   Button from '../../components/ui/buttons/button';
-import { useAuth } from '../../hooks/Auth/useAuth';
-import   TestInput from '../../components/ui/Form/testInput';
-import   TestCheckbox from '../../components/ui/Form/testCheckbox';
+import { LoginFormInputs } from '../Interfaces/authenticationProps';
+import   Button from '../components/ui/buttons/button';
+import { useAuth } from '../hooks/Auth/useAuth';
+import   TestInput from '../components/ui/Form/testInput';
+import   TestCheckbox from '../components/ui/Form/testCheckbox';
 import { AuthContainer, AuthForm, AuthTitle, 
-         ForgotPasswordLink, RememberAndForgotContainer } from "../../styles/Auth/auth.styles";
+         ForgotPasswordLink, RememberAndForgotContainer } from "../styles/Login-Register/login-register";
 
 const loginSchema = yup.object().shape({
   email: yup.string().required('El correo es obligatorio').email('Correo inválido'),

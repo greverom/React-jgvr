@@ -12,7 +12,7 @@ export const DashboardContainer = styled.div`
 export const DashboardTitle = styled.h1`
   width: 100%;
   font-size: 2rem;
-  padding: 30px;
+  padding: 20px;
   color: #333;
 `;
 
@@ -22,4 +22,11 @@ export const DashboardNav = styled.div`
   align-items: center;
   width: 350px;
   gap: 10px;
+`;
+
+export const DashboardContent = styled.div`
+  margin-top: 30px; 
+  width: 100%;
+  min-height: 100vh
+  background: black;
 `;

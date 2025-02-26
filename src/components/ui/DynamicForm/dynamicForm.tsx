@@ -6,7 +6,7 @@ import Button from "../buttons/button";
 
 import { DynamicFormContainer, DynamicFormWrapper, FormTitle,
          FormGrid, InputGroup, Label, InputContainer, Input, SelectContainer,
-         Select, ErrorMessage, ButtonContainer } from "../../../styles/Form/dynamicForm.Styles"; 
+         Select, ErrorMessage, ButtonContainer } from "../../../styles/Form/dynamicFormComponent.Styles"; 
 
 export default function DynamicForm({ fields, onSubmit }: DynamicFormProps) {
   const validationSchema = createValidationSchema(fields);

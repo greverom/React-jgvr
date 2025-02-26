@@ -5,11 +5,12 @@ import { AppRoute } from "../../router/type";
 import Loading from "../ui/Loading/loading";
 import { Suspense } from "react";
 import { ToastProvider } from "../../Store/Toast/toastProvider";
-import { Content, MainLayout } from "../../styles/Layout/layout.styles";
+import { Content, GlobalStyles, MainLayout } from "../../styles/Layout/layout.styles";
 
 export const Layout = () => {
   return (
     <ToastProvider>
+      <GlobalStyles />
       <MainLayout>
         <Sidebar /> 
         <Content>

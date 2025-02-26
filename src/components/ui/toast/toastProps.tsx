@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ToastContainer, ToastMessage } from "../../../styles/styled/toastComponent.stile";
+import { ToastContainer, ToastMessage } from "../../../styles/Toast/toastComponent.stile";
 
 interface ToastProps {
   message: string;

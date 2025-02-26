@@ -19,14 +19,4 @@ export interface LoginFormInputs {
   confirmPassword?: string;
 }
   
-  export interface AuthResponse {
-  token: string;
-  user: User;
-}
   
-  export interface User {
-  id: number;
-  username: string;
-  email: string;
-  role: 'ADMINISTRADOR' | 'GUEST'; 
-}

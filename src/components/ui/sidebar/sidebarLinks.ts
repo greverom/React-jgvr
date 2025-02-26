@@ -18,7 +18,7 @@ export interface SidebarLink {
     },
     {
       title: "Authentication",
-      path: "/dashboard",
+      path: "/authentication",
       icon: DashboardIcon,
       roles: ["ADMINISTRADOR"],
     },

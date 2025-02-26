@@ -1,5 +1,5 @@
 
-import { HomePageContainer, HomeTitle } from "../styles/styled/homePage.style"; 
+import { HomePageContainer, HomeTitle } from "../styles/Home/homePage.style"; 
 
 const Home= () => {
     return (

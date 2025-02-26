@@ -1,18 +1,7 @@
 import { NavLink } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
-export const GlobalStyles = createGlobalStyle`
-  html, body {
-  margin: 0;
-  padding: 0;
-  background-color: #346bdb;
-  color: white;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  }
-`;
+
 
 export const SidebarContainer = styled.div`
   display: flex;

@@ -1,13 +1,8 @@
-import { TableColumn } from "react-data-table-component";
-import { User } from "../../../Interfaces/authenticationProps";
+import {  UserTable, UserTableColumnsProps } from "../../../Interfaces/tables";
 import { StyledCheckbox } from "../../../styles/Tables/tables.style";
+import { TableColumn } from "react-data-table-component";
 
-interface UserTableColumnsProps {
-  activeUserId: number | null;
-  handleRoleChange: (id: number, newRole: "ADMINISTRADOR" | "GUEST") => void;
-}
-
-export const userTableColumns = ({ activeUserId, handleRoleChange }: UserTableColumnsProps): TableColumn<User>[] => [
+export const userTableColumns = ({ activeUserId, handleRoleChange }: UserTableColumnsProps): TableColumn<UserTable>[] => [
   {
     name: "Nombre",
     selector: (row) => row.username,
@@ -16,12 +11,10 @@ export const userTableColumns = ({ activeUserId, handleRoleChange }: UserTableCo
   {
     name: "Correo",
     selector: (row) => row.email,
-    sortable: true,
   },
   {
     name: "Rol",
     selector: (row) => row.role,
-    sortable: true,
   },
   {
     name: "Seleccionar",

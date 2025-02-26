@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa";
-import { ErrorMessage, Input, InputContainer, InputGroup, InputIcon, Label } from "../../../styles/Auth/auth.styles";
+import { ErrorMessage, Input, InputContainer, InputGroup, InputIcon, Label } from "../../../styles/Login-Register/login-register";
 import { InputFieldProps } from "../../../Interfaces/authenticationProps";
 
 interface TestInputProps<T extends FieldValues> extends InputFieldProps<T> {
