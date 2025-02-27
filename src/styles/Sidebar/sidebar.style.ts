@@ -18,6 +18,14 @@ export const SidebarNav = styled.nav`
   flex-direction: column;
   height: 100%;
   padding: 20px;
+  overflow-y: auto; 
+  overflow-x: hidden; 
+  scrollbar-width: thin; 
+  scrollbar-color: #5a5a5a transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px; 
+  }
 `;
 
 const moveButton = keyframes`
