@@ -6,7 +6,7 @@ export const SidebarContainer = styled.div<{ $isOpen: boolean }>`
   left: ${({ $isOpen }) => ($isOpen ? "0" : "-300px")};
   top: 0;
   bottom: 0;
-  width: 260px;
+  width: 275px;
   background-color: rgba(54, 58, 69, 0.95);
   backdrop-filter: blur(10px);
   transition: left 0.3s ease-in-out;
@@ -17,7 +17,6 @@ export const SidebarNav = styled.nav`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 20px;
   overflow-y: auto; 
   overflow-x: hidden; 
   scrollbar-width: thin; 
@@ -35,21 +34,19 @@ const moveButton = keyframes`
 
 export const BurgerButton = styled.button<{ $isOpen: boolean }>`
   position: fixed;
-  top: 25px;
-  left: ${({ $isOpen }) => ($isOpen ? "234px" : "15px")};
+  top: 32px;
+  left: ${({ $isOpen }) => ($isOpen ? "250px" : "15px")};
   border: none;
   border-radius: ${({ $isOpen }) => ($isOpen ? "50px" : "0px")};
-  font-size: 30px;
-  width: 50px;
-  height: 50px;
-  background-color: ${({ $isOpen }) => ($isOpen ? "rgba(54, 58, 69, 0.85)" : "transparent")}; 
-  color: ${({ $isOpen }) => ($isOpen ? "white" : "#222")};
+  width: 45px;
+  height: 45px;
+  font-size: ${({ $isOpen }) => ($isOpen ? "18px" : "38px")}; 
+  background-color: ${({ $isOpen }) => ($isOpen ? "rgba(54, 58, 69)" : "transparent")}; 
+  color: ${({ $isOpen }) => ($isOpen ? "white" : "rgba(54, 58, 69)")};
   cursor: pointer;
   z-index: 1100;
   animation: ${({ $isOpen }) => ($isOpen ? moveButton : "none")} 0.3s ease-in-out;
-  transition: transform 0.4s ease-in-out;
-
-  ${({ $isOpen }) => $isOpen && "transform: rotate(90deg);"}
+  transition: transform 0.5s ease-in-out;
 `;
 
 export const SidebarOverlay = styled.div`
@@ -68,24 +65,23 @@ export const LogoContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 3px;
-  margin-bottom: 25px;
+  margin: 15px 5px 30px;
+  padding: 10px;
 `;
 
 export const LogoImage = styled.img`
   width: 2rem;
-  margin: 15px 18px;
+  margin: 10px 10px;
   transition: width 0.8s ease-in-out;
 `;
 
 export const LogoText = styled.span`
   display: block;
-  margin-left: 5px;
   font-size: 0.9rem;
   color: white;
   font-weight: bold;
+  margin-left: 5px;
   transition: opacity 0.8s ease-in;
-
 `;
 
 export const SidebarMenu = styled.ul`
@@ -107,12 +103,12 @@ export const SidebarLinkStyle = styled(NavLink)`
   align-items: center;
   color: white;
   text-decoration: none;
-  padding: 15px 27px;
+  padding: 12px 0;
   justify-content: left;
   gap: 18px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  font-size: 0.9rem;
+  font-size: .9rem;
 
     &:hover {
       background-color: #4a4f5a;
@@ -126,16 +122,12 @@ export const SidebarLinkStyle = styled(NavLink)`
     }
 
 svg {
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
   fill: white;
-  padding-left: 25px;
+  padding-left: 30px;
   flex-shrink: 0;
   text-align: center;
-}
-
-span {
-  display: flex;
 }
 
 `;
@@ -146,25 +138,24 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean,
   align-items: center;
   color: ${({ $isParentActive }) => ($isParentActive ? "#5fb8d3" : "white")};
   text-decoration: none;
-  padding: 15px 27px;
+  padding: 12px 0;
   justify-content: flex-start;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
   font-size: 0.9rem;
-  position: relative;
+  transition: all 0.4s;
 
 svg {
   width: 20px;
   height: 20px;
-  padding-left: 25px;
+  margin-left: 30px;
   flex-shrink: 0;
   fill: ${({ $isParentActive }) => ($isParentActive ? "#5fb8d3" : "white")};
 }
 
 .arrow {
-  width: 20px;
-  height: 20px;
-  margin-right: 20px; 
+  width: 21px;
+  height: 21px;
+  margin-right: 30px; 
   transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
   transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0)")};
 }
@@ -172,7 +163,7 @@ svg {
 span {
   flex-grow: 1; 
   text-align: left; 
-  margin-left: 18px;
+  margin-left: 19.5px;
 }
 
 &:hover {
@@ -183,27 +174,26 @@ span {
 export const Submenu = styled.ul<{ $isOpen: boolean }>`
   display: block;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
+  padding-left: 0;
   border-bottom: 1px solid #5a5a5a; 
-  max-height: ${({ $isOpen }) => ($isOpen ? "300px" : "0")}; 
+  overflow: hidden;
+  max-height: ${({ $isOpen }) => ($isOpen ? "200px" : "0")}; 
   opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
-  transform: ${({ $isOpen }) => ($isOpen ? "translateY(0)" : "translateY(-10px)")};
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
+  transition: max-height 0.3s, opacity 0.3s, transform 0.3s; 
 
 li {
-  padding: 0px 0;
+  width: 100%;
   list-style: none;
 }
 
 li a {
   width: 100%;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   color: #dcdcdc;
-  padding: 10px 50px;
-  font-size: 0.85rem;
+  padding: 15px 40px;
+  font-size: 0.9rem;
   text-decoration: none;
   transition: background-color 0.3s ease-in-out;
 
@@ -221,34 +211,28 @@ li a.nav-active::before {
 `;
 
 export const LogoutContainer = styled.div`
+  width: 100%;
   margin-top: auto;
   padding-top: 40px;
-  padding-bottom: 19px;
-  width: 100%;
+  padding-bottom: 20px;
   
 .logout-link {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: left;
-  width: 100%;
-  color: white;
-  text-decoration: none;
-  padding: 12px 27px;
-  gap: 12px;
+  padding: 15px 30px;
+  gap: 18px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
 
   svg {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0; 
-    transition: width 0.3s ease-in-out;
+    width: 21px;
+    height: 21px;
   }
 
   span {
     display: flex;
     font-size: 0.85rem;
-    white-space: nowrap;
   }
 }
 `;
