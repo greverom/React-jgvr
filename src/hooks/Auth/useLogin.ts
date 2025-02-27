@@ -6,17 +6,23 @@ import { useToast } from "../Toast/useToast";
 
 export const useAuth = (
   setValue?: UseFormSetValue<LoginFormInputs>,
-  formState?: FormState<LoginFormInputs> ) => { 
+  formState?: FormState<LoginFormInputs> ) => {
   const context = useContext(AuthContext);
   if (!context) {
     throw new Error("useAuth debe usarse dentro de un AuthProvider");
   }
 
   const prevErrors = useRef(formState?.errors);
-  const { login } = context; 
+  const { login } = context;
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const { showToast } = useToast();
+  const [errorModal, setErrorModal] = useState<{ isOpen: boolean; title: string; message: string; type: "success" | "error" }>({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "error",
+  });
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("email");
@@ -25,9 +31,9 @@ export const useAuth = (
     if (storedEmail) {
       setEmail(storedEmail);
       setRememberMe(storedRememberMe);
-      
+
       if (setValue) {
-        setValue("email", storedEmail, { shouldValidate: true }); 
+        setValue("email", storedEmail, { shouldValidate: true });
         setValue("rememberMe", storedRememberMe, { shouldValidate: true });
       }
     }
@@ -47,31 +53,50 @@ export const useAuth = (
       }
     }
     prevErrors.current = formState?.errors;
-  }, [formState?.errors, showToast]); 
+  }, [formState?.errors, showToast]);
 
 
   const handleLogin = (email: string, password: string, rememberMe: boolean) => {
     if (!login) {
       return;
     }
-    
+
     try {
-      login(email, password); 
-      showToast("Iniciando sesión...", "success");
+      login(email, password);
+      //showToast("Iniciando sesión...", "success");
+      setErrorModal({
+        isOpen: true,
+        title: "Éxito",
+        message: "Iniciando sesión...",
+        type: "success",
+      });
 
       if (rememberMe) {
         localStorage.setItem("email", email);
-        localStorage.setItem("rememberMe", "true"); 
+        localStorage.setItem("rememberMe", "true");
       } else {
         localStorage.removeItem("email");
-        localStorage.removeItem("rememberMe"); 
+        localStorage.removeItem("rememberMe");
       }
 
     } catch (error) {
       console.error("Error en login:", error);
       showToast("Credenciales incorrectas", "error");
+      // setErrorModal({ isOpen: true,
+      //                 title: "Error",
+      //                 message: "Credenciales incorrectas. Verifica tu email y contraseña.",
+      //                 type: "error",
+      //               });
+
     }
   };
 
-  return { ...context, handleLogin, rememberMe, setRememberMe, email };
+  return { ...context,
+          handleLogin,
+          rememberMe,
+          setRememberMe,
+          email,
+          errorModal,
+          setErrorModal
+        };
 };

@@ -26,9 +26,10 @@ export const useRegister = ( formState?: FormState<RegisterFormInputs> ) => { co
       prevErrors.current = formState?.errors;
     }
   }, [formState?.errors, formState?.isSubmitted, showToast]);
+  
 
   const handleRegister = (email: string, password: string) => {
-    console.log("datos del registro", email, password)
+    console.log( email, password)
   
     showToast("Registro exitoso...", "success");
   };

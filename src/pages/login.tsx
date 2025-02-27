@@ -9,6 +9,7 @@ import   TestInput from '../components/ui/Form/testInput';
 import   TestCheckbox from '../components/ui/Form/testCheckbox';
 import { AuthContainer, AuthForm, AuthTitle, 
          ForgotPasswordLink, RememberAndForgotContainer } from "../styles/Login-Register/login-register";
+import Modal from '../components/ui/modal/modal';
 
 const loginSchema = yup.object().shape({
   email: yup.string().required('El correo es obligatorio').email('Correo inválido'),
@@ -23,7 +24,7 @@ const Login: React.FC = () => {
   });
 
   const { handleSubmit, setValue, formState } = methods;
-  const { handleLogin } = useAuth(setValue, formState); 
+  const { handleLogin, errorModal, setErrorModal } = useAuth( setValue, formState ); 
 
   const onSubmit = ({ email, password, rememberMe }: LoginFormInputs) => {
     handleLogin(email, password, rememberMe);
@@ -46,6 +47,13 @@ const Login: React.FC = () => {
           <Button type="submit" variant="primary">Ingresar</Button>
         </AuthForm>
       </FormProvider>
+      <Modal 
+        isOpen={errorModal.isOpen}
+        onClose={() => setErrorModal({ isOpen: false, title: "", message: "", type: "error" })}
+        type={errorModal.type}  
+        title={errorModal.title}
+        message={errorModal.message}
+       />
     </AuthContainer>
   );
 };

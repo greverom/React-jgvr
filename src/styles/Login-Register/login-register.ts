@@ -51,12 +51,12 @@ export const InputContainer = styled.div`
 export const Input = styled.input<{ $hasError?: boolean }>`
   max-width: 100%;
   min-width: 254px;
+  font-size: 14px;
   padding: 10px;
   padding-left: ${({ type }) => (type === "email" ? "35px" : "10px")}; 
   padding-right: ${({ type }) => (type === "password" || type === "text" ? "35px" : "10px")}; 
   border: 1px solid ${({ $hasError }) => ($hasError ? "red" : "#ccc")};
   border-radius: 5px;
-  font-size: 14px;
   outline: none;
   transition: border-color 0.3s ease, width 0s, min-width 0s;
 
