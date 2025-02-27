@@ -9,7 +9,8 @@ import   Modal from "../modal/modal";
 
 import { SidebarContainer, SidebarNav, LogoContainer, LogoImage, 
          LogoText, SidebarMenu, SidebarItem, SidebarLinkStyle, DropdownMenu,
-         Submenu, LogoutContainer} from "../../../styles/Sidebar/sidebar.style";
+         Submenu, LogoutContainer,
+         BurgerButton} from "../../../styles/Sidebar/sidebar.style";
 
 export const Sidebar = () => {
   const { openDropdown, toggleSubMenu, closeSubMenu, handleMouseEnter, handleMouseLeave, 
@@ -18,84 +19,96 @@ export const Sidebar = () => {
   const { pathname } = useLocation();
   const { role } = useAuth(); 
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const handleToggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   const handleLogout = () => {
     setShowLogoutModal(false);
-    handleMouseLeave(); 
+    setIsSidebarOpen(false);
   };
 
   return (
-    <SidebarContainer>
-      <SidebarNav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <LogoContainer>
-          <LogoImage src={logo} alt="react logo" />
-          <LogoText>{role}</LogoText>
-        </LogoContainer>
+    <>
+      <BurgerButton onClick={handleToggleSidebar} $isOpen={isSidebarOpen}>
+      {isSidebarOpen ? "✕" : "☰"}
+      </BurgerButton>
+    
+      <SidebarContainer $isOpen={isSidebarOpen}>
+        <SidebarNav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <LogoContainer>
+            <LogoImage src={logo} alt="react logo" />
+            <LogoText>{role}</LogoText>
+          </LogoContainer>
 
-        <SidebarMenu>
-          {role &&
-            sidebarLinks
-            .filter(link => link.roles.includes(role) && !link.isLogout)
-            .map((link: SidebarLink, index: number) => {
+          <SidebarMenu>
+            {role &&
+              sidebarLinks
+              .filter(link => link.roles.includes(role) && !link.isLogout)
+              .map((link: SidebarLink, index: number) => {
 
-              const isOpen = openDropdown === link.path;
-              const Icon = link.icon;
-              const isParentActive = link.subMenu?.some((subLink: SidebarLink) => pathname.includes(subLink.path));
-              return (
-                <SidebarItem
-                  key={index}
-                  ref={(el) => {
-                    if (link.subMenu) dropdownRefs.current[link.path] = el;
-                  }}
-                >
-                {link.subMenu ? (
-                  <>
-                    <DropdownMenu $isOpen={isOpen}  $isExpanded={isSidebarExpanded} $isParentActive={!!isParentActive} onClick={() => toggleSubMenu(link.path)}>
-                      <Icon /><span>{link.title}</span><ArrowIcon className="arrow" />
-                    </DropdownMenu>
-              
-                    <Submenu $isOpen={isOpen}>
-                      {role &&
-                        link.subMenu
-                          .filter((subLink) => subLink.roles.includes(role))
-                          .map((subLink, subIndex) => (
-                            <li key={subIndex}>
-                              <NavLink
-                                to={subLink.path}
-                                className={({ isActive }) => (isActive ? "nav-active" : "")}
-                                onClick={() => closeSubMenu()}
-                              >
-                                {subLink.title}
-                              </NavLink>
-                            </li>
-                          ))}
-                    </Submenu>
-                  </>
-                ) : (
-                  <SidebarLinkStyle to={link.path} className={({ isActive }) => (isActive ? "active" : "")}>
-                    <Icon />
-                    <span>{link.title}</span>
-                  </SidebarLinkStyle>
-                )}
-              </SidebarItem>
-              );
-          })}
-        </SidebarMenu>
-
-        {role && (
-          <LogoutContainer>
-            {sidebarLinks
-              .filter(link => link.isLogout) 
-              .map((link, index) => {
-                const Icon = link.icon; 
+                const isOpen = openDropdown === link.path;
+                const Icon = link.icon;
+                const isParentActive = link.subMenu?.some((subLink: SidebarLink) => pathname.includes(subLink.path));
                 return (
-                  <a key={index} className="logout-link" onClick={() => setShowLogoutModal(true)}>
-                    <Icon /> <span>{link.title}</span>
-                  </a>
+                  <SidebarItem
+                    key={index}
+                    ref={(el) => {
+                      if (link.subMenu) dropdownRefs.current[link.path] = el;
+                    }}
+                  >
+                  {link.subMenu ? (
+                    <>
+                      <DropdownMenu $isOpen={isOpen}  $isExpanded={isSidebarExpanded} $isParentActive={!!isParentActive} onClick={() => toggleSubMenu(link.path)}>
+                        <Icon /><span>{link.title}</span><ArrowIcon className="arrow" />
+                      </DropdownMenu>
+                
+                      <Submenu $isOpen={isOpen}>
+                        {role &&
+                          link.subMenu
+                            .filter((subLink) => subLink.roles.includes(role))
+                            .map((subLink, subIndex) => (
+                              <li key={subIndex}>
+                                <NavLink
+                                  to={subLink.path}
+                                  className={({ isActive }) => (isActive ? "nav-active" : "")}
+                                  onClick={() => closeSubMenu()}
+                                >
+                                  {subLink.title}
+                                </NavLink>
+                              </li>
+                            ))}
+                      </Submenu>
+                    </>
+                  ) : (
+                    <SidebarLinkStyle to={link.path} className={({ isActive }) => (isActive ? "active" : "")}>
+                      <Icon />
+                      <span>{link.title}</span>
+                    </SidebarLinkStyle>
+                  )}
+                </SidebarItem>
                 );
             })}
-          </LogoutContainer>
-        )}
+          </SidebarMenu>
 
+          {role && (
+            <LogoutContainer>
+              {sidebarLinks
+                .filter(link => link.isLogout) 
+                .map((link, index) => {
+                  const Icon = link.icon; 
+                  return (
+                    <a key={index} className="logout-link" onClick={() => setShowLogoutModal(true)}>
+                      <Icon /> <span>{link.title}</span>
+                    </a>
+                  );
+              })}
+            </LogoutContainer>
+          )}
+        </SidebarNav>
+      </SidebarContainer>
         <Modal
           isOpen={showLogoutModal}
           onClose={handleLogout}
@@ -103,9 +116,7 @@ export const Sidebar = () => {
           type="question"
           title="¿Deseas cerrar sesión?"
         />
-        
-      </SidebarNav>
-    </SidebarContainer>
+    </>
   );
 };
 

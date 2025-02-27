@@ -1,36 +1,58 @@
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-
-
-export const SidebarContainer = styled.div`
-  display: flex;
-  height: 100vh;
+export const SidebarContainer = styled.div<{ $isOpen: boolean }>`
+  position: fixed;
+  left: ${({ $isOpen }) => ($isOpen ? "0" : "-300px")};
+  top: 0;
+  bottom: 0;
+  width: 260px;
+  background-color: rgba(54, 58, 69, 0.95);
+  backdrop-filter: blur(10px);
+  transition: left 0.3s ease-in-out;
+  z-index: 1001;
 `;
 
 export const SidebarNav = styled.nav`
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  background-color: #363a45;
-  width: 70px;
-  min-height: 100vh;
-  overflow: hidden;
-  text-align: center;
-  padding: 20px 0;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #5a5a5a transparent;
-  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-  z-index: 1000;
+  height: 100%;
+  padding: 20px;
+`;
 
-    &:hover {
-      width: 250px;
-    }
+const moveButton = keyframes`
+  0% { left: 15px; }
+  100% { left: 234px; }
+`;
+
+export const BurgerButton = styled.button<{ $isOpen: boolean }>`
+  position: fixed;
+  top: 25px;
+  left: ${({ $isOpen }) => ($isOpen ? "234px" : "15px")};
+  border: none;
+  border-radius: ${({ $isOpen }) => ($isOpen ? "50px" : "0px")};
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: ${({ $isOpen }) => ($isOpen ? "rgba(54, 58, 69, 0.85)" : "transparent")}; 
+  color: ${({ $isOpen }) => ($isOpen ? "white" : "#222")};
+  cursor: pointer;
+  z-index: 1100;
+  animation: ${({ $isOpen }) => ($isOpen ? moveButton : "none")} 0.3s ease-in-out;
+  transition: transform 0.4s ease-in-out;
+
+  ${({ $isOpen }) => $isOpen && "transform: rotate(90deg);"}
+`;
+
+export const SidebarOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  backdrop-filter: blur(4px);
 `;
 
 export const LogoContainer = styled.div`
@@ -49,18 +71,13 @@ export const LogoImage = styled.img`
 `;
 
 export const LogoText = styled.span`
-  display: none;
+  display: block;
   margin-left: 5px;
   font-size: 0.9rem;
   color: white;
   font-weight: bold;
-  opacity: 0;
   transition: opacity 0.8s ease-in;
 
-${SidebarNav}:hover & {
-  display: inline;
-  opacity: 1;
-}
 `;
 
 export const SidebarMenu = styled.ul`
@@ -110,15 +127,9 @@ svg {
 }
 
 span {
-  display: none;
-  white-space: nowrap;
-  transition: opacity 0.3s ease-in-out;
+  display: flex;
 }
 
-  ${SidebarNav}:hover & span {
-    display: inline;
-    opacity: 1;
-  }
 `;
 
 export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean, $isParentActive: boolean }>`
@@ -148,12 +159,9 @@ svg {
   margin-right: 20px; 
   transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
   transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0)")};
-  opacity: ${({ $isExpanded }) => ($isExpanded ? 1 : 0)};
-  visibility: ${({ $isExpanded }) => ($isExpanded ? "visible" : "hidden")};
 }
 
 span {
-  opacity: ${({ $isExpanded }) => ($isExpanded ? "1" : "0")};
   flex-grow: 1; 
   text-align: left; 
   margin-left: 18px;
@@ -222,24 +230,18 @@ export const LogoutContainer = styled.div`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
-svg {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0; 
-  transition: width 0.3s ease-in-out;
-}
-
-span {
-  display: none;
-  font-size: 0.85rem;
-  white-space: nowrap;
-  transition: opacity 0.3s ease-in-out;
-}
-}
-
-${SidebarNav}:hover & span {
-  display: inline;
-  opacity: 1;
+  svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0; 
+    transition: width 0.3s ease-in-out;
   }
+
+  span {
+    display: flex;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+}
 `;
 
