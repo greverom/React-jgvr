@@ -1,15 +1,7 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import { StyledButton } from "../../../styles/Button/styles.button";
+import { ButtonProps } from "../../../Interfaces/buttonProps";
 
-interface ButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-  variant?: "primary" | "secondary" | "tertiary" | "success" | "warning" | "info" | "cancel" | "error";
-  isActive?: boolean; 
-  style?: CSSProperties;
-  className?: string;
-}
 
 const Button: React.FC<ButtonProps> = ({ 
   children, onClick, 
@@ -19,8 +11,14 @@ const Button: React.FC<ButtonProps> = ({
   style, className }) => {
 
   return (
-    <StyledButton type={type} onClick={onClick} $variant={variant} $isActive={isActive} style={style} className={className}
-      >{children}
+    <StyledButton type={type} 
+                  onClick={onClick} 
+                  $variant={variant} 
+                  $isActive={isActive} 
+                  style={style} 
+                  className={className}>
+                    
+      {children}
     </StyledButton>
   );
 };

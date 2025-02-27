@@ -63,6 +63,12 @@ export const Input = styled.input<{ $hasError?: boolean }>`
   &:focus {
     border-color: #828485;
   }
+
+  &:-webkit-autofill {
+    background-color: white !important;
+    color: #333 !important;
+    box-shadow: 0 0 0px 1000px white inset !important;
+  }
 `;
 
 export const InputIcon = styled.span<{ $position?: "left" | "right" }>`

@@ -9,8 +9,7 @@ export const ModalTitle = styled.h1`
   color: #333;  
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 20px;
-  text-transform: uppercase;
+  margin-bottom: 3rem;
 
   @media (max-width: 768px) {
     font-size: 1.8rem; 
@@ -21,9 +20,11 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  margin: auto;
+  margin-top: 1rem;
   flex-wrap: wrap;  
-  gap: 10px;
-  margin-top: 4rem;
+  gap: 16px;
 
   button {
     width: auto;   
