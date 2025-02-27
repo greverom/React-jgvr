@@ -1,19 +1,20 @@
-import React from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { RegisterFormInputs } from '../Interfaces/authenticationProps';
-import { AuthContainer, AuthForm, AuthTitle} from "../styles/Login-Register/login-register";
-import Button from '../components/ui/buttons/button';
-import TestInput from '../components/ui/Form/testInput';
+import React from "react";
+import { useForm, FormProvider } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { RegisterFormInputs } from "../Interfaces/authenticationProps";
+import { AuthContainer, AuthForm, AuthTitle } from "../styles/Login-Register/login-register";
+import Button from "../components/ui/buttons/button";
+import TestInput from "../components/ui/Form/testInput";
+import { useRegister } from "../hooks/Auth/useRegister";
 
 const registerSchema = yup.object().shape({
-  //username: yup.string().required('El nombre de usuario es obligatorio'),
-  email: yup.string().email('Correo inválido').required('El correo es obligatorio'),
-  password: yup.string().required('La contraseña es obligatoria').min(6, 'Mínimo 6 caracteres'),
-  confirmPassword: yup.string()
-    // .oneOf([yup.ref('password'), undefined], 'Las contraseñas deben coincidir')
-    // .required('La confirmación es obligatoria'),
+  email: yup.string().email("Correo inválido").required("El correo es obligatorio"),
+  password: yup.string().required("La contraseña es obligatoria").min(6, "Mínimo 6 caracteres"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), undefined], "Las contraseñas deben coincidir")
+    .required("La confirmación es obligatoria"),
 });
 
 const Register: React.FC = () => {
@@ -21,9 +22,13 @@ const Register: React.FC = () => {
     resolver: yupResolver(registerSchema),
   });
 
-  const { handleSubmit } = methods;
-  const onSubmit = (data: RegisterFormInputs) => {
-    console.log(data);
+  const { handleSubmit, formState, getValues } = methods;
+  const { handleRegister } = useRegister(formState);
+
+  const onSubmit = () => {
+    const email = getValues("email");
+    const password = getValues("password");
+    handleRegister(email, password);
   };
 
   return (
@@ -32,8 +37,9 @@ const Register: React.FC = () => {
         <AuthForm onSubmit={handleSubmit(onSubmit)}>
           <AuthTitle>Registrarse</AuthTitle>
 
-            <TestInput name="email" label="Correo Electrónico" type="email" control={methods.control} />
-            <TestInput name="password" label="Contraseña" type="password" control={methods.control} />
+          <TestInput name="email" label="Correo Electrónico" type="email" control={methods.control} />
+          <TestInput name="password" label="Contraseña" type="password" control={methods.control} />
+          <TestInput name="confirmPassword" label="Confirmar Contraseña" type="password" control={methods.control} />
 
           <Button type="submit" variant="primary">Registrarse</Button>
         </AuthForm>

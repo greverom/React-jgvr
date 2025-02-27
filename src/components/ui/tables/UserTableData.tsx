@@ -1,6 +1,6 @@
-import { User } from "../../../Interfaces/authenticationProps";
+import { UserTable } from "../../../Interfaces/tables";
 
-export const initialUsers: User[] = [
+export const initialUsers: UserTable[] = [
   { id: 1, username: "Gregorio", email: "goyo@gmail.com", role: "GUEST" },
   { id: 2, username: "Cindy", email: "cindy@gmail.com", role: "ADMINISTRADOR" },
   { id: 3, username: "Carlos", email: "carlos@gmail.com", role: "GUEST" },

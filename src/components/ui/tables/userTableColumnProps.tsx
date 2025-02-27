@@ -4,6 +4,11 @@ import { TableColumn } from "react-data-table-component";
 
 export const userTableColumns = ({ activeUserId, handleRoleChange }: UserTableColumnsProps): TableColumn<UserTable>[] => [
   {
+    name: "#", 
+    selector: (row) => row.id, 
+    sortable: true, 
+  },
+  {
     name: "Nombre",
     selector: (row) => row.username,
     sortable: true,

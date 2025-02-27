@@ -39,11 +39,11 @@ export const useAuth = (
       (formState?.errors?.password && prevErrors.current?.password !== formState.errors.password)
     ) {
       if (formState?.errors?.email && formState?.errors?.password) {
-        showToast("Falta completar el email y la contraseña", "error");
+        showToast("Ingresa email y contraseña", "error");
       } else if (formState?.errors?.email) {
-        showToast("No has ingresado el email", "error");
+        showToast("Ingresa el email", "error");
       } else if (formState?.errors?.password) {
-        showToast("Falta ingresar la contraseña", "error");
+        showToast("Ingresa la contraseña", "error");
       }
     }
     prevErrors.current = formState?.errors;
@@ -57,7 +57,7 @@ export const useAuth = (
     
     try {
       login(email, password); 
-      showToast("Inicio de sesión exitoso", "success");
+      showToast("Iniciando sesión...", "success");
 
       if (rememberMe) {
         localStorage.setItem("email", email);

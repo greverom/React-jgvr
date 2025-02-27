@@ -41,7 +41,8 @@ export const ToastMessage = styled.div<{ $type: "success" | "error" | "warning" 
     "#333"};
   min-width: 310px;
   padding: 20px;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 400;
   border-radius: 5px;
   margin-bottom: 10px;
   text-align: center;

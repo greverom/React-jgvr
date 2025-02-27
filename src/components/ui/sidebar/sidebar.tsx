@@ -1,11 +1,11 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { sidebarLinks, SidebarLink } from "../sidebar/sidebarLinks";
 import { useSidebar } from "../../../hooks/Sidebar/useSidebar";
-import { useAuth } from "../../../hooks/Auth/useAuth"; 
+import { useAuth } from "../../../hooks/Auth/useLogin"; 
 import { ArrowIcon } from "../../../assets/icons/icons";
-import logo from "../../../assets/react.svg";
+import   logo from "../../../assets/react.svg";
 import { useState } from "react";
-import Modal from "../modal/modal";
+import   Modal from "../modal/modal";
 
 import { SidebarContainer, SidebarNav, LogoContainer, LogoImage, 
          LogoText, SidebarMenu, SidebarItem, SidebarLinkStyle, DropdownMenu,
