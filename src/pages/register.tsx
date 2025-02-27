@@ -7,6 +7,7 @@ import { AuthContainer, AuthForm, AuthTitle } from "../styles/Login-Register/log
 import Button from "../components/ui/buttons/button";
 import TestInput from "../components/ui/Form/testInput";
 import { useRegister } from "../hooks/Auth/useRegister";
+import Modal from "../components/ui/modal/modal";
 
 const registerSchema = yup.object().shape({
   email: yup.string().email("Correo inválido").required("El correo es obligatorio"),
@@ -23,7 +24,7 @@ const Register: React.FC = () => {
   });
 
   const { handleSubmit, formState, getValues } = methods;
-  const { handleRegister } = useRegister(formState);
+  const { handleRegister, registerModal, setRegisterModal } = useRegister(formState); 
 
   const onSubmit = () => {
     const email = getValues("email");
@@ -44,6 +45,13 @@ const Register: React.FC = () => {
           <Button type="submit" variant="primary">Registrarse</Button>
         </AuthForm>
       </FormProvider>
+      <Modal 
+        isOpen={registerModal.isOpen}
+        onClose={() => setRegisterModal({ isOpen: false, title: "", message: "", type: "success" })}
+        type={registerModal.type}
+        title={registerModal.title}
+        message={registerModal.message}
+      />
     </AuthContainer>
   );
 };

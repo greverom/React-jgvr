@@ -63,13 +63,13 @@ export const useAuth = (
 
     try {
       login(email, password);
-      //showToast("Iniciando sesión...", "success");
-      setErrorModal({
-        isOpen: true,
-        title: "Éxito",
-        message: "Iniciando sesión...",
-        type: "success",
-      });
+      showToast("Iniciando sesión...", "success");
+      // setErrorModal({
+      //   isOpen: true,
+      //   title: "Éxito",
+      //   message: "Iniciando sesión...",
+      //   type: "success",
+      // });
 
       if (rememberMe) {
         localStorage.setItem("email", email);
@@ -81,12 +81,12 @@ export const useAuth = (
 
     } catch (error) {
       console.error("Error en login:", error);
-      showToast("Credenciales incorrectas", "error");
-      // setErrorModal({ isOpen: true,
-      //                 title: "Error",
-      //                 message: "Credenciales incorrectas. Verifica tu email y contraseña.",
-      //                 type: "error",
-      //               });
+      //showToast("Credenciales incorrectas", "error");
+      setErrorModal({ isOpen: true,
+                      title: "Error",
+                      message: "Credenciales incorrectas. Verifica tu email y contraseña.",
+                      type: "error",
+                    });
 
     }
   };

@@ -1,10 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormState } from "react-hook-form";
 import { RegisterFormInputs } from "../../Interfaces/authenticationProps";
 import { useToast } from "../Toast/useToast";
 
 export const useRegister = ( formState?: FormState<RegisterFormInputs> ) => { const { showToast } = useToast();
   const prevErrors = useRef(formState?.errors);
+  const [registerModal, setRegisterModal] = useState<{ isOpen: boolean; title: string; message: string; type: "success" | "error" }>({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "success", 
+  });
 
   useEffect(() => {
     if (formState?.isSubmitted) {
@@ -30,9 +36,17 @@ export const useRegister = ( formState?: FormState<RegisterFormInputs> ) => { co
 
   const handleRegister = (email: string, password: string) => {
     console.log( email, password)
-  
-    showToast("Registro exitoso...", "success");
+    //showToast("Registro exitoso...", "success");
+    setRegisterModal({
+      isOpen: true,
+      title: "Registro exitoso",
+      message: `${email} ha sido registrado.`,
+      type: "success", 
+    });
   };
 
-  return { handleRegister };
+  return { handleRegister, 
+          registerModal, 
+          setRegisterModal
+  };
 };
