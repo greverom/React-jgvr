@@ -19,11 +19,13 @@ const loginSchema = yup.object().shape({
 const Login: React.FC = () => {
   const methods = useForm<LoginFormInputs>({
     resolver: yupResolver(loginSchema),
+    mode: "onSubmit",
   });
 
-  const { handleSubmit, setValue } = methods;
-  const { handleLogin } = useAuth(setValue);
-  const onSubmit = ({email, password, rememberMe}: LoginFormInputs) => {
+  const { handleSubmit, setValue, formState } = methods;
+  const { handleLogin } = useAuth(setValue, formState); 
+
+  const onSubmit = ({ email, password, rememberMe }: LoginFormInputs) => {
     handleLogin(email, password, rememberMe);
   };
 
