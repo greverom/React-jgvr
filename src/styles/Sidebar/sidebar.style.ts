@@ -127,7 +127,7 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean,
   align-items: center;
   color: ${({ $isParentActive }) => ($isParentActive ? "#5fb8d3" : "white")};
   text-decoration: none;
-  padding: 15px 27px;
+  padding: 15px 0;
   justify-content: flex-start;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -145,7 +145,7 @@ svg {
 .arrow {
   width: 20px;
   height: 20px;
-  margin-right: 20px; 
+  padding: 0 20px; 
   transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
   transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0)")};
   opacity: ${({ $isExpanded }) => ($isExpanded ? 1 : 0)};
