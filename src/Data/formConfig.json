@@ -5,8 +5,8 @@
       { "name": "email", "type": "email", "label": "Correo Electrónico", "required": true },
       { "name": "phone", "type": "tel", "label": "Teléfono", "required": true, "minLength": 10, "maxLength": 10 },
       { "name": "address", "type": "text", "label": "Dirección", "required": true },
-      { "name": "password", "type": "password", "label": "Contraseña", "required": true, "minLength": 6, "maxLength": 15 },
-      { "name": "confirmPassword", "type": "password", "label": "Confirmar Contraseña", "required": true },
+      { "name": "password", "type": "text", "label": "Contraseña", "required": true, "minLength": 6, "maxLength": 15 },
+      { "name": "confirmPassword", "type": "text", "label": "Confirmar Contraseña", "required": true },
       { "name": "genero", "type": "select", "label": "Género", "required": true,
         "options": [
           { "value": "", "label": "Seleccionar Género", "disabled": true }, 

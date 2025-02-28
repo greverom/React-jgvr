@@ -5,33 +5,29 @@ export const DynamicFormContainer = styled.div`
   justify-content: center;
   margin-top: 4rem;
   background-color: #f8f9fa;
-  overflow: hidden;
 
   @media (max-width: 768px) {
     width: 100%;
-    min-height: 100vh; 
     display: flex;
-    justify-content: center;
-    align-items: center;
   }
 `;
 
 export const DynamicFormWrapper = styled.form`
   display: flex;
+  width: 600px; 
+  padding: 1.5rem;
+  background: white;
   flex-direction: column;
   align-items: center;
-  width: 600px; 
-  padding: 2rem;
   margin-bottom: 2rem;
-  background: white;
-  border: 1px solid rgb(200, 200, 200);
   border-radius: 10px;
+  border: 1px solid rgb(200, 200, 200);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) { 
     width: 100%;
     max-width: 390px; 
-    padding: 1.5rem;
+    padding: 1rem;
   }
 `;
 
@@ -51,7 +47,6 @@ export const FormTitle = styled.h2`
 export const FormGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr; 
-  gap: 1.2rem;
   width: 100%;
 
   @media (max-width: 768px) {
@@ -68,13 +63,13 @@ export const InputGroup = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: 12px;
+  font-size: 13px;
   color: #555;
   text-align: left;
-  margin-bottom: 5px;
+  margin: 0 0 5px 10px;
 
   @media (max-width: 768px) {
-    font-size: 12px; 
+    font-size: 13px; 
   }
 `;
 
@@ -87,9 +82,10 @@ export const InputContainer = styled.div`
 export const Input = styled.input<{ $hasError?: boolean }>`
   max-width: 266px;
   min-width: 265px;
-  padding: 12px;
+  padding: 0 5px;
+  height: 36px;
   border: 1px solid ${({ $hasError }) => ($hasError ? "red" : "#ccc")};
-  border-radius: 6px;
+  border-radius: 5px;
   font-size: 13px;
   outline: none;
   transition: border-color 0.3s ease;
@@ -100,24 +96,26 @@ export const Input = styled.input<{ $hasError?: boolean }>`
 
   @media (max-width: 768px) {
     min-width: 94.5%;
-    font-size: 12px; 
-    padding: 10px;
+  }
+
+  @media (max-width: 490px) {
+    font-size: 14px; 
+    height: 42px;
   }
 `;
 
 export const SelectContainer = styled.div`
+  position: relative;
   width: 100%;
-  display: flex;
-  flex-direction: column;
 `;
 
 export const Select = styled.select`
-  width: 100%;
-  min-width: 250px;
-  padding: 12px;
-  height: 41.5px;
+  max-width: 266px;
+  min-width: 280px;
+  padding: 0 5px;
+  height: 38px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 5px;
   font-size: 13px;
   outline: none;
   transition: border-color 0.3s ease;
@@ -127,18 +125,21 @@ export const Select = styled.select`
   }
 
    @media (max-width: 768px) {
-   max-width: 100%;
-   height: 36px;
-    font-size: 12px;
-    padding: 10px;
+    min-width: 97.5%;
+  }
+
+   @media (max-width: 490px) {
+    min-width: 99%;  
+    height: 42px;
+    font-size: 14px;
   }
 `;
 
 export const ErrorMessage = styled.p`
   color: red;
-  font-size: 12px;
+  font-size: 11px;
   text-align: left;
-  margin-top: 5px;
+  margin: 4px 0 0 10px;
   margin-bottom: 0;
 
   @media (max-width: 768px) {
