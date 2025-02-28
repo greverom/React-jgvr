@@ -22,6 +22,7 @@ export const useSidebar = () => {
         !sidebarRef.current.contains(event.target as Node)
       ) {
         setIsSidebarOpen(false); 
+        setOpenDropdown(null);
       }
     };
 
