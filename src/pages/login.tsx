@@ -8,7 +8,7 @@ import { useAuth } from '../hooks/Auth/useLogin';
 import   TestInput from '../components/ui/Form/testInput';
 import   TestCheckbox from '../components/ui/Form/testCheckbox';
 import { AuthContainer, AuthForm, AuthTitle, 
-         ForgotPasswordLink, RememberAndForgotContainer } from "../styles/Login-Register/login-register";
+         ForgotPasswordLink, LoginButtonContainer, RememberAndForgotContainer } from "../styles/Login-Register/login-register";
 import Modal from '../components/ui/modal/modal';
 
 const loginSchema = yup.object().shape({
@@ -44,7 +44,9 @@ const Login: React.FC = () => {
             <ForgotPasswordLink href="#">¿Olvidaste tu contraseña?</ForgotPasswordLink>
           </RememberAndForgotContainer>
 
+          <LoginButtonContainer>
           <Button type="submit" variant="primary">Ingresar</Button>
+          </LoginButtonContainer>
         </AuthForm>
       </FormProvider>
       <Modal 

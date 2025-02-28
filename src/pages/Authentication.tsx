@@ -1,21 +1,19 @@
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
+import { useAuthenticationRedirect } from "../hooks/Auth/authenticationPage";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../components/ui/Loading/loading";
 import Button from "../components/ui/buttons/button"; 
-import { DashboardContainer, DashboardContent, DashboardNav, DashboardTitle } from "../styles/Authentication/authenticationPage.style";
+import { DashboardContainer, DashboardContent, 
+        DashboardNav, DashboardTitle 
+       } from "../styles/Authentication/authenticationPage.style";
 
 const Dashboard = () => {
+  useAuthenticationRedirect();
+  
   const navigate = useNavigate();
   const location = useLocation();
-    
-  useEffect(() => {
-    if (location.pathname === "/dashboard") {
-        navigate("register", { replace: true });
-    }
-  }, [location.pathname, navigate]);
-
-  const isLoginActive = location.pathname.includes("/dashboard/login"); 
-  const isRegisterActive = location.pathname.includes("/dashboard/register");
+  const isLoginActive = location.pathname.includes("/authentication/login"); 
+  const isRegisterActive = location.pathname.includes("/authentication/register");
 
   return (
     <DashboardContainer>

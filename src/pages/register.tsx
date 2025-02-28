@@ -3,7 +3,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterFormInputs } from "../Interfaces/authenticationProps";
-import { AuthContainer, AuthForm, AuthTitle } from "../styles/Login-Register/login-register";
+import { AuthContainer, AuthForm, AuthTitle, LoginButtonContainer } from "../styles/Login-Register/login-register";
 import Button from "../components/ui/buttons/button";
 import TestInput from "../components/ui/Form/testInput";
 import { useRegister } from "../hooks/Auth/useRegister";
@@ -42,7 +42,10 @@ const Register: React.FC = () => {
           <TestInput name="password" label="Contraseña" type="password" control={methods.control} />
           <TestInput name="confirmPassword" label="Confirmar Contraseña" type="password" control={methods.control} />
 
-          <Button type="submit" variant="primary">Registrarse</Button>
+
+          <LoginButtonContainer>
+            <Button type="submit" variant="primary">Registrarse</Button>
+          </LoginButtonContainer>
         </AuthForm>
       </FormProvider>
       <Modal 

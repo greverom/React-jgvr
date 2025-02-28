@@ -19,6 +19,10 @@ export const AuthForm = styled.form`
   background: white;
   border: 1px solid rgb(195, 195, 195);
   border-radius: 8px;
+
+   @media (max-width: 768px) {
+    border: none;
+  }
 `;
 
 export const AuthTitle = styled.h2`
@@ -33,14 +37,14 @@ export const InputGroup = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 14px;
 `;
 
 export const Label = styled.label`
   font-size: 12px;
   color: #555;
   text-align: left;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
 `;
 
 export const InputContainer = styled.div`
@@ -52,7 +56,7 @@ export const Input = styled.input<{ $hasError?: boolean }>`
   max-width: 100%;
   min-width: 254px;
   font-size: 14px;
-  padding: 10px;
+  height: 36px;
   padding-left: ${({ type }) => (type === "email" ? "35px" : "10px")}; 
   padding-right: ${({ type }) => (type === "password" || type === "text" ? "35px" : "10px")}; 
   border: 1px solid ${({ $hasError }) => ($hasError ? "red" : "#ccc")};
@@ -68,6 +72,11 @@ export const Input = styled.input<{ $hasError?: boolean }>`
     background-color: white !important;
     color: #333 !important;
     box-shadow: 0 0 0px 1000px white inset !important;
+  }
+
+   @media (max-width: 768px) {
+    height: 42px;  
+    font-size: 15px; 
   }
 `;
 
@@ -99,8 +108,8 @@ export const RememberAndForgotContainer = styled.div`
   align-items: center;
   justify-content: space-between; 
   width: 100%;
-  margin-top: 0px;
-  margin-bottom: 30px;
+  margin-top: -2px;
+  margin-bottom: 15px;
 `;
 
 export const RememberMeContainer = styled.div`
@@ -109,9 +118,9 @@ export const RememberMeContainer = styled.div`
 `;
 
 export const RememberMeCheckbox = styled.input`
-  width: 14px;
-  height: 14px;
-  margin-right: 8px;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
   cursor: pointer;
 `;
 
@@ -122,15 +131,20 @@ export const RememberMeLabel = styled.label`
 `;
 
 export const ForgotPasswordLink = styled.a`
-  font-size: 0.7rem; 
+  font-size: 0.8rem; 
   color: #007bff;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
-  align-self: flex-start;
-  margin-top: -10px;
 
   &:hover {
     color: #0056b3;
     text-decoration: underline;
   }
+`;
+
+export const LoginButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 15px;
 `;
