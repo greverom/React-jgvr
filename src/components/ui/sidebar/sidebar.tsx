@@ -13,13 +13,11 @@ import { SidebarContainer, SidebarNav, LogoContainer, LogoImage,
          BurgerButton} from "../../../styles/Sidebar/sidebar.style";
 
 export const Sidebar = () => {
-  const { openDropdown, toggleSubMenu, closeSubMenu, handleMouseEnter, handleMouseLeave, 
-          isSidebarExpanded, dropdownRefs }   = useSidebar();
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const { openDropdown, toggleSubMenu, closeSubMenu, sidebarRef,
+          isSidebarOpen, setIsSidebarOpen, dropdownRefs }   = useSidebar();
+  const [ showLogoutModal, setShowLogoutModal] = useState(false);
   const { pathname } = useLocation();
   const { role } = useAuth(); 
-
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleToggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -36,8 +34,8 @@ export const Sidebar = () => {
       {isSidebarOpen ? "✕" : "☰"}
       </BurgerButton>
     
-      <SidebarContainer $isOpen={isSidebarOpen}>
-        <SidebarNav onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <SidebarContainer ref={sidebarRef} $isOpen={isSidebarOpen}>
+        <SidebarNav >
           <LogoContainer>
             <LogoImage src={logo} alt="react logo" />
             <LogoText>{role}</LogoText>
@@ -61,7 +59,7 @@ export const Sidebar = () => {
                   >
                   {link.subMenu ? (
                     <>
-                      <DropdownMenu $isOpen={isOpen}  $isExpanded={isSidebarExpanded} $isParentActive={!!isParentActive} onClick={() => toggleSubMenu(link.path)}>
+                      <DropdownMenu $isOpen={isOpen}  $isExpanded={isSidebarOpen} $isParentActive={!!isParentActive} onClick={() => toggleSubMenu(link.path)}>
                         <Icon /><span>{link.title}</span><ArrowIcon className="arrow" />
                       </DropdownMenu>
                 
