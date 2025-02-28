@@ -1,15 +1,20 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 20px;
+  width: 100%;
 `;
 
 export const PageTitle = styled.h1`
-  color: #333;  
+  width: 100%;
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  padding: 20px;
+  color: #333;
   text-transform: uppercase;
 
   @media (max-width: 768px) {
