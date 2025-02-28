@@ -26,7 +26,7 @@ export const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 11;
 `;
 
 export const ModalContent = styled.div<{ $type?: "success" | "error" | "warning" | "info" | "question"; $hasTimeout?: boolean }>`
@@ -65,6 +65,13 @@ export const ModalContent = styled.div<{ $type?: "success" | "error" | "warning"
     to {
       width: 100%;
     }
+  }
+
+  @media (max-width: 480px) {
+    width: 80%;
+    margin: auto;  
+    max-width: 350px; 
+
   }
 `;
 

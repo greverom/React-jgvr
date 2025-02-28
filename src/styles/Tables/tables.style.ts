@@ -7,7 +7,7 @@ export const TableContainer = styled.div`
   margin: auto;
   padding: 10px;
   padding-bottom: 0;
-  border-radius: 8px;
+  border-radius: 5px;
   overflow: hidden;
   align-items: center;
 

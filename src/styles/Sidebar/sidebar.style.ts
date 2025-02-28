@@ -10,7 +10,7 @@ export const SidebarContainer = styled.div<{ $isOpen: boolean }>`
   background-color: rgba(54, 58, 69, 0.95);
   backdrop-filter: blur(10px);
   transition: left 0.3s ease-in-out;
-  z-index: 1001;
+  z-index: 9;
 `;
 
 export const SidebarNav = styled.nav`
@@ -44,7 +44,7 @@ export const BurgerButton = styled.button<{ $isOpen: boolean }>`
   background-color: ${({ $isOpen }) => ($isOpen ? "rgba(54, 58, 69)" : "transparent")}; 
   color: ${({ $isOpen }) => ($isOpen ? "white" : "rgba(54, 58, 69)")};
   cursor: pointer;
-  z-index: 1100;
+  z-index: 10;
   animation: ${({ $isOpen }) => ($isOpen ? moveButton : "none")} 0.3s ease-in-out;
   transition: transform 0.5s ease-in-out;
 `;
@@ -56,7 +56,6 @@ export const SidebarOverlay = styled.div`
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
   backdrop-filter: blur(4px);
 `;
 
