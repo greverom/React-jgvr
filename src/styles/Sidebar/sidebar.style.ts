@@ -34,7 +34,7 @@ const moveButton = keyframes`
 
 export const BurgerButton = styled.button<{ $isOpen: boolean }>`
   position: fixed;
-  top: 32px;
+  top: 22px;
   left: ${({ $isOpen }) => ($isOpen ? "250px" : "15px")};
   border: none;
   border-radius: ${({ $isOpen }) => ($isOpen ? "50px" : "0px")};

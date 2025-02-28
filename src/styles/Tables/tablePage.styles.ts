@@ -1,11 +1,16 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 20px;
 `;
 
 export const PageTitle = styled.h1`
+  width: 100%;
   color: #333;  
   font-size: 2rem;
   font-weight: bold;

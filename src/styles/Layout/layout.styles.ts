@@ -26,4 +26,5 @@ export const Content = styled.div`
   box-sizing: border-box;
   min-height: 100vh;
   background-color: #ffffff; 
+  overflow-x: auto;
 `;

@@ -1,19 +1,22 @@
+import { TableStyles } from "react-data-table-component";
 import styled from "styled-components";
 
 export const TableContainer = styled.div`
-  width: 100%;
+  width: 90%;
   max-width: 900px;
   margin: auto;
   padding: 10px;
   padding-bottom: 0;
   border-radius: 8px;
   overflow: hidden;
-   align-items: center;
+  align-items: center;
 
-    @media (max-width: 768px) {
-    overflow-x: auto;  
-    max-width: 88%;
-    padding: 0px;
+   @media (max-width: 600px) { 
+    padding: 5px;
+  }
+
+  .rdt_Table {
+    min-width: 650px; 
   }
 
   .rdt_Pagination {
@@ -30,10 +33,11 @@ export const StyledCheckbox = styled.input`
   cursor: pointer;
 `;
 
-export const customStyles = {
+export const customStyles: TableStyles = {
   table: {
     style: {
-      minWidth: "100%", 
+      minWidth: "10%", 
+      maxWidth: "100%",
     },
   },
   headCells: {
@@ -42,6 +46,18 @@ export const customStyles = {
       color: "#ffffff",
       fontSize: "13px",
       fontWeight: "bold",
+      textAlign: "center" as const,  
+      minWidth: "70px",  
+      maxWidth: "90px",
+      whiteSpace: "nowrap", 
+    },
+  },
+  cells: {
+    style: {
+      fontSize: "12px",
+      padding: "8px",
+      whiteSpace: "nowrap",
+      textAlign: "center" as const,  
     },
   },
 };
