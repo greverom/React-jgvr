@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ModalPageContainer = styled.div`
   text-align: center;
-  padding: 20px;
 `;
 
 export const ModalTitle = styled.h1`    

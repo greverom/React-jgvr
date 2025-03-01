@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const DynamicFormContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 4rem;
-  background-color: #f8f9fa;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -13,16 +13,17 @@ export const DynamicFormContainer = styled.div`
 `;
 
 export const DynamicFormWrapper = styled.form`
+  background: radial-gradient(circle,rgb(246, 246, 246) 0%,rgb(255, 255, 255) 100%);
   display: flex;
   width: 600px; 
-  padding: 1.5rem;
-  background: white;
+  padding: 2rem;
   flex-direction: column;
   align-items: center;
+  margin: auto;
   margin-bottom: 2rem;
   border-radius: 10px;
-  border: 1px solid rgb(200, 200, 200);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid  rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 
   @media (max-width: 768px) { 
     width: 100%;
@@ -32,11 +33,11 @@ export const DynamicFormWrapper = styled.form`
 `;
 
 export const FormTitle = styled.h2`
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 500;
   color: #333;
   margin-top: 0;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   text-align: center;
 
   @media (max-width: 768px) {

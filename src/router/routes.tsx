@@ -1,9 +1,9 @@
 import { lazy, ReactElement, Suspense } from "react";
-import Loading from "../components/ui/Loading/loading";
-import { dashboardRoutes } from "./dashboardRoutesChild";
+import   Loading from "../components/ui/Loading/loading";
+import { authRoutes } from "./AuthRoutesChild";
 import { AppRoute } from "./type";
 import { Home, Modals } from "../pages";
-import Authentication from "../pages/Authentication";
+import   Authentication from "../pages/Authentication";
 
 const Forms = lazy(() => import("../pages/Forms"));
 const Table = lazy(() => import("../pages/Table"));
@@ -23,7 +23,7 @@ export const appRoutes: AppRoute[] = [
     path: "/authentication",
     element: withSuspense(<Authentication />), 
     roles: ["ADMINISTRADOR"],
-    children: dashboardRoutes, 
+    children: authRoutes, 
   },
 
   {

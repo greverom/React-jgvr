@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const HomePageContainer = styled.div`
   text-align: center;
-  padding: 20px;
+  min-heigh: 100vh;
+  padding: 20px auto;
 `;
 
 export const HomeTitle = styled.h1`

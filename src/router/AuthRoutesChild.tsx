@@ -4,7 +4,7 @@ import { AppRoute } from "./type";
 const Register = lazy(() => import("../pages/register"));
 const Login = lazy(() => import("../pages/login"));
 
-export const dashboardRoutes: AppRoute[] = [
+export const authRoutes: AppRoute[] = [
   {
     index: true, 
     element: <Register />, 

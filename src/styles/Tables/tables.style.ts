@@ -5,6 +5,7 @@ export const TableContainer = styled.div`
   width: 90%;
   max-width: 900px;
   margin: auto;
+  margin-top: 1rem;
   padding: 10px;
   padding-bottom: 0;
   border-radius: 5px;
@@ -21,6 +22,7 @@ export const TableContainer = styled.div`
 
   .rdt_Pagination {
     display: flex;  
+    background-color: transparent !important;
     justify-content: center;  
     align-items: center;  
     padding: 10px 0;
@@ -28,16 +30,22 @@ export const TableContainer = styled.div`
 `;
 
 export const StyledCheckbox = styled.input`
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   cursor: pointer;
 `;
 
 export const customStyles: TableStyles = {
   table: {
     style: {
-      minWidth: "10%", 
+      minWidth: "90%", 
       maxWidth: "100%",
+    },
+  },
+  head: {
+    style: {
+      backgroundColor: "black", 
+      boxShadow: "none",  
     },
   },
   headCells: {
@@ -45,19 +53,13 @@ export const customStyles: TableStyles = {
       backgroundColor: "#6c757d",
       color: "#ffffff",
       fontSize: "13px",
-      fontWeight: "bold",
-      textAlign: "center" as const,  
-      minWidth: "70px",  
-      maxWidth: "90px",
-      whiteSpace: "nowrap", 
+      fontWeight: "bold",  
     },
   },
   cells: {
     style: {
       fontSize: "12px",
-      padding: "8px",
-      whiteSpace: "nowrap",
-      textAlign: "center" as const,  
+      padding: "11px", 
     },
   },
 };

@@ -6,7 +6,6 @@ export const AuthContainer = styled.div`
   align-item: center;
   padding: 1.5rem 0;
   min-height: auto;
-  background-color:rgb(255, 255, 255);
 `;
 
 export const AuthForm = styled.form`
@@ -16,8 +15,9 @@ export const AuthForm = styled.form`
   width: 300px;
   padding: 1.7rem;
   margin-bottom: 2rem;
-  background: white;
-  border: 1px solid rgb(195, 195, 195);
+  background: radial-gradient(circle,rgb(246, 246, 246) 0%,rgb(255, 255, 255) 100%);
+  border: 1px solid  rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
 
    @media (max-width: 768px) {

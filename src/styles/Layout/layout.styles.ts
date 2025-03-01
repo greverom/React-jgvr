@@ -4,7 +4,6 @@ export const GlobalStyles = createGlobalStyle`
   html, body {
   margin: 0;
   padding: 0;
-  background-color:rgb(255, 255, 255);
   color: white;
   min-height: 100%;
   width: 100%;
@@ -21,10 +20,10 @@ export const MainLayout = styled.div`
 
 export const Content = styled.div`
   flex-grow: 1;
-  padding: 0;
+  padding: 20px auto;
   margin: 0;
   box-sizing: border-box;
   min-height: 100vh;
-  background-color: #ffffff; 
+  background: radial-gradient(circle,rgba(239, 248, 255, 0.5) 100%,rgba(255, 255, 255, 0.88) 100%);
   overflow-x: auto;
 `;

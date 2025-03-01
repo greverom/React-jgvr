@@ -19,7 +19,6 @@ const UserTables = () => {
   return (
     <TableContainer>
       <DataTable
-        title={<h2 style={{ fontSize: "22px", textAlign: "left" }}>Gestión de Roles</h2>}
         columns={userTableColumns({ activeUserId, handleRoleChange })}
         data={users}
         highlightOnHover

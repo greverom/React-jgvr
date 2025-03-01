@@ -13,7 +13,6 @@ export const DashboardTitle = styled.h1`
   width: 100%;
   font-size: 2rem;
   font-weight: bold;
-  padding: 20px;
   color: #333;
   text-transform: uppercase;
 

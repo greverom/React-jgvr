@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const UserPageContainer = styled.div`
   text-align: center;
-  padding: 20px;
 `;
 
 export const UserTitle = styled.h1`
